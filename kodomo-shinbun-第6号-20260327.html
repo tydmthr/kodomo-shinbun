@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>豊田こども新聞 第6号</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;900&display=swap" rel="stylesheet">
+<style>
+:root {
+  --header-dark: #1565C0;
+  --header-mid: #2196F3;
+  --yellow-accent: #FFF176;
+  --box-blue-bg: #E8F4FD;
+  --box-blue-border: #2196F3;
+  --box-yellow-bg: #FFF176;
+  --box-yellow-border: #FF9800;
+  --box-orange: #FF9800;
+  --box-tecchan-bg: #FFF8E1;
+  --box-taro-bg: #E8F5E9;
+  --box-taro-border: #4CAF50;
+  --box-apply-bg: #E8F5E9;
+  --box-apply-border: #4CAF50;
+  --footer-bg: #1565C0;
+  --text-dark: #1a1a2e;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+ruby { ruby-align: center; }
+rt { font-size: 0.5em; color: inherit; }
+body {
+  font-family: 'Noto Sans JP', 'Hiragino Kaku Gothic ProN', 'Yu Gothic', sans-serif;
+  background: #f0f0f0;
+  display: flex;
+  justify-content: center;
+  padding: 10px;
+}
+.newspaper {
+  width: 210mm;
+  min-height: 297mm;
+  max-height: 297mm;
+  background: #fff;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.12);
+  border-radius: 6px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+/* HEADER */
+.header {
+  background: linear-gradient(135deg, var(--header-dark), var(--header-mid));
+  color: #fff;
+  padding: 12px 18px 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.header-title { font-size: 30px; font-weight: 900; letter-spacing: 2px; }
+.header-right { text-align: right; font-size: 11px; line-height: 1.6; }
+.header-mascot { font-size: 26px; margin-left: 8px; }
+/* COLOR BAR */
+.color-bar {
+  height: 5px;
+  background: linear-gradient(90deg, #FF9800, #FFF176, #4CAF50, #2196F3, #9C27B0);
+}
+/* HEADLINE */
+.headline {
+  padding: 10px 18px 6px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.headline h1 { font-size: 18px; font-weight: 900; color: var(--text-dark); line-height: 1.4; flex: 1; }
+.badge {
+  display: inline-block;
+  background: var(--box-orange);
+  color: #fff;
+  font-size: 10px;
+  font-weight: 700;
+  padding: 2px 10px;
+  border-radius: 20px;
+  white-space: nowrap;
+}
+/* CONTENT AREA */
+.content-row {
+  display: flex;
+  padding: 0 18px;
+  gap: 14px;
+}
+.points-col { flex: 1; }
+.illust-col { width: 200px; flex-shrink: 0; }
+.points-col h2 {
+  font-size: 12px;
+  color: var(--header-mid);
+  margin-bottom: 5px;
+  border-bottom: 2px solid var(--header-mid);
+  padding-bottom: 2px;
+}
+.point-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 6px;
+  margin-bottom: 4px;
+}
+.point-num {
+  background: var(--header-mid);
+  color: #fff;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  font-weight: 700;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+.point-text { font-size: 10.5px; line-height: 1.5; color: var(--text-dark); }
+/* ILLUST AREA */
+#illust-area {
+  background: var(--box-blue-bg);
+  border: 2px solid var(--box-blue-border);
+  border-radius: 10px;
+  padding: 8px;
+  text-align: center;
+}
+#illust-area img {
+  max-width: 100%;
+  max-height: 130px;
+  border-radius: 8px;
+  border: 2px solid #4CAF50;
+}
+#illust-area .caption {
+  font-size: 9.5px;
+  color: #555;
+  margin-top: 4px;
+  line-height: 1.4;
+}
+#illust-area .img-credit {
+  font-size: 8px;
+  color: #999;
+  margin-top: 2px;
+}
+/* EXPLAIN BOX */
+.explain-box {
+  margin: 8px 18px;
+  background: var(--box-yellow-bg);
+  border-left: 5px solid var(--box-yellow-border);
+  border-radius: 0 8px 8px 0;
+  padding: 10px 14px;
+}
+.explain-box h2 { font-size: 12px; color: #E65100; margin-bottom: 4px; }
+.explain-box p { font-size: 11px; line-height: 1.7; color: var(--text-dark); }
+/* KIDS ROW */
+.kids-row {
+  display: flex;
+  gap: 12px;
+  padding: 0 18px;
+  margin-top: 6px;
+}
+.kid-box {
+  flex: 1;
+  border-radius: 10px;
+  padding: 10px 12px;
+}
+.kid-box.tecchan { background: var(--box-tecchan-bg); border: 2px solid var(--box-orange); }
+.kid-box.taro { background: var(--box-taro-bg); border: 2px solid var(--box-taro-border); }
+.kid-box h3 { font-size: 12px; margin-bottom: 4px; }
+.kid-box p { font-size: 11.5px; line-height: 1.7; color: var(--text-dark); }
+/* APPLICATION BOX */
+.apply-box {
+  margin: 8px 18px;
+  background: var(--box-apply-bg);
+  border-left: 5px solid var(--box-apply-border);
+  border-radius: 0 8px 8px 0;
+  padding: 10px 14px;
+}
+.apply-box h2 { font-size: 12px; color: #2E7D32; margin-bottom: 4px; }
+.apply-box ul { list-style: none; padding: 0; }
+.apply-box li { font-size: 11px; line-height: 1.7; color: var(--text-dark); padding-left: 16px; position: relative; }
+.apply-box li::before { content: '🌿'; position: absolute; left: 0; }
+/* FOOTER */
+.footer {
+  background: var(--footer-bg);
+  color: #fff;
+  text-align: center;
+  padding: 6px 18px;
+  font-size: 9px;
+  margin-top: auto;
+  line-height: 1.5;
+}
+.footer a { color: #fff; text-decoration: none; }
+/* PRINT */
+@media print {
+  @page { size: A4; margin: 10mm 8mm; }
+  * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  body { margin: 0; padding: 0; background: #fff; }
+  .newspaper { width: 100%; box-shadow: none; border-radius: 0; }
+}
+</style>
+</head>
+<body>
+<div class="newspaper">
+
+  <!-- HEADER -->
+  <div class="header">
+    <div>
+      <div class="header-title">📰 <ruby>豊田<rt>とよた</rt></ruby>こども<ruby>新聞<rt>しんぶん</rt></ruby></div>
+    </div>
+    <div class="header-right">
+      <ruby>第<rt>だい</rt></ruby>6<ruby>号<rt>ごう</rt></ruby><br>
+      2026<ruby>年<rt>ねん</rt></ruby>3<ruby>月<rt>がつ</rt></ruby>27<ruby>日<rt>にち</rt></ruby>（<ruby>金曜日<rt>きんようび</rt></ruby>）
+    </div>
+    <div class="header-mascot">🐔🌿</div>
+  </div>
+
+  <!-- COLOR BAR -->
+  <div class="color-bar"></div>
+
+  <!-- HEADLINE -->
+  <div class="headline">
+    <h1>🐔 ニワトリの おなかを <ruby>元気<rt>げんき</rt></ruby>にする<ruby>魔法<rt>まほう</rt></ruby>の<ruby>葉<rt>は</rt></ruby>っぱ！<ruby>人参<rt>にんじん</rt></ruby>の<ruby>茎<rt>くき</rt></ruby>と<ruby>葉<rt>は</rt></ruby>のパワー</h1>
+    <span class="badge">🐾 <ruby>動物<rt>どうぶつ</rt></ruby>・<ruby>生物学<rt>せいぶつがく</rt></ruby></span>
+  </div>
+
+  <!-- CONTENT ROW -->
+  <div class="content-row">
+    <div class="points-col">
+      <h2>📌 3つのポイント</h2>
+      <div class="point-item">
+        <div class="point-num">1</div>
+        <div class="point-text">ニワトリのエサに<ruby>人参<rt>にんじん</rt></ruby>の<ruby>茎<rt>くき</rt></ruby>と<ruby>葉<rt>は</rt></ruby>のエキスを<ruby>混<rt>ま</rt></ruby>ぜると、おなかの<ruby>壁<rt>かべ</rt></ruby>（バリア）が<ruby>強<rt>つよ</rt></ruby>くなって、<ruby>病気<rt>びょうき</rt></ruby>になりにくくなった！</div>
+      </div>
+      <div class="point-item">
+        <div class="point-num">2</div>
+        <div class="point-text">おなかの<ruby>中<rt>なか</rt></ruby>にいる「いい<ruby>菌<rt>きん</rt></ruby>」が<ruby>増<rt>ふ</rt></ruby>えて、<ruby>悪<rt>わる</rt></ruby>い<ruby>菌<rt>きん</rt></ruby>をやっつけてくれるようになった！</div>
+      </div>
+      <div class="point-item">
+        <div class="point-num">3</div>
+        <div class="point-text"><ruby>短鎖脂肪酸<rt>たんさしぼうさん</rt></ruby>という<ruby>栄養<rt>えいよう</rt></ruby>がたくさん<ruby>作<rt>つく</rt></ruby>られ、ごはんの<ruby>消化<rt>しょうか</rt></ruby>・<ruby>吸収<rt>きゅうしゅう</rt></ruby>がもっと<ruby>上手<rt>じょうず</rt></ruby>になった！</div>
+      </div>
+    </div>
+    <div class="illust-col">
+      <div id="illust-area">
+        <img src="https://www.tandfonline.com/cms/asset/e2bf7f7d-da86-4535-9cc4-44be171951ee/taar_a_2539134_f0001_oc.jpg" alt="研究の図解">
+        <p class="img-credit">📷 tandfonline.com</p>
+        <p class="caption"><ruby>人参<rt>にんじん</rt></ruby>エキスで<br>ニワトリのおなかが<ruby>元気<rt>げんき</rt></ruby>に！</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- EXPLAIN BOX -->
+  <div class="explain-box">
+    <h2>🔍 やさしく<ruby>解説<rt>かいせつ</rt></ruby></h2>
+    <p>
+      <ruby>私<rt>わたし</rt></ruby>たちが<ruby>食<rt>た</rt></ruby>べる<ruby>人参<rt>にんじん</rt></ruby>の<ruby>茎<rt>くき</rt></ruby>や<ruby>葉<rt>は</rt></ruby>は、ふつうは<ruby>捨<rt>す</rt></ruby>てられてしまいます。でも<ruby>研究者<rt>けんきゅうしゃ</rt></ruby>たちが、この<ruby>捨<rt>す</rt></ruby>てられる<ruby>部分<rt>ぶぶん</rt></ruby>からエキスを<ruby>取<rt>と</rt></ruby>り<ruby>出<rt>だ</rt></ruby>してニワトリに<ruby>与<rt>あた</rt></ruby>えたところ、おなかの「バリア<ruby>機能<rt>きのう</rt></ruby>」がアップ！ <ruby>腸<rt>ちょう</rt></ruby>の<ruby>中<rt>なか</rt></ruby>の<ruby>良<rt>よ</rt></ruby>い<ruby>菌<rt>きん</rt></ruby>が<ruby>増<rt>ふ</rt></ruby>えて、ニワトリが<ruby>元気<rt>げんき</rt></ruby>に<ruby>育<rt>そだ</rt></ruby>つことがわかりました。<ruby>食<rt>た</rt></ruby>べ<ruby>物<rt>もの</rt></ruby>の「もったいない」を<ruby>減<rt>へ</rt></ruby>らしながら、<ruby>動物<rt>どうぶつ</rt></ruby>も<ruby>元気<rt>げんき</rt></ruby>にできる<ruby>一石二鳥<rt>いっせきにちょう</rt></ruby>の<ruby>発見<rt>はっけん</rt></ruby>です！
+    </p>
+  </div>
+
+  <!-- KIDS ROW -->
+  <div class="kids-row">
+    <div class="kid-box tecchan">
+      <h3>🐥 てっちゃん（5さい）へ</h3>
+      <p>にわとりさんが にんじんの はっぱを たべたら、おなかの なかの いいきんが ふえて、げんきもりもりに なったんだよ！🐔✨</p>
+    </div>
+    <div class="kid-box taro">
+      <h3>🌱 たろう（7さい）へ</h3>
+      <p>ふだん<ruby>捨<rt>す</rt></ruby>てちゃう<ruby>人参<rt>にんじん</rt></ruby>の<ruby>葉<rt>は</rt></ruby>っぱが、ニワトリのおなかを<ruby>守<rt>まも</rt></ruby>る「バリア」を<ruby>強<rt>つよ</rt></ruby>くしてくれるんだって！ もったいないが<ruby>宝物<rt>たからもの</rt></ruby>になるね🌿🐔</p>
+    </div>
+  </div>
+
+  <!-- APPLICATION BOX -->
+  <div class="apply-box">
+    <h2>💡 <ruby>生活<rt>せいかつ</rt></ruby>への<ruby>応用<rt>おうよう</rt></ruby></h2>
+    <ul>
+      <li><ruby>野菜<rt>やさい</rt></ruby>の<ruby>捨<rt>す</rt></ruby>てる<ruby>部分<rt>ぶぶん</rt></ruby>にも<ruby>栄養<rt>えいよう</rt></ruby>がいっぱい！ おうちの<ruby>料理<rt>りょうり</rt></ruby>でも<ruby>活用<rt>かつよう</rt></ruby>できるかも</li>
+      <li>おなかの「いい<ruby>菌<rt>きん</rt></ruby>」を<ruby>増<rt>ふ</rt></ruby>やすには、<ruby>野菜<rt>やさい</rt></ruby>や<ruby>食物繊維<rt>しょくもつせんい</rt></ruby>がたくさんあるごはんを<ruby>食<rt>た</rt></ruby>べよう</li>
+      <li><ruby>食品<rt>しょくひん</rt></ruby>ロスを<ruby>減<rt>へ</rt></ruby>らすことが<ruby>動物<rt>どうぶつ</rt></ruby>の<ruby>健康<rt>けんこう</rt></ruby>にもつながる<ruby>未来<rt>みらい</rt></ruby>の<ruby>研究<rt>けんきゅう</rt></ruby></li>
+    </ul>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    📖 <ruby>出典<rt>しゅってん</rt></ruby>: "Impact of dietary ginseng stem leaf extract on intestinal barrier function, gut microbiota and short-chain fatty acid metabolism in broilers" — Journal of Applied Animal Research (2025)<br>
+    📰 <ruby>豊田<rt>とよた</rt></ruby>こども<ruby>新聞<rt>しんぶん</rt></ruby> <ruby>第<rt>だい</rt></ruby>6<ruby>号<rt>ごう</rt></ruby> ｜ <ruby>毎日<rt>まいにち</rt></ruby>ひとつ、<ruby>世界<rt>せかい</rt></ruby>のふしぎを<ruby>学<rt>まな</rt></ruby>ぼう！
+  </div>
+
+</div>
+</body>
+</html>

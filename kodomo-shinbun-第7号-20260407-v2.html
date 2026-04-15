@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>豊田こども新聞 第7号</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;900&family=Noto+Serif+JP:wght@700;900&display=swap" rel="stylesheet">
+<style>
+  @page { size: A4; margin: 0; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Noto Sans JP', sans-serif;
+    background: #fff;
+    color: #1a1a1a;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+  ruby { ruby-align: center; }
+  rt { font-size: 0.5em; }
+
+  .page {
+    width: 210mm; height: 297mm;
+    margin: 0 auto;
+    padding: 0;
+    position: relative;
+    overflow: hidden;
+    background: #FFFDF5;
+  }
+
+  /* ===== 新聞タイトル（題字） ===== */
+  .masthead {
+    background: #1B2A4A;
+    padding: 10px 20px 8px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .masthead-left {
+    display: flex; align-items: center; gap: 10px;
+  }
+  .masthead-logo {
+    width: 48px; height: 48px;
+    background: #F4D03F;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 28px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+  }
+  .masthead-title {
+    font-family: 'Noto Serif JP', serif;
+    font-size: 32px;
+    font-weight: 900;
+    color: #F4D03F;
+    letter-spacing: 4px;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+  }
+  .masthead-right {
+    text-align: right;
+    color: #ccc;
+    font-size: 11px;
+    line-height: 1.6;
+  }
+  .masthead-right .issue-num {
+    font-size: 16px;
+    font-weight: 900;
+    color: #F4D03F;
+  }
+
+  /* ===== カラーライン ===== */
+  .color-line {
+    height: 4px;
+    background: linear-gradient(90deg, #E74C3C, #F39C12, #F4D03F, #27AE60, #2980B9, #8E44AD);
+  }
+
+  /* ===== 日付・天気バー ===== */
+  .date-bar {
+    background: #F8F4E8;
+    border-bottom: 1px solid #d0c8a8;
+    padding: 4px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 11px;
+    color: #555;
+  }
+  .date-bar .genre-badge {
+    background: #E74C3C;
+    color: white;
+    padding: 2px 10px;
+    border-radius: 3px;
+    font-size: 10px;
+    font-weight: 700;
+  }
+
+  /* ===== メインコンテンツ ===== */
+  .content {
+    padding: 10px 16px 6px;
+  }
+
+  /* ===== 大見出し ===== */
+  .headline {
+    text-align: center;
+    padding: 8px 0;
+    border-bottom: 3px double #1B2A4A;
+    margin-bottom: 10px;
+  }
+  .headline h1 {
+    font-family: 'Noto Serif JP', serif;
+    font-size: 22px;
+    font-weight: 900;
+    color: #1B2A4A;
+    line-height: 1.5;
+    letter-spacing: 1px;
+  }
+
+  /* ===== 2段組み ===== */
+  .two-col {
+    display: flex;
+    gap: 14px;
+    margin-bottom: 8px;
+  }
+  .col-main { flex: 3; }
+  .col-side { flex: 2; }
+
+  /* ===== 記事本文 ===== */
+  .article-body {
+    font-size: 12.5px;
+    line-height: 2.0;
+    text-align: justify;
+    column-count: 1;
+  }
+  .article-body .lead {
+    font-size: 14px;
+    font-weight: 700;
+    color: #1B2A4A;
+    margin-bottom: 6px;
+    border-left: 4px solid #F4D03F;
+    padding-left: 8px;
+  }
+
+  /* ===== 画像エリア ===== */
+  .photo-frame {
+    border: 1px solid #999;
+    padding: 4px;
+    background: white;
+    margin-bottom: 6px;
+    box-shadow: 1px 1px 4px rgba(0,0,0,0.1);
+  }
+  .photo-frame img {
+    width: 100%;
+    max-height: 180px;
+    object-fit: cover;
+    display: block;
+  }
+  .photo-frame .photo-caption {
+    font-size: 9px;
+    color: #666;
+    padding: 3px 2px 0;
+    text-align: center;
+  }
+
+  /* ===== 発見ボックス ===== */
+  .discovery-box {
+    background: #FEF9E7;
+    border: 2px solid #F4D03F;
+    border-radius: 6px;
+    padding: 8px 10px;
+    margin-bottom: 8px;
+  }
+  .discovery-box h3 {
+    font-size: 12px;
+    color: #D4AC0D;
+    font-weight: 900;
+    margin-bottom: 4px;
+    border-bottom: 1px dashed #F4D03F;
+    padding-bottom: 3px;
+  }
+  .discovery-box ul {
+    list-style: none;
+    font-size: 11px;
+    line-height: 1.8;
+  }
+  .discovery-box ul li { padding-left: 16px; position: relative; }
+  .discovery-box ul li::before {
+    content: "▶";
+    position: absolute;
+    left: 0;
+    color: #F39C12;
+    font-size: 8px;
+    top: 3px;
+  }
+
+  /* ===== 区切り線 ===== */
+  .section-divider {
+    border: none;
+    border-top: 1px solid #ccc;
+    margin: 8px 0;
+  }
+
+  /* ===== こどもコーナー ===== */
+  .kids-section {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 8px;
+  }
+  .kid-card {
+    flex: 1;
+    border-radius: 8px;
+    padding: 8px 10px;
+    position: relative;
+  }
+  .kid-card::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 4px;
+    border-radius: 8px 8px 0 0;
+  }
+  .kid-tecchan {
+    background: #FFF8E1;
+    border: 1.5px solid #FFB300;
+  }
+  .kid-tecchan::before { background: #FFB300; }
+  .kid-taro {
+    background: #E8F5E9;
+    border: 1.5px solid #43A047;
+  }
+  .kid-taro::before { background: #43A047; }
+  .kid-card h4 {
+    font-size: 11px;
+    margin-bottom: 4px;
+    padding-top: 2px;
+  }
+  .kid-card p {
+    font-size: 11.5px;
+    line-height: 1.8;
+  }
+
+  /* ===== クイズコーナー ===== */
+  .quiz-box {
+    background: #EBF5FB;
+    border: 2px solid #2980B9;
+    border-radius: 6px;
+    padding: 8px 10px;
+    margin-bottom: 8px;
+  }
+  .quiz-box h3 {
+    font-size: 12px;
+    color: #2471A3;
+    font-weight: 900;
+    margin-bottom: 4px;
+  }
+  .quiz-box .question {
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 1.7;
+    margin-bottom: 4px;
+  }
+  .quiz-box .answer {
+    font-size: 10px;
+    color: #666;
+    border-top: 1px dashed #2980B9;
+    padding-top: 3px;
+  }
+
+  /* ===== 生活への応用 ===== */
+  .tips-box {
+    background: #F0FFF0;
+    border-left: 4px solid #27AE60;
+    padding: 6px 10px;
+    margin-bottom: 6px;
+  }
+  .tips-box h3 {
+    font-size: 11px;
+    color: #27AE60;
+    font-weight: 900;
+    margin-bottom: 3px;
+  }
+  .tips-box p {
+    font-size: 11px;
+    line-height: 1.7;
+  }
+
+  /* ===== フッター ===== */
+  .footer {
+    background: #1B2A4A;
+    color: #ccc;
+    padding: 6px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 9px;
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+  }
+  .footer .source { opacity: 0.8; }
+  .footer .love { color: #F4D03F; font-size: 10px; }
+
+  @media print {
+    body { background: white; }
+    .page { box-shadow: none; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- 題字 -->
+  <div class="masthead">
+    <div class="masthead-left">
+      <div class="masthead-logo">📰</div>
+      <div class="masthead-title"><ruby>豊田<rt>とよだ</rt></ruby>こども<ruby>新聞<rt>しんぶん</rt></ruby></div>
+    </div>
+    <div class="masthead-right">
+      <div class="issue-num"><ruby>第<rt>だい</rt></ruby>7<ruby>号<rt>ごう</rt></ruby></div>
+      <div>365<ruby>日<rt>にち</rt></ruby>サイエンス</div>
+    </div>
+  </div>
+
+  <div class="color-line"></div>
+
+  <!-- 日付バー -->
+  <div class="date-bar">
+    <span>2026<ruby>年<rt>ねん</rt></ruby>4<ruby>月<rt>がつ</rt></ruby>7<ruby>日<rt>にち</rt></ruby>（<ruby>火曜日<rt>かようび</rt></ruby>）</span>
+    <span class="genre-badge">🧠 <ruby>心理学<rt>しんりがく</rt></ruby>・<ruby>脳科学<rt>のうかがく</rt></ruby></span>
+    <span><ruby>発行<rt>はっこう</rt></ruby>: <ruby>豊田<rt>とよだ</rt></ruby><ruby>元洋<rt>もとひろ</rt></ruby></span>
+  </div>
+
+  <div class="content">
+
+    <!-- 大見出し -->
+    <div class="headline">
+      <h1>🤝 「<ruby>珍<rt>めずら</rt></ruby>しい<ruby>共通点<rt>きょうつうてん</rt></ruby>」が<ruby>友<rt>とも</rt></ruby>だちづくりの<ruby>魔法<rt>まほう</rt></ruby>になる！</h1>
+    </div>
+
+    <!-- 2段組み：記事 + 写真 -->
+    <div class="two-col">
+      <div class="col-main">
+        <div class="article-body">
+          <p class="lead">
+            「<ruby>赤<rt>あか</rt></ruby>いりんごが<ruby>好<rt>す</rt></ruby>き」はみんな<ruby>同<rt>おな</rt></ruby>じ。でも「キラキラ<ruby>光<rt>ひか</rt></ruby>る<ruby>不思議<rt>ふしぎ</rt></ruby>な<ruby>石<rt>いし</rt></ruby>が<ruby>好<rt>す</rt></ruby>き」は<ruby>珍<rt>めずら</rt></ruby>しい。こどもたちは<ruby>珍<rt>めずら</rt></ruby>しい<ruby>共通点<rt>きょうつうてん</rt></ruby>をもつ<ruby>相手<rt>あいて</rt></ruby>を<ruby>友<rt>とも</rt></ruby>だちに<ruby>選<rt>えら</rt></ruby>ぶことがわかった！
+          </p>
+          <p>
+            <ruby>進化<rt>しんか</rt></ruby><ruby>心理学<rt>しんりがく</rt></ruby>の<ruby>研究<rt>けんきゅう</rt></ruby>で、5〜7<ruby>歳<rt>さい</rt></ruby>のこどもたちに「<ruby>同<rt>おな</rt></ruby>じものが<ruby>好<rt>す</rt></ruby>きな<ruby>子<rt>こ</rt></ruby>」を<ruby>選<rt>えら</rt></ruby>んでもらう<ruby>実験<rt>じっけん</rt></ruby>をしました。すると、みんなが<ruby>好<rt>す</rt></ruby>きなものよりも、「ユニークな<ruby>共通点<rt>きょうつうてん</rt></ruby>」がある<ruby>子<rt>こ</rt></ruby>を<ruby>選<rt>えら</rt></ruby>ぶことがわかりました。<ruby>脳<rt>のう</rt></ruby>が「この<ruby>子<rt>こ</rt></ruby>は<ruby>特別<rt>とくべつ</rt></ruby>なつながりだ！」と<ruby>感<rt>かん</rt></ruby>じるからです。
+          </p>
+          <p>
+            <ruby>研究<rt>けんきゅう</rt></ruby>チームは「<ruby>珍<rt>めずら</rt></ruby>しい<ruby>共通点<rt>きょうつうてん</rt></ruby>は、<ruby>進化<rt>しんか</rt></ruby>の<ruby>過程<rt>かてい</rt></ruby>で<ruby>信頼<rt>しんらい</rt></ruby>できる<ruby>仲間<rt>なかま</rt></ruby>を<ruby>見<rt>み</rt></ruby>つけるサインになった」と<ruby>説明<rt>せつめい</rt></ruby>しています。
+          </p>
+        </div>
+      </div>
+      <div class="col-side">
+        <div class="photo-frame" id="illust-area">
+          <img src="https://onlinelibrary.wiley.com/cms/asset/f1c86d09-5f55-4021-ba2b-f74eea7b544a/cdep12510-fig-0001-m.jpg" alt="友だち選びの研究図解">
+          <div class="photo-caption">📷 <ruby>出典<rt>しゅってん</rt></ruby>: onlinelibrary.wiley.com<br><ruby>友<rt>とも</rt></ruby>だち<ruby>選<rt>えら</rt></ruby>びの<ruby>実験<rt>じっけん</rt></ruby>の<ruby>図解<rt>ずかい</rt></ruby></div>
+        </div>
+        <!-- 発見ボックス -->
+        <div class="discovery-box">
+          <h3>🔬 3つの<ruby>大発見<rt>だいはっけん</rt></ruby></h3>
+          <ul>
+            <li>こどもは「<ruby>珍<rt>めずら</rt></ruby>しい<ruby>共通点<rt>きょうつうてん</rt></ruby>」で<ruby>友<rt>とも</rt></ruby>だちを<ruby>選<rt>えら</rt></ruby>ぶ</li>
+            <li>これは<ruby>進化<rt>しんか</rt></ruby>で<ruby>身<rt>み</rt></ruby>につけた<ruby>能力<rt>のうりょく</rt></ruby></li>
+            <li>5〜7<ruby>歳<rt>さい</rt></ruby>でもう<ruby>働<rt>はたら</rt></ruby>いている！</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <hr class="section-divider">
+
+    <!-- こどもコーナー -->
+    <div class="kids-section">
+      <div class="kid-card kid-tecchan">
+        <h4>🐥 てっちゃん（5さい）へ</h4>
+        <p>おともだちと「おなじもの、すき！」ってなると、うれしいよね。めずらしいものがおなじだと、もっとなかよくなれるんだって！🌟</p>
+      </div>
+      <div class="kid-card kid-taro">
+        <h4>🌱 たろう（7さい）へ</h4>
+        <p>みんなが<ruby>好<rt>す</rt></ruby>きなものより、めずらしいものが<ruby>同<rt>おな</rt></ruby>じ<ruby>子<rt>こ</rt></ruby>を「この<ruby>子<rt>こ</rt></ruby>とあそびたい！」って<ruby>思<rt>おも</rt></ruby>うんだ。<ruby>特別<rt>とくべつ</rt></ruby>な<ruby>共通点<rt>きょうつうてん</rt></ruby>は<ruby>友<rt>とも</rt></ruby>だちの<ruby>魔法<rt>まほう</rt></ruby>だね✨</p>
+      </div>
+    </div>
+
+    <!-- クイズコーナー -->
+    <div class="quiz-box">
+      <h3>❓ きょうのクイズ</h3>
+      <p class="question"><ruby>友<rt>とも</rt></ruby>だちになりやすいのはどっち？<br>
+      A:「<ruby>赤<rt>あか</rt></ruby>いりんごが<ruby>好<rt>す</rt></ruby>き」が<ruby>同<rt>おな</rt></ruby>じ<ruby>子<rt>こ</rt></ruby>　B:「キラキラ<ruby>光<rt>ひか</rt></ruby>る<ruby>石<rt>いし</rt></ruby>が<ruby>好<rt>す</rt></ruby>き」が<ruby>同<rt>おな</rt></ruby>じ<ruby>子<rt>こ</rt></ruby></p>
+      <p class="answer">こたえ ▶ B！ <ruby>珍<rt>めずら</rt></ruby>しい<ruby>共通点<rt>きょうつうてん</rt></ruby>がある<ruby>方<rt>ほう</rt></ruby>が、もっと<ruby>仲良<rt>なかよ</rt></ruby>くなれるよ 🤝</p>
+    </div>
+
+    <!-- やってみよう -->
+    <div class="tips-box">
+      <h3>💡 やってみよう！</h3>
+      <p>
+        <ruby>友<rt>とも</rt></ruby>だちと「<ruby>珍<rt>めずら</rt></ruby>しい<ruby>共通点<rt>きょうつうてん</rt></ruby>」をさがしてみよう！　<ruby>自分<rt>じぶん</rt></ruby>だけの「<ruby>好<rt>す</rt></ruby>き」を<ruby>大切<rt>たいせつ</rt></ruby>にすると、<ruby>特別<rt>とくべつ</rt></ruby>な<ruby>友<rt>とも</rt></ruby>だちに<ruby>出会<rt>であ</rt></ruby>えるかも 🌈
+      </p>
+    </div>
+
+  </div>
+
+  <!-- フッター -->
+  <div class="footer">
+    <span class="source">📚 Evolution and Human Behavior（2025） ｜ <ruby>豊田<rt>とよだ</rt></ruby>こども<ruby>新聞<rt>しんぶん</rt></ruby> <ruby>第<rt>だい</rt></ruby>7<ruby>号<rt>ごう</rt></ruby></span>
+    <span class="love">❤️ <ruby>元洋<rt>もとひろ</rt></ruby>パパより</span>
+  </div>
+
+</div>
+</body>
+</html>

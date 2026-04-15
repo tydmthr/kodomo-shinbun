@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>豊田こども新聞 第11号</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;900&family=Noto+Serif+JP:wght@700;900&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+  ruby { ruby-align: center; }
+  rt { font-size: 0.5em; color: inherit; }
+  body {
+    font-family: 'Noto Sans JP', 'Hiragino Kaku Gothic ProN', 'Yu Gothic', sans-serif;
+    background: #f0f0f0;
+    margin: 0;
+    padding: 0;
+  }
+  .page {
+    width: 210mm;
+    height: 297mm;
+    margin: 0 auto;
+    background: #fff;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    box-shadow: 0 2px 20px rgba(0,0,0,0.15);
+  }
+  .masthead {
+    background: #1B2A4A;
+    color: white;
+    padding: 10px 16px 8px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .masthead-title {
+    font-family: 'Noto Serif JP', serif;
+    font-size: 30px;
+    font-weight: 900;
+    color: #F4D03F;
+    letter-spacing: 2px;
+  }
+  .masthead-right {
+    text-align: right;
+    font-size: 11px;
+    line-height: 1.6;
+  }
+  .masthead-issue {
+    font-size: 14px;
+    font-weight: 700;
+    color: #F4D03F;
+  }
+  .masthead-sub {
+    font-size: 10px;
+    color: #aac4e0;
+    letter-spacing: 1px;
+  }
+  .color-line {
+    height: 4px;
+    background: linear-gradient(90deg, #FF6B6B, #FFD93D, #6BCB77, #4D96FF, #9B59B6, #FF6B6B);
+  }
+  .date-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 5px 16px;
+    background: #f8f9fa;
+    border-bottom: 1px solid #e0e0e0;
+    font-size: 11px;
+  }
+  .genre-badge {
+    background: #6C63FF;
+    color: white;
+    padding: 2px 10px;
+    border-radius: 12px;
+    font-size: 10px;
+    font-weight: 700;
+  }
+  .content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 8px 16px 6px;
+    overflow: hidden;
+  }
+  .headline {
+    font-family: 'Noto Serif JP', serif;
+    font-size: 18px;
+    font-weight: 900;
+    color: #1B2A4A;
+    border-bottom: 3px double #1B2A4A;
+    padding-bottom: 5px;
+    margin-bottom: 7px;
+    line-height: 1.4;
+  }
+  .top-section {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 6px;
+  }
+  .article-body {
+    flex: 3;
+    font-size: 11px;
+    line-height: 1.75;
+    color: #333;
+  }
+  .article-body p { margin-bottom: 5px; }
+  .point-item {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 4px;
+  }
+  .point-num {
+    background: #1B2A4A;
+    color: #F4D03F;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    font-weight: 900;
+    margin-right: 6px;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+  .photo-side {
+    flex: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+  }
+  .photo-frame {
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    width: 100%;
+  }
+  .photo-frame img {
+    width: 100%;
+    max-height: 130px;
+    object-fit: cover;
+    display: block;
+  }
+  .photo-caption {
+    font-size: 9px;
+    color: #999;
+    text-align: center;
+  }
+  .discovery-box {
+    background: #FFF9C4;
+    border-left: 4px solid #FF9800;
+    border-radius: 6px;
+    padding: 6px 10px;
+    font-size: 10.5px;
+    line-height: 1.6;
+    width: 100%;
+  }
+  .discovery-box b { color: #E65100; }
+  .mid-section {
+    flex: 1;
+    display: flex;
+    gap: 8px;
+    margin-bottom: 6px;
+    min-height: 0;
+  }
+  .mid-col {
+    flex: 1;
+    border-radius: 8px;
+    padding: 7px 9px;
+    font-size: 10.5px;
+    line-height: 1.65;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
+  .col-kaisetsu {
+    background: #FFF8E1;
+    border: 1.5px solid #FF9800;
+  }
+  .col-quiz {
+    background: #EBF5FB;
+    border: 1.5px solid #2196F3;
+  }
+  .col-try {
+    background: #E8F5E9;
+    border: 1.5px solid #4CAF50;
+  }
+  .col-title {
+    font-weight: 900;
+    font-size: 11.5px;
+    margin-bottom: 4px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+  .col-kaisetsu .col-title { color: #E65100; }
+  .col-quiz .col-title { color: #1565C0; }
+  .col-try .col-title { color: #2E7D32; }
+  .quiz-answer {
+    background: #D6EAF8;
+    border-radius: 4px;
+    padding: 3px 6px;
+    margin-top: 4px;
+    font-size: 10px;
+  }
+  .kids-section {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 5px;
+  }
+  .kid-card {
+    flex: 1;
+    border-radius: 8px;
+    padding: 0;
+    overflow: hidden;
+    position: relative;
+  }
+  .kid-ribbon {
+    color: white;
+    font-weight: 900;
+    font-size: 11px;
+    padding: 4px 10px;
+    text-align: center;
+  }
+  .tecchan-card { border: 1.5px solid #FF9800; }
+  .tecchan-card .kid-ribbon { background: #FF9800; }
+  .tecchan-card .kid-body { background: #FFF8E1; }
+  .taro-card { border: 1.5px solid #4CAF50; }
+  .taro-card .kid-ribbon { background: #4CAF50; }
+  .taro-card .kid-body { background: #E8F5E9; }
+  .kid-body {
+    padding: 6px 10px;
+    font-size: 11.5px;
+    line-height: 1.7;
+  }
+  .trivia-bar {
+    background: #F5EEF8;
+    padding: 5px 16px;
+    font-size: 10px;
+    color: #6A1B9A;
+    text-align: center;
+    line-height: 1.5;
+  }
+  .footer {
+    background: #1B2A4A;
+    color: #aac4e0;
+    padding: 6px 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 9px;
+  }
+  .footer-love { color: #F4D03F; font-size: 10px; }
+
+  @media print {
+    @page { size: A4; margin: 0; }
+    * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    body { margin: 0; padding: 0; background: #fff; }
+    .page { width: 100%; box-shadow: none; border-radius: 0; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- MASTHEAD -->
+  <div class="masthead">
+    <div>
+      <div class="masthead-title">📰 <ruby>豊田<rt>とよだ</rt></ruby>こども<ruby>新聞<rt>しんぶん</rt></ruby></div>
+      <div class="masthead-sub">365<ruby>日<rt>にち</rt></ruby>サイエンス</div>
+    </div>
+    <div class="masthead-right">
+      <div class="masthead-issue"><ruby>第<rt>だい</rt></ruby>11<ruby>号<rt>ごう</rt></ruby></div>
+    </div>
+  </div>
+
+  <!-- COLOR LINE -->
+  <div class="color-line"></div>
+
+  <!-- DATE BAR -->
+  <div class="date-bar">
+    <span>2026<ruby>年<rt>ねん</rt></ruby>4<ruby>月<rt>がつ</rt></ruby>12<ruby>日<rt>にち</rt></ruby>（<ruby>日曜日<rt>にちようび</rt></ruby>）</span>
+    <span class="genre-badge">😴 <ruby>睡眠<rt>すいみん</rt></ruby>・<ruby>運動科学<rt>うんどうかがく</rt></ruby></span>
+    <span><ruby>発行<rt>はっこう</rt></ruby>：<ruby>豊田<rt>とよだ</rt></ruby><ruby>元洋<rt>もとひろ</rt></ruby></span>
+  </div>
+
+  <!-- CONTENT -->
+  <div class="content">
+
+    <!-- HEADLINE -->
+    <div class="headline">
+      😴💍 スマートリングで<ruby>睡眠<rt>すいみん</rt></ruby>を<ruby>測<rt>はか</rt></ruby>ると、<ruby>逆<rt>ぎゃく</rt></ruby>に<ruby>眠<rt>ねむ</rt></ruby>れなくなる!?<br>
+      「オルソムニア」という<ruby>新<rt>あたら</rt></ruby>しい<ruby>悩<rt>なや</rt></ruby>みを<ruby>発見<rt>はっけん</rt></ruby>！
+    </div>
+
+    <!-- TOP SECTION -->
+    <div class="top-section">
+      <div class="article-body">
+        <div class="point-item">
+          <div class="point-num">1</div>
+          <div><ruby>世界<rt>せかい</rt></ruby>で<ruby>初<rt>はじ</rt></ruby>めて、<ruby>睡眠<rt>すいみん</rt></ruby>トラッカーを<ruby>使<rt>つか</rt></ruby>いすぎて<ruby>眠<rt>ねむ</rt></ruby>れなくなる「オルソムニア」を<ruby>測<rt>はか</rt></ruby>る<ruby>方法<rt>ほうほう</rt></ruby>（ベルゲン・オルソムニア<ruby>尺度<rt>しゃくど</rt></ruby>）が<ruby>完成<rt>かんせい</rt></ruby>！</div>
+        </div>
+        <div class="point-item">
+          <div class="point-num">2</div>
+          <div>AIが<ruby>心拍<rt>しんぱく</rt></ruby>や<ruby>体温<rt>たいおん</rt></ruby>から「<ruby>睡眠<rt>すいみん</rt></ruby>の<ruby>質<rt>しつ</rt></ruby>」を<ruby>数字<rt>すうじ</rt></ruby>にすると、<ruby>逆<rt>ぎゃく</rt></ruby>に<ruby>不安<rt>ふあん</rt></ruby>が<ruby>増<rt>ふ</rt></ruby>えるパラドックスを<ruby>発見<rt>はっけん</rt></ruby>。</div>
+        </div>
+        <div class="point-item">
+          <div class="point-num">3</div>
+          <div>88,461<ruby>人<rt>にん</rt></ruby>の<ruby>大規模<rt>だいきぼ</rt></ruby><ruby>調査<rt>ちょうさ</rt></ruby>で、「<ruby>毎日<rt>まいにち</rt></ruby><ruby>同<rt>おな</rt></ruby>じ<ruby>時間<rt>じかん</rt></ruby>に<ruby>寝<rt>ね</rt></ruby>る」が<ruby>一番<rt>いちばん</rt></ruby><ruby>大事<rt>だいじ</rt></ruby>だとわかった！</div>
+        </div>
+      </div>
+      <div class="photo-side" id="illust-area">
+        <div class="photo-frame">
+          <img src="https://images.greenfunding.jp/store/0c9d383bd0721d7a3d8c9a71e085080bf7506d6064708ccb5723115c5aa2" alt="睡眠テクノロジーのイメージ">
+        </div>
+        <div class="photo-caption">📷 <ruby>睡眠<rt>すいみん</rt></ruby>テックのイメージ（greenfunding.jp）</div>
+        <div class="discovery-box">
+          <b>▶ <ruby>発見<rt>はっけん</rt></ruby>！</b> 「7<ruby>時間<rt>じかん</rt></ruby><ruby>寝<rt>ね</rt></ruby>たかどうか」より、「<ruby>毎日<rt>まいにち</rt></ruby><ruby>同<rt>おな</rt></ruby>じ<ruby>時間<rt>じかん</rt></ruby>に<ruby>寝<rt>ね</rt></ruby>たか」が<ruby>健康<rt>けんこう</rt></ruby>のカギ！🔑
+        </div>
+      </div>
+    </div>
+
+    <!-- MID SECTION -->
+    <div class="mid-section">
+      <div class="mid-col col-kaisetsu">
+        <div class="col-title">📖 やさしく<ruby>解説<rt>かいせつ</rt></ruby></div>
+        <div><ruby>最近<rt>さいきん</rt></ruby>、<ruby>指<rt>ゆび</rt></ruby>にはめるスマートリングや<ruby>腕時計型<rt>うでどけいがた</rt></ruby>の<ruby>機械<rt>きかい</rt></ruby>で<ruby>睡眠<rt>すいみん</rt></ruby>の<ruby>質<rt>しつ</rt></ruby>を<ruby>測<rt>はか</rt></ruby>る<ruby>人<rt>ひと</rt></ruby>が<ruby>増<rt>ふ</rt></ruby>えています。ところが「<ruby>点数<rt>てんすう</rt></ruby>が<ruby>低<rt>ひく</rt></ruby>い！」と<ruby>心配<rt>しんぱい</rt></ruby>しすぎて、かえって<ruby>眠<rt>ねむ</rt></ruby>れなくなる<ruby>人<rt>ひと</rt></ruby>が<ruby>出<rt>で</rt></ruby>てきました。これが「オルソムニア」。34<ruby>人<rt>にん</rt></ruby>の<ruby>専門家<rt>せんもんか</rt></ruby>が<ruby>話<rt>はな</rt></ruby>し<ruby>合<rt>あ</rt></ruby>って、この<ruby>悩<rt>なや</rt></ruby>みを<ruby>測<rt>はか</rt></ruby>るチェックリストを<ruby>作<rt>つく</rt></ruby>りました。</div>
+      </div>
+      <div class="mid-col col-quiz">
+        <div class="col-title">❓ クイズ</div>
+        <div><ruby>約<rt>やく</rt></ruby>9<ruby>万人<rt>まんにん</rt></ruby>の<ruby>調査<rt>ちょうさ</rt></ruby>でわかった「<ruby>一番<rt>いちばん</rt></ruby><ruby>体<rt>からだ</rt></ruby>にいい<ruby>眠<rt>ねむ</rt></ruby>り<ruby>方<rt>かた</rt></ruby>」はどっち？</div>
+        <div style="margin-top:4px;">
+          A. <ruby>毎日<rt>まいにち</rt></ruby>7<ruby>時間<rt>じかん</rt></ruby>ぴったり<ruby>寝<rt>ね</rt></ruby>る<br>
+          B. <ruby>毎日<rt>まいにち</rt></ruby><ruby>同<rt>おな</rt></ruby>じ<ruby>時間<rt>じかん</rt></ruby>に<ruby>寝<rt>ね</rt></ruby>て<ruby>起<rt>お</rt></ruby>きる
+        </div>
+        <div class="quiz-answer">💡 <ruby>答<rt>こた</rt></ruby>え：<b>B</b>！ <ruby>時間<rt>じかん</rt></ruby>の<ruby>長<rt>なが</rt></ruby>さより<ruby>規則正<rt>きそくただ</rt></ruby>しさが<ruby>大切<rt>たいせつ</rt></ruby>なんだって！</div>
+      </div>
+      <div class="mid-col col-try">
+        <div class="col-title">💡 やってみよう</div>
+        <div>
+          🌙 1<ruby>週間<rt>しゅうかん</rt></ruby>、<ruby>毎日<rt>まいにち</rt></ruby><ruby>同<rt>おな</rt></ruby>じ<ruby>時間<rt>じかん</rt></ruby>に<ruby>寝<rt>ね</rt></ruby>てみよう！<ruby>土日<rt>どにち</rt></ruby>もおなじだよ。<br><br>
+          📝 <ruby>朝<rt>あさ</rt></ruby><ruby>起<rt>お</rt></ruby>きたときの<ruby>気分<rt>きぶん</rt></ruby>を「😊😐😫」で<ruby>記録<rt>きろく</rt></ruby>してみよう！<br><br>
+          🏃 <ruby>昼間<rt>ひるま</rt></ruby>にたくさん<ruby>体<rt>からだ</rt></ruby>を<ruby>動<rt>うご</rt></ruby>かすと、<ruby>夜<rt>よる</rt></ruby>ぐっすり<ruby>眠<rt>ねむ</rt></ruby>れるよ！
+        </div>
+      </div>
+    </div>
+
+    <!-- KIDS SECTION -->
+    <div class="kids-section">
+      <div class="kid-card tecchan-card">
+        <div class="kid-ribbon">🐥 てっちゃん（5さい）へ</div>
+        <div class="kid-body">
+          ゆびにつける「まほうのゆびわ」がねてるあいだのことをおしえてくれるんだ。でも「よくねむれてない！」っていわれると、しんぱいでねむれなくなっちゃうんだって😴💦
+        </div>
+      </div>
+      <div class="kid-card taro-card">
+        <div class="kid-ribbon">🌱 たろう（7さい）へ</div>
+        <div class="kid-body">
+          <ruby>指<rt>ゆび</rt></ruby>につけるリングが<ruby>夜<rt>よる</rt></ruby>の<ruby>眠<rt>ねむ</rt></ruby>りを<ruby>調<rt>しら</rt></ruby>べてくれるのに、<ruby>点数<rt>てんすう</rt></ruby>を<ruby>気<rt>き</rt></ruby>にしすぎると<ruby>逆<rt>ぎゃく</rt></ruby>に<ruby>眠<rt>ねむ</rt></ruby>れなくなるんだって。<ruby>毎日<rt>まいにち</rt></ruby><ruby>同<rt>おな</rt></ruby>じ<ruby>時間<rt>じかん</rt></ruby>に<ruby>寝<rt>ね</rt></ruby>るのが<ruby>一番<rt>いちばん</rt></ruby>だね！⏰
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /content -->
+
+  <!-- TRIVIA BAR -->
+  <div class="trivia-bar">
+    🔮 <ruby>豆知識<rt>まめちしき</rt></ruby>：<ruby>冬<rt>ふゆ</rt></ruby>は<ruby>夏<rt>なつ</rt></ruby>より15〜20<ruby>分<rt>ぷん</rt></ruby><ruby>長<rt>なが</rt></ruby>く<ruby>眠<rt>ねむ</rt></ruby>るのが<ruby>人間<rt>にんげん</rt></ruby>の<ruby>自然<rt>しぜん</rt></ruby>なリズム。<ruby>雪<rt>ゆき</rt></ruby>の<ruby>魔法<rt>まほう</rt></ruby>みたいだね！❄️
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <span><ruby>出典<rt>しゅってん</rt></ruby>：ベルゲン<ruby>大学<rt>だいがく</rt></ruby>（2025<ruby>年<rt>ねん</rt></ruby>10<ruby>月<rt>がつ</rt></ruby>）<ruby>睡眠<rt>すいみん</rt></ruby><ruby>科学<rt>かがく</rt></ruby><ruby>研究<rt>けんきゅう</rt></ruby> / <ruby>日本科学未来館<rt>にほんかがくみらいかん</rt></ruby>ブログ（2026<ruby>年<rt>ねん</rt></ruby>1<ruby>月<rt>がつ</rt></ruby>）</span>
+    <span class="footer-love"><ruby>元洋<rt>もとひろ</rt></ruby>パパより❤️</span>
+  </div>
+
+</div><!-- /page -->
+</body>
+</html>

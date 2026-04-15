@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>豊田こども新聞 第2号</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;900&display=swap" rel="stylesheet">
+<style>
+:root {
+  --header-dark: #1565C0;
+  --header-mid: #2196F3;
+  --yellow-accent: #FFF176;
+  --box-blue-bg: #E8F4FD;
+  --box-blue-border: #2196F3;
+  --box-yellow-bg: #FFF9C4;
+  --box-yellow-border: #FF9800;
+  --box-orange: #FF9800;
+  --box-tecchan-bg: #FFF8E1;
+  --box-taro-bg: #E8F5E9;
+  --box-taro-border: #4CAF50;
+  --box-apply-bg: #E8F5E9;
+  --box-apply-border: #4CAF50;
+  --footer-bg: #1565C0;
+  --text-dark: #1a1a2e;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: 'Noto Sans JP', 'Hiragino Kaku Gothic ProN', 'Yu Gothic', sans-serif;
+  background: #f0f0f0;
+  color: var(--text-dark);
+  line-height: 1.7;
+}
+ruby { ruby-align: center; }
+rt { font-size: 0.5em; color: inherit; }
+.newspaper {
+  width: 210mm;
+  min-height: 297mm;
+  margin: 0 auto;
+  background: #fff;
+  box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+  display: flex;
+  flex-direction: column;
+}
+
+/* ===== HEADER ===== */
+.header {
+  background: linear-gradient(135deg, var(--header-dark) 0%, var(--header-mid) 60%, #42A5F5 100%);
+  color: #fff;
+  padding: 14px 20px 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.header-title {
+  font-size: 32px;
+  font-weight: 900;
+  letter-spacing: 3px;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.25);
+}
+.header-right {
+  text-align: right;
+  font-size: 12px;
+  line-height: 1.6;
+}
+.header-issue {
+  background: var(--yellow-accent);
+  color: var(--header-dark);
+  padding: 3px 14px;
+  border-radius: 14px;
+  font-weight: 700;
+  font-size: 13px;
+  display: inline-block;
+  margin-bottom: 3px;
+}
+
+/* ===== COLOR BAR ===== */
+.color-bar {
+  height: 7px;
+  background: linear-gradient(90deg, #FF9800, #FFC107, #FFF176, #66BB6A, #42A5F5, #7E57C2);
+}
+
+/* ===== HEADLINE ===== */
+.headline {
+  padding: 14px 20px 10px;
+  border-bottom: 3px solid var(--box-blue-border);
+  background: linear-gradient(180deg, #E3F2FD 0%, #fff 100%);
+}
+.headline h1 {
+  font-size: 20px;
+  font-weight: 900;
+  color: var(--header-dark);
+  line-height: 1.5;
+  margin-bottom: 6px;
+}
+.badge {
+  display: inline-block;
+  background: linear-gradient(135deg, var(--box-orange), #F57C00);
+  color: #fff;
+  padding: 3px 14px;
+  border-radius: 14px;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+/* ===== MAIN ROW ===== */
+.main-row {
+  display: flex;
+  padding: 14px 20px;
+  gap: 16px;
+}
+.points { flex: 1; }
+.points h2 {
+  font-size: 13.5px;
+  font-weight: 700;
+  color: var(--header-dark);
+  margin-bottom: 10px;
+  border-left: 5px solid var(--box-orange);
+  padding-left: 8px;
+}
+.point-item {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 10px;
+  font-size: 11.5px;
+  line-height: 1.7;
+}
+.point-num {
+  background: linear-gradient(135deg, var(--header-mid), #1976D2);
+  color: #fff;
+  border-radius: 50%;
+  width: 22px;
+  height: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  font-weight: 700;
+  margin-right: 8px;
+  flex-shrink: 0;
+  margin-top: 3px;
+}
+
+/* ===== ILLUST AREA ===== */
+#illust-area {
+  width: 170px;
+  flex-shrink: 0;
+  background: linear-gradient(180deg, #E3F2FD 0%, #BBDEFB 100%);
+  border: 2px solid var(--box-blue-border);
+  border-radius: 14px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 10px;
+  text-align: center;
+}
+.illust-snow { font-size: 16px; margin-bottom: 4px; }
+.illust-mice { font-size: 48px; line-height: 1.1; }
+.illust-hearts { font-size: 22px; margin: 4px 0; }
+.illust-label {
+  background: #FFF176;
+  border: 2px solid #FF9800;
+  border-radius: 14px;
+  padding: 4px 12px;
+  font-size: 12px;
+  font-weight: 700;
+  color: #E65100;
+  margin: 6px 0;
+}
+.illust-caption {
+  font-size: 10.5px;
+  color: #1565C0;
+  font-weight: 700;
+  line-height: 1.5;
+  margin-top: 4px;
+}
+
+/* ===== EXPLAIN BOX ===== */
+.explain-box {
+  margin: 10px 20px;
+  background: linear-gradient(135deg, #FFF9C4 0%, #FFF176 100%);
+  border: 2px solid var(--box-yellow-border);
+  border-radius: 12px;
+  padding: 14px 18px;
+}
+.explain-box h2 {
+  font-size: 13.5px;
+  font-weight: 700;
+  color: #E65100;
+  margin-bottom: 6px;
+}
+.explain-box p {
+  font-size: 11.5px;
+  line-height: 1.85;
+}
+
+/* ===== KIDS ROW ===== */
+.kids-row {
+  display: flex;
+  gap: 12px;
+  padding: 10px 20px;
+}
+.kid-box {
+  flex: 1;
+  border-radius: 12px;
+  padding: 14px 16px;
+}
+.tecchan {
+  background: linear-gradient(180deg, #FFF8E1 0%, #FFECB3 100%);
+  border: 2px solid var(--box-yellow-border);
+}
+.taro {
+  background: linear-gradient(180deg, #E8F5E9 0%, #C8E6C9 100%);
+  border: 2px solid var(--box-taro-border);
+}
+.kid-box h3 {
+  font-size: 13px;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+.tecchan h3 { color: #E65100; }
+.taro h3 { color: #2E7D32; }
+.kid-box p {
+  font-size: 12px;
+  line-height: 1.75;
+}
+
+/* ===== APPLICATION BOX ===== */
+.apply-box {
+  margin: 10px 20px;
+  background: linear-gradient(135deg, #E8F5E9 0%, #C8E6C9 100%);
+  border: 2px solid var(--box-apply-border);
+  border-radius: 12px;
+  padding: 14px 18px;
+}
+.apply-box h2 {
+  font-size: 13.5px;
+  font-weight: 700;
+  color: #2E7D32;
+  margin-bottom: 8px;
+}
+.apply-item {
+  font-size: 11.5px;
+  line-height: 1.75;
+  margin-bottom: 6px;
+  padding-left: 1.5em;
+  text-indent: -1.5em;
+}
+
+/* ===== FOOTER ===== */
+.footer {
+  background: linear-gradient(135deg, var(--footer-bg), #0D47A1);
+  color: #fff;
+  padding: 12px 20px;
+  font-size: 9.5px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: auto;
+}
+.footer-source { flex: 1; line-height: 1.5; }
+
+/* ===== PRINT ===== */
+@media print {
+  @page {
+    size: A4;
+    margin: 8mm 7mm;
+  }
+  * {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+    color-adjust: exact !important;
+  }
+  html, body {
+    margin: 0;
+    padding: 0;
+    background: #fff;
+    width: 100%;
+    height: 100%;
+  }
+  .newspaper {
+    width: 100%;
+    min-height: auto;
+    box-shadow: none;
+    border-radius: 0;
+    page-break-inside: avoid;
+  }
+}
+</style>
+</head>
+<body>
+<div class="newspaper">
+
+  <!-- HEADER -->
+  <div class="header">
+    <div class="header-title">📰 <ruby>豊田<rt>とよた</rt></ruby>こども<ruby>新聞<rt>しんぶん</rt></ruby></div>
+    <div class="header-right">
+      <div class="header-issue"><ruby>第<rt>だい</rt></ruby>2<ruby>号<rt>ごう</rt></ruby></div>
+      <div>2026<ruby>年<rt>ねん</rt></ruby>3<ruby>月<rt>がつ</rt></ruby>24<ruby>日<rt>にち</rt></ruby>（<ruby>火曜日<rt>かようび</rt></ruby>）</div>
+    </div>
+  </div>
+
+  <!-- COLOR BAR -->
+  <div class="color-bar"></div>
+
+  <!-- HEADLINE -->
+  <div class="headline">
+    <h1>🐭 ネズミは<ruby>仲間<rt>なかま</rt></ruby>が<ruby>困<rt>こま</rt></ruby>ると<ruby>自然<rt>しぜん</rt></ruby>に<ruby>助<rt>たす</rt></ruby>け<ruby>合<rt>あ</rt></ruby>う！ ─ <ruby>脳<rt>のう</rt></ruby>が「みんなで<ruby>生<rt>い</rt></ruby>きのびる」しくみを<ruby>発見<rt>はっけん</rt></ruby></h1>
+    <span class="badge"><ruby>脳<rt>のう</rt></ruby><ruby>科学<rt>かがく</rt></ruby>・<ruby>動物<rt>どうぶつ</rt></ruby><ruby>行動<rt>こうどう</rt></ruby><ruby>学<rt>がく</rt></ruby></span>
+  </div>
+
+  <!-- MAIN ROW -->
+  <div class="main-row">
+    <div class="points">
+      <h2>⭐ 3つのポイント</h2>
+      <div class="point-item">
+        <div class="point-num">1</div>
+        <div>ネズミは<ruby>寒<rt>さむ</rt></ruby>いとき、<ruby>自然<rt>しぜん</rt></ruby>にくっつき<ruby>合<rt>あ</rt></ruby>って<ruby>体温<rt>たいおん</rt></ruby>を<ruby>守<rt>まも</rt></ruby>る「ハドリング」という<ruby>行動<rt>こうどう</rt></ruby>をとる</div>
+      </div>
+      <div class="point-item">
+        <div class="point-num">2</div>
+        <div><ruby>脳<rt>のう</rt></ruby>の「<ruby>前頭前<rt>ぜんとうぜん</rt></ruby><ruby>皮質<rt>ひしつ</rt></ruby>」という<ruby>部分<rt>ぶぶん</rt></ruby>が、「くっつく」か「<ruby>離<rt>はな</rt></ruby>れる」かの<ruby>判断<rt>はんだん</rt></ruby>をコントロールしていた</div>
+      </div>
+      <div class="point-item">
+        <div class="point-num">3</div>
+        <div><ruby>一部<rt>いちぶ</rt></ruby>の<ruby>仲間<rt>なかま</rt></ruby>の<ruby>脳<rt>のう</rt></ruby>の<ruby>働<rt>はたら</rt></ruby>きを<ruby>止<rt>と</rt></ruby>めても、<ruby>残<rt>のこ</rt></ruby>りのネズミが<ruby>自動的<rt>じどうてき</rt></ruby>にカバーして<ruby>全員<rt>ぜんいん</rt></ruby>の<ruby>体温<rt>たいおん</rt></ruby>を<ruby>守<rt>まも</rt></ruby>った！</div>
+      </div>
+    </div>
+
+    <!-- ILLUST AREA (emoji only, no SVG) -->
+    <div id="illust-area">
+      <div class="illust-snow">❄️ ❄️ ❄️</div>
+      <div class="illust-mice">🐭🐭🐭</div>
+      <div class="illust-hearts">💛💕💛</div>
+      <div class="illust-label">ぎゅっ！あったか〜い</div>
+      <div class="illust-caption">みんなでくっつくと<br>ぽかぽかになるよ！</div>
+    </div>
+  </div>
+
+  <!-- EXPLANATION BOX -->
+  <div class="explain-box">
+    <h2>💡 やさしく<ruby>解説<rt>かいせつ</rt></ruby></h2>
+    <p>ネズミは<ruby>寒<rt>さむ</rt></ruby>い<ruby>環境<rt>かんきょう</rt></ruby>に<ruby>置<rt>お</rt></ruby>かれると、<ruby>自然<rt>しぜん</rt></ruby>に<ruby>集<rt>あつ</rt></ruby>まってくっつき<ruby>合<rt>あ</rt></ruby>い（ハドリング）、<ruby>体温<rt>たいおん</rt></ruby>を<ruby>保<rt>たも</rt></ruby>ちます。UCLAの<ruby>研究<rt>けんきゅう</rt></ruby>チームが<ruby>脳<rt>のう</rt></ruby>の「<ruby>前頭前<rt>ぜんとうぜん</rt></ruby><ruby>皮質<rt>ひしつ</rt></ruby>」を<ruby>調<rt>しら</rt></ruby>べたところ、この<ruby>部分<rt>ぶぶん</rt></ruby>が「<ruby>集<rt>あつ</rt></ruby>まる・<ruby>離<rt>はな</rt></ruby>れる」の<ruby>判断<rt>はんだん</rt></ruby>を<ruby>担<rt>にな</rt></ruby>っていました。<ruby>驚<rt>おどろ</rt></ruby>くことに、<ruby>一部<rt>いちぶ</rt></ruby>のネズミの<ruby>脳<rt>のう</rt></ruby><ruby>機能<rt>きのう</rt></ruby>を<ruby>止<rt>と</rt></ruby>めると、<ruby>残<rt>のこ</rt></ruby>りの<ruby>仲間<rt>なかま</rt></ruby>が<ruby>自動的<rt>じどうてき</rt></ruby>に<ruby>活動量<rt>かつどうりょう</rt></ruby>を<ruby>増<rt>ふ</rt></ruby>やして<ruby>補<rt>おぎな</rt></ruby>い、グループ<ruby>全体<rt>ぜんたい</rt></ruby>の<ruby>体温<rt>たいおん</rt></ruby>は<ruby>安定<rt>あんてい</rt></ruby>したままでした。<ruby>仲間<rt>なかま</rt></ruby>を<ruby>助<rt>たす</rt></ruby>ける<ruby>力<rt>ちから</rt></ruby>は、<ruby>脳<rt>のう</rt></ruby>に<ruby>組<rt>く</rt></ruby>み<ruby>込<rt>こ</rt></ruby>まれているのです。</p>
+  </div>
+
+  <!-- KIDS ROW -->
+  <div class="kids-row">
+    <div class="kid-box tecchan">
+      <h3>🐥 てっちゃん（5さい）</h3>
+      <p>ねずみさんたちは、さむいとみんなでぎゅっとくっつくんだよ。おともだちがこまったら、たすけあうんだ🐭❄️</p>
+    </div>
+    <div class="kid-box taro">
+      <h3>🌱 たろう（7さい）</h3>
+      <p>ネズミは<ruby>寒<rt>さむ</rt></ruby>いとき、みんなで<ruby>集<rt>あつ</rt></ruby>まってくっつくんだって。<ruby>一<rt>いっ</rt></ruby>ぴきが<ruby>動<rt>うご</rt></ruby>けなくなっても、<ruby>仲間<rt>なかま</rt></ruby>が<ruby>自然<rt>しぜん</rt></ruby>にたすけて<ruby>体温<rt>たいおん</rt></ruby>を<ruby>守<rt>まも</rt></ruby>るみたいだね🐭🤝</p>
+    </div>
+  </div>
+
+  <!-- APPLICATION BOX -->
+  <div class="apply-box">
+    <h2>🌿 <ruby>生活<rt>せいかつ</rt></ruby>への<ruby>応用<rt>おうよう</rt></ruby></h2>
+    <div class="apply-item">🤝 <ruby>一人<rt>ひとり</rt></ruby>が<ruby>困<rt>こま</rt></ruby>っているとき、まわりが<ruby>自然<rt>しぜん</rt></ruby>にサポートする<ruby>力<rt>ちから</rt></ruby>は<ruby>動物<rt>どうぶつ</rt></ruby>にも<ruby>備<rt>そな</rt></ruby>わっている。チームワークの<ruby>大切<rt>たいせつ</rt></ruby>さがわかる！</div>
+    <div class="apply-item">🧊 <ruby>寒<rt>さむ</rt></ruby>い<ruby>季節<rt>きせつ</rt></ruby>に<ruby>身<rt>み</rt></ruby>を<ruby>寄<rt>よ</rt></ruby>せ<ruby>合<rt>あ</rt></ruby>うと<ruby>温<rt>あたた</rt></ruby>かくなる<ruby>理由<rt>りゆう</rt></ruby>が<ruby>科学的<rt>かがくてき</rt></ruby>にわかった！おうちでも<ruby>家族<rt>かぞく</rt></ruby>でくっつこう！</div>
+    <div class="apply-item">🧠 <ruby>判断<rt>はんだん</rt></ruby>を<ruby>司<rt>つかさど</rt></ruby>る<ruby>前頭前<rt>ぜんとうぜん</rt></ruby><ruby>皮質<rt>ひしつ</rt></ruby>は<ruby>人間<rt>にんげん</rt></ruby>にもあり、<ruby>協力<rt>きょうりょく</rt></ruby><ruby>行動<rt>こうどう</rt></ruby>に<ruby>深<rt>ふか</rt></ruby>く<ruby>関<rt>かか</rt></ruby>わっている！</div>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <div class="footer-source">📖 <ruby>出典<rt>しゅってん</rt></ruby>：Scientific Frontline / Nature Neuroscience (2026<ruby>年<rt>ねん</rt></ruby>3<ruby>月<rt>がつ</rt></ruby>) "Study reveals how individual brain activity drives collective behavior"</div>
+    <div><ruby>豊田<rt>とよた</rt></ruby>こども<ruby>新聞<rt>しんぶん</rt></ruby> 📰</div>
+  </div>
+
+</div>
+</body>
+</html>

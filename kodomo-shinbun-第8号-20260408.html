@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>豊田こども新聞 第8号</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --header-dark: #1565C0;
+    --header-mid: #2196F3;
+    --yellow-accent: #FFF176;
+    --box-blue-bg: #E8F4FD;
+    --box-blue-border: #2196F3;
+    --box-yellow-bg: #FFF176;
+    --box-yellow-border: #FF9800;
+    --box-orange: #FF9800;
+    --box-tecchan-bg: #FFF8E1;
+    --box-taro-bg: #E8F5E9;
+    --box-taro-border: #4CAF50;
+    --box-apply-bg: #E8F5E9;
+    --box-apply-border: #4CAF50;
+    --footer-bg: #1565C0;
+    --text-dark: #1a1a2e;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  ruby { ruby-align: center; }
+  rt { font-size: 0.5em; color: inherit; }
+  body {
+    font-family: 'Noto Sans JP', 'Hiragino Kaku Gothic ProN', 'Yu Gothic', sans-serif;
+    background: #f0f4f8;
+    padding: 10px;
+  }
+  .newspaper {
+    width: 210mm;
+    min-height: 297mm;
+    margin: 0 auto;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+    overflow: hidden;
+  }
+  .header {
+    background: linear-gradient(135deg, #1565C0 0%, #2196F3 60%, #42A5F5 100%);
+    color: white;
+    padding: 10px 14px 8px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .header-left { flex: 1; }
+  .newspaper-name {
+    font-size: 29px;
+    font-weight: 900;
+    letter-spacing: 2px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+  }
+  .header-sub {
+    font-size: 11px;
+    margin-top: 2px;
+    opacity: 0.9;
+  }
+  .header-right {
+    text-align: right;
+    font-size: 11px;
+    opacity: 0.95;
+  }
+  .issue-num {
+    font-size: 18px;
+    font-weight: 700;
+    display: block;
+  }
+  .mascot {
+    font-size: 32px;
+    margin-left: 10px;
+  }
+  .color-bar {
+    height: 6px;
+    background: linear-gradient(90deg, #FF9800, #FFC107, #4CAF50, #2196F3, #9C27B0);
+  }
+  .headline-area {
+    padding: 8px 14px 6px;
+    border-bottom: 2px solid #e0e0e0;
+    background: #fafafa;
+  }
+  .genre-badge {
+    display: inline-block;
+    background: #2196F3;
+    color: white;
+    font-size: 9px;
+    font-weight: 700;
+    padding: 2px 8px;
+    border-radius: 10px;
+    margin-bottom: 4px;
+    letter-spacing: 1px;
+  }
+  .headline-title {
+    font-size: 18px;
+    font-weight: 900;
+    color: #1565C0;
+    line-height: 1.3;
+  }
+  .main-content {
+    display: flex;
+    gap: 0;
+    padding: 8px 14px;
+    border-bottom: 1px solid #e0e0e0;
+  }
+  .points-area {
+    flex: 1.2;
+    padding-right: 10px;
+  }
+  .points-title {
+    font-size: 11px;
+    font-weight: 700;
+    color: #1565C0;
+    background: var(--box-blue-bg);
+    border-left: 4px solid #2196F3;
+    padding: 3px 8px;
+    margin-bottom: 6px;
+  }
+  .point-item {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 6px;
+    align-items: flex-start;
+  }
+  .point-num {
+    width: 22px;
+    height: 22px;
+    background: #2196F3;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+  .point-text {
+    font-size: 10.5px;
+    line-height: 1.55;
+    color: var(--text-dark);
+    flex: 1;
+  }
+  .illust-area {
+    flex: 0.9;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: #E8F4FD;
+    border-radius: 8px;
+    padding: 8px;
+    border: 1px solid #BBDEFB;
+  }
+  .explain-box {
+    margin: 8px 14px;
+    background: var(--box-yellow-bg);
+    border: 2px solid var(--box-yellow-border);
+    border-radius: 8px;
+    padding: 8px 10px;
+  }
+  .explain-title {
+    font-size: 11px;
+    font-weight: 700;
+    color: #E65100;
+    margin-bottom: 4px;
+  }
+  .explain-text {
+    font-size: 11px;
+    line-height: 1.65;
+    color: var(--text-dark);
+  }
+  .kids-row {
+    display: flex;
+    gap: 8px;
+    margin: 6px 14px;
+  }
+  .tecchan-box {
+    flex: 1;
+    background: var(--box-tecchan-bg);
+    border: 2px solid #FF9800;
+    border-radius: 8px;
+    padding: 8px 10px;
+  }
+  .taro-box {
+    flex: 1;
+    background: var(--box-taro-bg);
+    border: 2px solid var(--box-taro-border);
+    border-radius: 8px;
+    padding: 8px 10px;
+  }
+  .kid-title {
+    font-size: 11px;
+    font-weight: 700;
+    margin-bottom: 4px;
+  }
+  .tecchan-title { color: #E65100; }
+  .taro-title { color: #2E7D32; }
+  .kid-text {
+    font-size: 12px;
+    line-height: 1.6;
+    color: var(--text-dark);
+  }
+  .apply-box {
+    margin: 6px 14px;
+    background: var(--box-apply-bg);
+    border: 2px solid var(--box-apply-border);
+    border-radius: 8px;
+    padding: 8px 10px;
+  }
+  .apply-title {
+    font-size: 11px;
+    font-weight: 700;
+    color: #2E7D32;
+    margin-bottom: 5px;
+  }
+  .apply-item {
+    font-size: 11px;
+    line-height: 1.6;
+    color: var(--text-dark);
+    padding-left: 12px;
+    position: relative;
+    margin-bottom: 2px;
+  }
+  .apply-item::before {
+    content: '✅';
+    position: absolute;
+    left: -2px;
+    font-size: 10px;
+  }
+  .footer {
+    background: var(--footer-bg);
+    color: white;
+    padding: 6px 14px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: auto;
+  }
+  .footer-left { font-size: 9px; opacity: 0.9; }
+  .footer-right { font-size: 9px; opacity: 0.9; text-align: right; }
+
+  @media print {
+    @page {
+      size: A4;
+      margin: 10mm 8mm;
+    }
+    * {
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+    body {
+      margin: 0;
+      padding: 0;
+      background: white;
+    }
+    .newspaper {
+      width: 100%;
+      box-shadow: none;
+      border-radius: 0;
+    }
+  }
+</style>
+</head>
+<body>
+<div class="newspaper">
+
+  <!-- ヘッダー -->
+  <div class="header">
+    <div class="header-left">
+      <div class="newspaper-name">📰 <ruby>豊田<rt>とよだ</rt></ruby>こども<ruby>新聞<rt>しんぶん</rt></ruby></div>
+      <div class="header-sub">まいにち１つ、すごい<ruby>科学<rt>かがく</rt></ruby>をお<ruby>届<rt>とど</rt></ruby>けします！</div>
+    </div>
+    <div class="header-right">
+      <span class="issue-num">第<ruby>8<rt>はち</rt></ruby>号</span>
+      2026<ruby>年<rt>ねん</rt></ruby>4<ruby>月<rt>がつ</rt></ruby>8<ruby>日<rt>にち</rt></ruby>（<ruby>水曜日<rt>すいようび</rt></ruby>）
+    </div>
+    <div class="mascot">🤖</div>
+  </div>
+
+  <!-- カラーバー -->
+  <div class="color-bar"></div>
+
+  <!-- 見出し -->
+  <div class="headline-area">
+    <div class="genre-badge">🤖 AI・テクノロジー</div>
+    <div class="headline-title">AIが<ruby>科学<rt>かがく</rt></ruby>の<ruby>論文<rt>ろんぶん</rt></ruby>を<ruby>自分<rt>じぶん</rt></ruby>で<ruby>書<rt>か</rt></ruby>いて、<ruby>自分<rt>じぶん</rt></ruby>でチェックもした！</div>
+  </div>
+
+  <!-- メインコンテンツ：ポイント＋イラスト -->
+  <div class="main-content">
+    <div class="points-area">
+      <div class="points-title">🔍 3つの<ruby>大事<rt>だいじ</rt></ruby>なポイント</div>
+
+      <div class="point-item">
+        <div class="point-num">1</div>
+        <div class="point-text">
+          2025<ruby>年<rt>ねん</rt></ruby>、AIが<ruby>科学<rt>かがく</rt></ruby>の<ruby>論文<rt>ろんぶん</rt></ruby>を<ruby>一人<rt>ひとり</rt></ruby>で<ruby>書<rt>か</rt></ruby>いて、<ruby>内容<rt>ないよう</rt></ruby>チェック（<ruby>査読<rt>さどく</rt></ruby>）まで<ruby>行<rt>おこな</rt></ruby>った<ruby>世界初<rt>せかいはつ</rt></ruby>の<ruby>会議<rt>かいぎ</rt></ruby>が<ruby>開<rt>ひら</rt></ruby>かれました。
+        </div>
+      </div>
+
+      <div class="point-item">
+        <div class="point-num">2</div>
+        <div class="point-text">
+          AIは<ruby>研究<rt>けんきゅう</rt></ruby>データを<ruby>自動<rt>じどう</rt></ruby>で<ruby>集<rt>あつ</rt></ruby>めたり、<ruby>実験<rt>じっけん</rt></ruby>を<ruby>高速<rt>こうそく</rt></ruby>に<ruby>進<rt>すす</rt></ruby>めたりする<ruby>力<rt>ちから</rt></ruby>を<ruby>持<rt>も</rt></ruby>つようになりました。
+        </div>
+      </div>
+
+      <div class="point-item">
+        <div class="point-num">3</div>
+        <div class="point-text">
+          <ruby>将来<rt>しょうらい</rt></ruby>は、AIがすごい<ruby>発見<rt>はっけん</rt></ruby>を<ruby>思<rt>おも</rt></ruby>いつき、<ruby>実験<rt>じっけん</rt></ruby>して、<ruby>論文<rt>ろんぶん</rt></ruby>を<ruby>書<rt>か</rt></ruby>くまでを<ruby>全部<rt>ぜんぶ</rt></ruby>できる<ruby>可能性<rt>かのうせい</rt></ruby>が<ruby>示<rt>しめ</rt></ruby>されました。
+        </div>
+      </div>
+    </div>
+
+    <!-- イラストエリア -->
+    <div class="illust-area" id="illust-area">
+      <!-- 画像（後からMidjourney画像に差し替え可能） -->
+      <img src="https://www.riken.jp/medialibrary/riken/pr/press/2025/20250819_1/20250819_1_fig.jpg"
+           alt="AIとロボットが実験をする研究図解"
+           style="max-width:100%; max-height:200px; border-radius:8px; border:2px solid #4CAF50;">
+      <p style="font-size:9.5px; color:#555; margin-top:5px; text-align:center;">
+        📷 <ruby>出典<rt>しゅってん</rt></ruby>: riken.jp<br>
+        AIと<ruby>実験<rt>じっけん</rt></ruby>ロボットの<ruby>未来<rt>みらい</rt></ruby>
+      </p>
+    </div>
+  </div>
+
+  <!-- 解説ボックス -->
+  <div class="explain-box">
+    <div class="explain-title">📖 わかりやすい<ruby>解説<rt>かいせつ</rt></ruby></div>
+    <div class="explain-text">
+      2025<ruby>年<rt>ねん</rt></ruby>10<ruby>月<rt>がつ</rt></ruby>、「AI Agents for Science 2025」という<ruby>会議<rt>かいぎ</rt></ruby>で、AIが<ruby>論文<rt>ろんぶん</rt></ruby>の「<ruby>筆頭著者<rt>ひっとうちょしゃ</rt></ruby>」と「<ruby>査読者<rt>さどくしゃ</rt></ruby>」を<ruby>初<rt>はじ</rt></ruby>めて<ruby>務<rt>つと</rt></ruby>めました。<ruby>筆頭著者<rt>ひっとうちょしゃ</rt></ruby>とは<ruby>論文<rt>ろんぶん</rt></ruby>を<ruby>書<rt>か</rt></ruby>いた<ruby>一番<rt>いちばん</rt></ruby>の<ruby>担当者<rt>たんとうしゃ</rt></ruby>のこと、<ruby>査読者<rt>さどくしゃ</rt></ruby>とは<ruby>内容<rt>ないよう</rt></ruby>が<ruby>正<rt>ただ</rt></ruby>しいかチェックする<ruby>人<rt>ひと</rt></ruby>のことです。これまで<ruby>研究者<rt>けんきゅうしゃ</rt></ruby>が<ruby>何日<rt>なんにち</rt></ruby>もかけて<ruby>行<rt>おこな</rt></ruby>ってきた<ruby>作業<rt>さぎょう</rt></ruby>を、AIが<ruby>高速<rt>こうそく</rt></ruby>でこなせることが<ruby>示<rt>しめ</rt></ruby>され、<ruby>科学<rt>かがく</rt></ruby>の<ruby>世界<rt>せかい</rt></ruby>に<ruby>革命<rt>かくめい</rt></ruby>が<ruby>起<rt>お</rt></ruby>きそうです。
+    </div>
+  </div>
+
+  <!-- てっちゃん・たろう欄 -->
+  <div class="kids-row">
+    <div class="tecchan-box">
+      <div class="kid-title tecchan-title">🐥 てっちゃん（5さい）へ</div>
+      <div class="kid-text">
+        AIがかがくのほんをじぶんでかいたよ！ロボットはかせがうまれたんだって🤖✨
+      </div>
+    </div>
+    <div class="taro-box">
+      <div class="kid-title taro-title">🌱 たろう（7さい）へ</div>
+      <div class="kid-text">
+        AIが<ruby>科学<rt>かがく</rt></ruby>の<ruby>論文<rt>ろんぶん</rt></ruby>を<ruby>書<rt>か</rt></ruby>いて、<ruby>自分<rt>じぶん</rt></ruby>でチェックもしたんだって！まるでロボット<ruby>博士<rt>はかせ</rt></ruby>みたいだね🤖📝
+      </div>
+    </div>
+  </div>
+
+  <!-- 生活への応用 -->
+  <div class="apply-box">
+    <div class="apply-title">🌟 <ruby>生活<rt>せいかつ</rt></ruby>への<ruby>応用<rt>おうよう</rt></ruby>・みんなへのメッセージ</div>
+    <div class="apply-item">AIが<ruby>宿題<rt>しゅくだい</rt></ruby>や<ruby>調<rt>しら</rt></ruby>べものの<ruby>手伝<rt>てつだ</rt></ruby>いをしてくれる<ruby>時代<rt>じだい</rt></ruby>がもうすぐやってくる</div>
+    <div class="apply-item">AIロボットが<ruby>病気<rt>びょうき</rt></ruby>の<ruby>新薬<rt>しんやく</rt></ruby>を<ruby>発見<rt>はっけん</rt></ruby>するスピードが<ruby>大幅<rt>おおはば</rt></ruby>に<ruby>速<rt>はや</rt></ruby>くなる</div>
+    <div class="apply-item"><ruby>子<rt>こ</rt></ruby>どもたちが<ruby>学校<rt>がっこう</rt></ruby>でAIと<ruby>一緒<rt>いっしょ</rt></ruby>に<ruby>研究<rt>けんきゅう</rt></ruby>できる<ruby>未来<rt>みらい</rt></ruby>が<ruby>実現<rt>じつげん</rt></ruby>するかもしれない</div>
+  </div>
+
+  <!-- フッター -->
+  <div class="footer">
+    <div class="footer-left">
+      📰 <ruby>豊田<rt>とよだ</rt></ruby>こども<ruby>新聞<rt>しんぶん</rt></ruby> 第8<ruby>号<rt>ごう</rt></ruby> ｜ AI Agents for Science 2025 オープンカンファレンス ｜ 2025年10月<ruby>発表<rt>はっぴょう</rt></ruby>
+    </div>
+    <div class="footer-right">
+      <ruby>元洋<rt>もとひろ</rt></ruby>より ❤️
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

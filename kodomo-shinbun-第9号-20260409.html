@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>豊田こども新聞 第9号</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;900&family=Noto+Serif+JP:wght@700;900&display=swap" rel="stylesheet">
+<style>
+  @page { size: A4; margin: 0; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Noto Sans JP', sans-serif;
+    background: #fff; color: #1a1a1a;
+    -webkit-print-color-adjust: exact; print-color-adjust: exact;
+  }
+  ruby { ruby-align: center; }
+  rt { font-size: 0.5em; }
+  .page {
+    width: 210mm; height: 297mm; margin: 0 auto;
+    display: flex; flex-direction: column; overflow: hidden; background: #FFFDF5;
+  }
+  .masthead {
+    background: #1B2A4A; padding: 8px 18px 6px;
+    display: flex; align-items: center; justify-content: space-between; flex-shrink: 0;
+  }
+  .masthead-left { display: flex; align-items: center; gap: 10px; }
+  .masthead-logo {
+    width: 44px; height: 44px; background: #F4D03F; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 26px; box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+  }
+  .masthead-title {
+    font-family: 'Noto Serif JP', serif; font-size: 30px; font-weight: 900;
+    color: #F4D03F; letter-spacing: 4px; text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+  }
+  .masthead-right { text-align: right; color: #ccc; font-size: 10px; line-height: 1.5; }
+  .masthead-right .issue-num { font-size: 15px; font-weight: 900; color: #F4D03F; }
+  .color-line { height: 4px; flex-shrink: 0; background: linear-gradient(90deg, #E74C3C, #F39C12, #F4D03F, #27AE60, #2980B9, #8E44AD); }
+  .date-bar {
+    background: #F8F4E8; border-bottom: 1px solid #d0c8a8; padding: 3px 18px;
+    display: flex; justify-content: space-between; align-items: center;
+    font-size: 10px; color: #555; flex-shrink: 0;
+  }
+  .genre-badge { background: #8E44AD; color: white; padding: 1px 10px; border-radius: 3px; font-size: 9px; font-weight: 700; }
+  .content { flex: 1; padding: 8px 16px 6px; display: flex; flex-direction: column; }
+  .headline { text-align: center; padding: 6px 0; border-bottom: 3px double #1B2A4A; margin-bottom: 8px; flex-shrink: 0; }
+  .headline h1 { font-family: 'Noto Serif JP', serif; font-size: 21px; font-weight: 900; color: #1B2A4A; line-height: 1.4; }
+  .top-section { display: flex; gap: 12px; margin-bottom: 8px; flex-shrink: 0; }
+  .col-article { flex: 3; }
+  .col-photo { flex: 2; display: flex; flex-direction: column; gap: 6px; }
+  .article-body { font-size: 12px; line-height: 2.0; text-align: justify; }
+  .article-body .lead { font-size: 13px; font-weight: 700; color: #1B2A4A; margin-bottom: 5px; border-left: 4px solid #F4D03F; padding-left: 8px; }
+  .photo-frame { border: 1px solid #999; padding: 3px; background: white; box-shadow: 1px 1px 4px rgba(0,0,0,0.1); }
+  .photo-frame img { width: 100%; max-height: 160px; object-fit: cover; display: block; }
+  .photo-caption { font-size: 8px; color: #666; padding: 2px 2px 0; text-align: center; }
+  .discovery-box { background: #FEF9E7; border: 1.5px solid #F4D03F; border-radius: 6px; padding: 6px 8px; }
+  .discovery-box h3 { font-size: 11px; color: #D4AC0D; font-weight: 900; margin-bottom: 3px; }
+  .discovery-box ul { list-style: none; font-size: 10.5px; line-height: 1.7; }
+  .discovery-box ul li { padding-left: 14px; position: relative; }
+  .discovery-box ul li::before { content: "▶"; position: absolute; left: 0; color: #F39C12; font-size: 7px; top: 3px; }
+  .mid-section { display: flex; gap: 10px; margin-bottom: 8px; flex: 1; }
+  .mid-col { flex: 1; display: flex; flex-direction: column; }
+  .explain-box { background: #FFF8E1; border: 1.5px solid #FFB300; border-radius: 6px; padding: 7px 9px; flex: 1; }
+  .explain-box h3 { font-size: 11px; color: #E65100; font-weight: 900; margin-bottom: 3px; }
+  .explain-box p { font-size: 11px; line-height: 1.9; }
+  .quiz-box { background: #EBF5FB; border: 1.5px solid #2980B9; border-radius: 6px; padding: 7px 9px; flex: 1; }
+  .quiz-box h3 { font-size: 11px; color: #2471A3; font-weight: 900; margin-bottom: 3px; }
+  .quiz-box .q { font-size: 11px; font-weight: 700; line-height: 1.7; margin-bottom: 3px; }
+  .quiz-box .a { font-size: 9.5px; color: #555; border-top: 1px dashed #2980B9; padding-top: 3px; }
+  .tips-box { background: #E8F5E9; border: 1.5px solid #43A047; border-radius: 6px; padding: 7px 9px; flex: 1; }
+  .tips-box h3 { font-size: 11px; color: #2E7D32; font-weight: 900; margin-bottom: 3px; }
+  .tips-box ul { list-style: none; font-size: 10.5px; line-height: 1.7; }
+  .tips-box ul li { padding-left: 14px; position: relative; }
+  .tips-box ul li::before { content: "💡"; position: absolute; left: 0; font-size: 9px; top: 1px; }
+  .kids-section { display: flex; gap: 10px; margin-bottom: 6px; flex-shrink: 0; }
+  .kid-card { flex: 1; border-radius: 8px; padding: 8px 10px; position: relative; overflow: hidden; }
+  .kid-card .ribbon { position: absolute; top: 0; left: 0; right: 0; height: 4px; }
+  .kid-tecchan { background: #FFF8E1; border: 1.5px solid #FFB300; }
+  .kid-tecchan .ribbon { background: #FFB300; }
+  .kid-taro { background: #E8F5E9; border: 1.5px solid #43A047; }
+  .kid-taro .ribbon { background: #43A047; }
+  .kid-card h4 { font-size: 11px; margin-bottom: 3px; padding-top: 2px; }
+  .kid-card p { font-size: 11px; line-height: 1.8; }
+  .trivia-bar { background: #F5EEF8; border-top: 1px solid #D2B4DE; border-bottom: 1px solid #D2B4DE; padding: 4px 16px; font-size: 10px; color: #6C3483; text-align: center; flex-shrink: 0; }
+  .footer { background: #1B2A4A; color: #ccc; padding: 5px 18px; display: flex; justify-content: space-between; align-items: center; font-size: 8px; flex-shrink: 0; }
+  .footer .love { color: #F4D03F; font-size: 9px; }
+  @media print { body { background: white; } .page { box-shadow: none; } }
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="masthead">
+    <div class="masthead-left">
+      <div class="masthead-logo">📰</div>
+      <div class="masthead-title"><ruby>豊田<rt>とよだ</rt></ruby>こども<ruby>新聞<rt>しんぶん</rt></ruby></div>
+    </div>
+    <div class="masthead-right">
+      <div class="issue-num"><ruby>第<rt>だい</rt></ruby>9<ruby>号<rt>ごう</rt></ruby></div>
+      365<ruby>日<rt>にち</rt></ruby>サイエンス
+    </div>
+  </div>
+  <div class="color-line"></div>
+  <div class="date-bar">
+    <span>2026<ruby>年<rt>ねん</rt></ruby>4<ruby>月<rt>がつ</rt></ruby>9<ruby>日<rt>にち</rt></ruby>（<ruby>木曜日<rt>もくようび</rt></ruby>）</span>
+    <span class="genre-badge">🚀 <ruby>宇宙<rt>うちゅう</rt></ruby>・<ruby>天文学<rt>てんもんがく</rt></ruby></span>
+    <span><ruby>発行<rt>はっこう</rt></ruby>: <ruby>豊田<rt>とよだ</rt></ruby><ruby>元洋<rt>もとひろ</rt></ruby></span>
+  </div>
+
+  <div class="content">
+    <div class="headline">
+      <h1>🌌 ダークエネルギーは<ruby>存在<rt>そんざい</rt></ruby>しない!?<br><ruby>宇宙<rt>うちゅう</rt></ruby>のふくらみ<ruby>方<rt>かた</rt></ruby>の<ruby>大<rt>おお</rt></ruby>きななぞに<ruby>新<rt>あたら</rt></ruby>しいヒント！</h1>
+    </div>
+
+    <div class="top-section">
+      <div class="col-article">
+        <div class="article-body">
+          <p class="lead">
+            <ruby>宇宙<rt>うちゅう</rt></ruby>はまるで<ruby>風船<rt>ふうせん</rt></ruby>のようにどんどん<ruby>大<rt>おお</rt></ruby>きくなっている。しかも、そのスピードはだんだん<ruby>速<rt>はや</rt></ruby>くなっている！その<ruby>理由<rt>りゆう</rt></ruby>が「ダークエネルギー」だと<ruby>考<rt>かんが</rt></ruby>えられてきたけれど、<ruby>新<rt>あたら</rt></ruby>しい<ruby>研究<rt>けんきゅう</rt></ruby>が「<ruby>本当<rt>ほんとう</rt></ruby>にそうなの？」と<ruby>問<rt>と</rt></ruby>いかけている！
+          </p>
+          <p>
+            1998<ruby>年<rt>ねん</rt></ruby>、<ruby>遠<rt>とお</rt></ruby>くの<ruby>爆発<rt>ばくはつ</rt></ruby>する<ruby>星<rt>ほし</rt></ruby>（<ruby>超新星<rt>ちょうしんせい</rt></ruby>）の<ruby>光<rt>ひかり</rt></ruby>を<ruby>観察<rt>かんさつ</rt></ruby>して、<ruby>宇宙<rt>うちゅう</rt></ruby>がだんだん<ruby>速<rt>はや</rt></ruby>く<ruby>広<rt>ひろ</rt></ruby>がっていることが<ruby>発見<rt>はっけん</rt></ruby>されました。その<ruby>原因<rt>げんいん</rt></ruby>は「ダークエネルギー」という<ruby>謎<rt>なぞ</rt></ruby>のエネルギーだとされてきました。
+          </p>
+          <p>
+            ところが<ruby>今回<rt>こんかい</rt></ruby>の<ruby>研究<rt>けんきゅう</rt></ruby>では、「タイムスケープモデル」という<ruby>新<rt>あたら</rt></ruby>しい<ruby>考<rt>かんが</rt></ruby>え<ruby>方<rt>かた</rt></ruby>が<ruby>登場<rt>とうじょう</rt></ruby>。<ruby>宇宙<rt>うちゅう</rt></ruby>は<ruby>均等<rt>きんとう</rt></ruby>ではなく、<ruby>物質<rt>ぶっしつ</rt></ruby>が<ruby>集<rt>あつ</rt></ruby>まったところと<ruby>空<rt>から</rt></ruby>っぽなところが<ruby>混在<rt>こんざい</rt></ruby>していて、それが<ruby>宇宙<rt>うちゅう</rt></ruby>の<ruby>広<rt>ひろ</rt></ruby>がり<ruby>方<rt>かた</rt></ruby>に<ruby>影響<rt>えいきょう</rt></ruby>しているというのです。
+          </p>
+        </div>
+      </div>
+      <div class="col-photo">
+        <div class="photo-frame" id="illust-area">
+          <img src="https://blog.miraikan.jst.go.jp/images/20111004_hayasida_05.jpg" alt="宇宙の加速膨張の図解">
+          <div class="photo-caption">📷 <ruby>出典<rt>しゅってん</rt></ruby>: blog.miraikan.jst.go.jp<br><ruby>宇宙<rt>うちゅう</rt></ruby>の<ruby>加速膨張<rt>かそくぼうちょう</rt></ruby>のイメージ</div>
+        </div>
+        <div class="discovery-box">
+          <h3>🔬 3つの<ruby>大発見<rt>だいはっけん</rt></ruby></h3>
+          <ul>
+            <li><ruby>宇宙<rt>うちゅう</rt></ruby>はだんだん<ruby>速<rt>はや</rt></ruby>くふくらんでいる！</li>
+            <li>その<ruby>理由<rt>りゆう</rt></ruby>は「ダークエネルギー」じゃないかも？</li>
+            <li><ruby>宇宙<rt>うちゅう</rt></ruby>のデコボコが<ruby>広<rt>ひろ</rt></ruby>がり<ruby>方<rt>かた</rt></ruby>に<ruby>影響<rt>えいきょう</rt></ruby>していた！</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="mid-section">
+      <div class="mid-col">
+        <div class="explain-box">
+          <h3>📖 わかりやすく<ruby>解説<rt>かいせつ</rt></ruby></h3>
+          <p>
+            <ruby>宇宙<rt>うちゅう</rt></ruby>を<ruby>風船<rt>ふうせん</rt></ruby>にたとえると、<ruby>風船<rt>ふうせん</rt></ruby>の<ruby>表面<rt>ひょうめん</rt></ruby>にシールをたくさん<ruby>貼<rt>は</rt></ruby>った<ruby>場所<rt>ばしょ</rt></ruby>と、なにもない<ruby>場所<rt>ばしょ</rt></ruby>がある。シールが<ruby>多<rt>おお</rt></ruby>いところは<ruby>時間<rt>じかん</rt></ruby>の<ruby>流<rt>なが</rt></ruby>れがゆっくりで、なにもないところは<ruby>速<rt>はや</rt></ruby>い。このデコボコが「<ruby>宇宙<rt>うちゅう</rt></ruby>が<ruby>速<rt>はや</rt></ruby>くふくらんでいるように<ruby>見<rt>み</rt></ruby>える」<ruby>原因<rt>げんいん</rt></ruby>かもしれないんだ！
+          </p>
+        </div>
+      </div>
+      <div class="mid-col">
+        <div class="quiz-box">
+          <h3>❓ きょうのクイズ</h3>
+          <p class="q"><ruby>宇宙<rt>うちゅう</rt></ruby>がだんだん<ruby>速<rt>はや</rt></ruby>くふくらんでいる<ruby>理由<rt>りゆう</rt></ruby>は？<br>
+          A: ダークエネルギーというなぞのちから<br>
+          B: <ruby>宇宙<rt>うちゅう</rt></ruby>のデコボコが<ruby>原因<rt>げんいん</rt></ruby>かも？</p>
+          <p class="a">こたえ ▶ どっちも<ruby>正解<rt>せいかい</rt></ruby>かもしれない！　<ruby>科学者<rt>かがくしゃ</rt></ruby>もまだ<ruby>研究中<rt>けんきゅうちゅう</rt></ruby>🔭</p>
+        </div>
+      </div>
+      <div class="mid-col">
+        <div class="tips-box">
+          <h3>🌈 やってみよう！</h3>
+          <ul>
+            <li><ruby>風船<rt>ふうせん</rt></ruby>にペンで<ruby>点<rt>てん</rt></ruby>をいくつか<ruby>描<rt>か</rt></ruby>いてふくらませてみよう。<ruby>点<rt>てん</rt></ruby>と<ruby>点<rt>てん</rt></ruby>の<ruby>間<rt>あいだ</rt></ruby>がどんどん<ruby>広<rt>ひろ</rt></ruby>がるよ！</li>
+            <li><ruby>夜空<rt>よぞら</rt></ruby>を<ruby>見上<rt>みあ</rt></ruby>げて、<ruby>星<rt>ほし</rt></ruby>と<ruby>星<rt>ほし</rt></ruby>の<ruby>間<rt>あいだ</rt></ruby>を<ruby>想像<rt>そうぞう</rt></ruby>してみよう。あのすきまも<ruby>広<rt>ひろ</rt></ruby>がってるんだ！</li>
+            <li>ダークエネルギーについて<ruby>家族<rt>かぞく</rt></ruby>と<ruby>話<rt>はな</rt></ruby>してみよう🌟</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="kids-section">
+      <div class="kid-card kid-tecchan">
+        <div class="ribbon"></div>
+        <h4>🐥 てっちゃん（5さい）へ</h4>
+        <p>うちゅうはおおきなふうせんみたいにどんどんふくらんでいるんだよ！どうしてかは、おとなもまだわからないんだって。すごいなぞだね🎈</p>
+      </div>
+      <div class="kid-card kid-taro">
+        <div class="ribbon"></div>
+        <h4>🌱 たろう（7さい）へ</h4>
+        <p><ruby>宇宙<rt>うちゅう</rt></ruby>は<ruby>風船<rt>ふうせん</rt></ruby>みたいにふくらんでいて、しかもどんどん<ruby>速<rt>はや</rt></ruby>くなってる！「ダークエネルギー」の<ruby>正体<rt>しょうたい</rt></ruby>はまだなぞ。きみが<ruby>大<rt>おお</rt></ruby>きくなったら<ruby>解<rt>と</rt></ruby>けるかも！🔭</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="trivia-bar">
+    🚀 <ruby>豆知識<rt>まめちしき</rt></ruby>：<ruby>宇宙<rt>うちゅう</rt></ruby>の96%は「ダークマター」と「ダークエネルギー」でできている。<ruby>人間<rt>にんげん</rt></ruby>が<ruby>見<rt>み</rt></ruby>える<ruby>物質<rt>ぶっしつ</rt></ruby>はたったの4%しかないんだ！ 🌌
+  </div>
+
+  <div class="footer">
+    <span>📚 The Conversation（2025）｜ <ruby>豊田<rt>とよだ</rt></ruby>こども<ruby>新聞<rt>しんぶん</rt></ruby> <ruby>第<rt>だい</rt></ruby>9<ruby>号<rt>ごう</rt></ruby> ｜ <ruby>毎日<rt>まいにち</rt></ruby>の<ruby>科学<rt>かがく</rt></ruby>をこどもたちへ</span>
+    <span class="love">❤️ <ruby>元洋<rt>もとひろ</rt></ruby>パパより</span>
+  </div>
+</div>
+</body>
+</html>

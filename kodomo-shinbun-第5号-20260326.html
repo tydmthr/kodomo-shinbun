@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>豊田こども新聞 第5号</title>
+<style>
+  @page { size: A4; margin: 8mm 7mm; }
+  body {
+    font-family: 'Hiragino Kaku Gothic ProN', 'Noto Sans JP', sans-serif;
+    margin: 0; padding: 0;
+    background: #fff;
+    color: #333;
+  }
+  .newspaper {
+    width: 190mm; min-height: 273mm;
+    margin: 0 auto; padding: 10px 12px;
+    box-sizing: border-box;
+  }
+  .header {
+    background: linear-gradient(135deg, #1a237e, #283593);
+    color: white;
+    padding: 12px 15px;
+    border-radius: 10px;
+    text-align: center;
+    margin-bottom: 10px;
+  }
+  .header h1 { margin: 0; font-size: 26px; letter-spacing: 2px; }
+  .header .date { font-size: 13px; margin-top: 4px; opacity: 0.9; }
+  .header .issue { font-size: 14px; margin-top: 2px; }
+  .main-title {
+    font-size: 20px;
+    color: #1a237e;
+    border-left: 5px solid #FF6F00;
+    padding-left: 10px;
+    margin: 12px 0 8px;
+    line-height: 1.4;
+  }
+  .source-info {
+    font-size: 11px;
+    color: #666;
+    background: #f5f5f5;
+    padding: 6px 10px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+  }
+  #illust-area {
+    text-align: center;
+    margin: 12px 0;
+  }
+  #illust-area img {
+    max-width: 100%;
+    max-height: 250px;
+    border-radius: 8px;
+    border: 2px solid #1a237e;
+  }
+  #illust-area .caption {
+    font-size: 10px;
+    color: #888;
+    margin-top: 4px;
+  }
+  .article {
+    font-size: 14px;
+    line-height: 1.9;
+    margin: 10px 0;
+  }
+  .findings {
+    background: #E8EAF6;
+    padding: 10px 12px;
+    border-radius: 8px;
+    margin: 10px 0;
+  }
+  .findings h3 {
+    margin: 0 0 6px;
+    font-size: 15px;
+    color: #1a237e;
+  }
+  .findings p {
+    margin: 5px 0;
+    font-size: 13px;
+    line-height: 1.7;
+  }
+  .kids-corner {
+    display: flex;
+    gap: 10px;
+    margin-top: 12px;
+  }
+  .kid-box {
+    flex: 1;
+    padding: 10px;
+    border-radius: 8px;
+    font-size: 13px;
+    line-height: 1.7;
+  }
+  .tecchan { background: #FFF9C4; border: 2px solid #FBC02D; }
+  .taro { background: #E1F5FE; border: 2px solid #0288D1; }
+  .kid-box .name {
+    font-weight: bold;
+    font-size: 14px;
+    margin-bottom: 5px;
+  }
+  .footer {
+    text-align: center;
+    font-size: 11px;
+    color: #999;
+    margin-top: 12px;
+    padding-top: 8px;
+    border-top: 1px dashed #ccc;
+  }
+  .emoji-deco {
+    font-size: 28px;
+    text-align: center;
+    margin: 5px 0;
+    letter-spacing: 8px;
+  }
+</style>
+</head>
+<body>
+<div class="newspaper">
+  <!-- ヘッダー -->
+  <div class="header">
+    <h1>📰 <ruby>豊<rt>とよ</rt></ruby><ruby>田<rt>だ</rt></ruby>こども<ruby>新<rt>しん</rt></ruby><ruby>聞<rt>ぶん</rt></ruby></h1>
+    <div class="issue"><ruby>第<rt>だい</rt></ruby>5<ruby>号<rt>ごう</rt></ruby></div>
+    <div class="date">2026<ruby>年<rt>ねん</rt></ruby>3<ruby>月<rt>がつ</rt></ruby>26<ruby>日<rt>にち</rt></ruby>（<ruby>木<rt>もく</rt></ruby><ruby>曜<rt>よう</rt></ruby><ruby>日<rt>び</rt></ruby>）</div>
+  </div>
+
+  <div class="emoji-deco">🪐 🌍 ☀️ 🚀 ⭐</div>
+
+  <!-- メインタイトル -->
+  <div class="main-title">
+    <ruby>太<rt>たい</rt></ruby><ruby>陽<rt>よう</rt></ruby>そっくりの<ruby>星<rt>ほし</rt></ruby>たちが<ruby>教<rt>おし</rt></ruby>えてくれた！<br>
+    <ruby>惑<rt>わく</rt></ruby><ruby>星<rt>せい</rt></ruby>たちの「<ruby>大<rt>だい</rt></ruby><ruby>移<rt>い</rt></ruby><ruby>動<rt>どう</rt></ruby>」のひみつ 🌟
+  </div>
+
+  <!-- 出典情報 -->
+  <div class="source-info">
+    📚 <ruby>論<rt>ろん</rt></ruby><ruby>文<rt>ぶん</rt></ruby>: 「<ruby>太<rt>たい</rt></ruby><ruby>陽<rt>よう</rt></ruby>そっくりの<ruby>星<rt>ほし</rt></ruby>たちが<ruby>明<rt>あ</rt></ruby>かす、<ruby>太<rt>たい</rt></ruby><ruby>陽<rt>よう</rt></ruby><ruby>系<rt>けい</rt></ruby><ruby>大<rt>だい</rt></ruby><ruby>移<rt>い</rt></ruby><ruby>動<rt>どう</rt></ruby>の<ruby>道<rt>みち</rt></ruby>のり」 ／ <ruby>国<rt>こく</rt></ruby><ruby>立<rt>りつ</rt></ruby><ruby>天<rt>てん</rt></ruby><ruby>文<rt>もん</rt></ruby><ruby>台<rt>だい</rt></ruby>（NAOJ） ／ 2026<ruby>年<rt>ねん</rt></ruby>3<ruby>月<rt>がつ</rt></ruby>13<ruby>日<rt>にち</rt></ruby>
+  </div>
+
+  <!-- 研究画像 -->
+  <div id="illust-area">
+    <img src="https://www.astroarts.co.jp/article/attachment/52640/key_visual.jpg" alt="太陽そっくりの星たちの研究画像">
+    <p class="caption">📷 <ruby>出<rt>しゅっ</rt></ruby><ruby>典<rt>てん</rt></ruby>: astroarts.co.jp</p>
+    <br>
+    <img src="https://prcdn.freetls.fastly.net/release_image/90606/24/90606-24-6a0c8b4e6ea3fb4c6a5aa5e7bd97017b-2184x1322.png?width=1950&height=1350&quality=85%2C65&format=jpeg&auto=webp&fit=bounds&bg-color=fff" alt="太陽系の3Dマップ" style="max-width: 100%; max-height: 200px; border-radius: 8px; border: 2px solid #1a237e; margin-top: 5px;">
+    <p class="caption">📷 <ruby>出<rt>しゅっ</rt></ruby><ruby>典<rt>てん</rt></ruby>: prtimes.jp</p>
+  </div>
+
+  <!-- 記事本文 -->
+  <div class="article">
+    <p>
+      わたしたちの<ruby>太<rt>たい</rt></ruby><ruby>陽<rt>よう</rt></ruby>と<ruby>同<rt>おな</rt></ruby>じような<ruby>星<rt>ほし</rt></ruby>をたくさん<ruby>調<rt>しら</rt></ruby>べたら、びっくり！
+      その<ruby>星<rt>ほし</rt></ruby>のまわりの<ruby>惑<rt>わく</rt></ruby><ruby>星<rt>せい</rt></ruby>たちが、<ruby>昔<rt>むかし</rt></ruby>はぜんぜん<ruby>違<rt>ちが</rt></ruby>う<ruby>場<rt>ば</rt></ruby><ruby>所<rt>しょ</rt></ruby>にいて、
+      ぐるぐると<ruby>大<rt>だい</rt></ruby><ruby>移<rt>い</rt></ruby><ruby>動<rt>どう</rt></ruby>していたことがわかったんだよ！
+    </p>
+    <p>
+      <ruby>国<rt>こく</rt></ruby><ruby>立<rt>りつ</rt></ruby><ruby>天<rt>てん</rt></ruby><ruby>文<rt>もん</rt></ruby><ruby>台<rt>だい</rt></ruby>の<ruby>研<rt>けん</rt></ruby><ruby>究<rt>きゅう</rt></ruby>チームがコンピューターで<ruby>宇<rt>う</rt></ruby><ruby>宙<rt>ちゅう</rt></ruby>をシミュレーション（<ruby>再<rt>さい</rt></ruby><ruby>現<rt>げん</rt></ruby>）したところ、
+      わたしたちの<ruby>地<rt>ち</rt></ruby><ruby>球<rt>きゅう</rt></ruby>がある<ruby>太<rt>たい</rt></ruby><ruby>陽<rt>よう</rt></ruby><ruby>系<rt>けい</rt></ruby>も、<ruby>昔<rt>むかし</rt></ruby>はもっとぐちゃぐちゃで、
+      <ruby>巨<rt>きょ</rt></ruby><ruby>大<rt>だい</rt></ruby>な<ruby>惑<rt>わく</rt></ruby><ruby>星<rt>せい</rt></ruby>たちが<ruby>引<rt>ひ</rt></ruby>っぱり<ruby>合<rt>あ</rt></ruby>って<ruby>位<rt>い</rt></ruby><ruby>置<rt>ち</rt></ruby>が<ruby>変<rt>か</rt></ruby>わっていたかもしれないんだって！
+    </p>
+  </div>
+
+  <!-- 発見ポイント -->
+  <div class="findings">
+    <h3>🔬 3つの<ruby>大<rt>おお</rt></ruby>きな<ruby>発<rt>はっ</rt></ruby><ruby>見<rt>けん</rt></ruby></h3>
+    <p>🪐 <ruby>太<rt>たい</rt></ruby><ruby>陽<rt>よう</rt></ruby>みたいな<ruby>星<rt>ほし</rt></ruby>のまわりで、<ruby>惑<rt>わく</rt></ruby><ruby>星<rt>せい</rt></ruby>がお<ruby>引<rt>ひ</rt></ruby>っ<ruby>越<rt>こ</rt></ruby>しをしていた！</p>
+    <p>🌍 わたしたちの<ruby>太<rt>たい</rt></ruby><ruby>陽<rt>よう</rt></ruby><ruby>系<rt>けい</rt></ruby>も<ruby>昔<rt>むかし</rt></ruby>はもっとぐちゃぐちゃだったかも！</p>
+    <p>💻 コンピューターで<ruby>宇<rt>う</rt></ruby><ruby>宙<rt>ちゅう</rt></ruby>を<ruby>再<rt>さい</rt></ruby><ruby>現<rt>げん</rt></ruby>して、<ruby>太<rt>たい</rt></ruby><ruby>陽<rt>よう</rt></ruby><ruby>系<rt>けい</rt></ruby>の<ruby>誕<rt>たん</rt></ruby><ruby>生<rt>じょう</rt></ruby>のなぞが<ruby>少<rt>すこ</rt></ruby>しとけた！</p>
+  </div>
+
+  <!-- こどもコーナー -->
+  <div class="kids-corner">
+    <div class="kid-box tecchan">
+      <div class="name">🧒 てっちゃん（5さい）へ</div>
+      おほしさまのまわりで、わくせいがおひっこししてたんだよ！ちきゅうもむかしぼうけんしたのかな？
+    </div>
+    <div class="kid-box taro">
+      <div class="name">👦 たろう（7さい）へ</div>
+      <ruby>太<rt>たい</rt></ruby><ruby>陽<rt>よう</rt></ruby>みたいな<ruby>星<rt>ほし</rt></ruby>を<ruby>調<rt>しら</rt></ruby>べたら、<ruby>惑<rt>わく</rt></ruby><ruby>星<rt>せい</rt></ruby>が<ruby>大<rt>だい</rt></ruby><ruby>移<rt>い</rt></ruby><ruby>動<rt>どう</rt></ruby>していたよ。<ruby>地<rt>ち</rt></ruby><ruby>球<rt>きゅう</rt></ruby>も<ruby>昔<rt>むかし</rt></ruby><ruby>冒<rt>ぼう</rt></ruby><ruby>険<rt>けん</rt></ruby>したのかも！
+    </div>
+  </div>
+
+  <!-- フッター -->
+  <div class="footer">
+    📰 <ruby>豊<rt>とよ</rt></ruby><ruby>田<rt>だ</rt></ruby>こども<ruby>新<rt>しん</rt></ruby><ruby>聞<rt>ぶん</rt></ruby> <ruby>第<rt>だい</rt></ruby>5<ruby>号<rt>ごう</rt></ruby> ｜ <ruby>元<rt>もと</rt></ruby><ruby>洋<rt>ひろ</rt></ruby>より ❤️
+  </div>
+</div>
+</body>
+</html>

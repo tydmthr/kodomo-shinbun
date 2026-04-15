@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>豊田こども新聞 第10号</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;900&family=Noto+Serif+JP:wght@700;900&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+  ruby { ruby-align: center; }
+  rt { font-size: 0.5em; color: inherit; }
+  body {
+    font-family: 'Noto Sans JP', 'Hiragino Kaku Gothic ProN', 'Yu Gothic', sans-serif;
+    background: #eee;
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+  }
+  @page { size: A4; margin: 0; }
+  @media print {
+    body { background: none; padding: 0; margin: 0; }
+    .page { box-shadow: none; border-radius: 0; max-height: 296mm; }
+    * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    html, body { height: 297mm; overflow: hidden; }
+  }
+  .page {
+    width: 210mm; height: 297mm;
+    max-height: 297mm;
+    background: #fff;
+    display: flex; flex-direction: column;
+    overflow: hidden;
+    box-shadow: 0 2px 20px rgba(0,0,0,0.15);
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+  /* Masthead */
+  .masthead {
+    background: #1B2A4A;
+    color: white;
+    padding: 7px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .masthead-title {
+    font-family: 'Noto Serif JP', serif;
+    font-size: 28px;
+    font-weight: 900;
+    color: #F4D03F;
+    letter-spacing: 3px;
+  }
+  .masthead-right {
+    text-align: right;
+    font-size: 11px;
+    line-height: 1.6;
+  }
+  .masthead-badge {
+    display: inline-block;
+    background: #F4D03F;
+    color: #1B2A4A;
+    font-size: 10px;
+    font-weight: 700;
+    padding: 2px 8px;
+    border-radius: 10px;
+    margin-top: 2px;
+  }
+  /* Color line */
+  .color-line {
+    height: 4px;
+    background: linear-gradient(90deg, #e74c3c, #f39c12, #f1c40f, #2ecc71, #3498db, #9b59b6);
+  }
+  /* Date bar */
+  .date-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 5px 20px;
+    background: #f8f9fa;
+    border-bottom: 1px solid #dee2e6;
+    font-size: 11px;
+  }
+  .genre-badge {
+    display: inline-block;
+    background: #FF9800;
+    color: white;
+    font-size: 10px;
+    font-weight: 700;
+    padding: 2px 10px;
+    border-radius: 10px;
+  }
+  /* Content */
+  .content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 6px 14px;
+    overflow: hidden;
+  }
+  /* Headline */
+  .headline {
+    font-family: 'Noto Serif JP', serif;
+    font-size: 17px;
+    font-weight: 900;
+    color: #1B2A4A;
+    border-bottom: 3px double #1B2A4A;
+    padding-bottom: 4px;
+    margin-bottom: 5px;
+    line-height: 1.4;
+  }
+  /* Top section */
+  .top-section {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 6px;
+  }
+  .article-body {
+    flex: 3;
+    font-size: 10px;
+    line-height: 1.65;
+    color: #333;
+  }
+  .article-body p { margin-bottom: 3px; }
+  .photo-side {
+    flex: 2;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .photo-frame {
+    border: 2px solid #ddd;
+    border-radius: 6px;
+    overflow: hidden;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  }
+  .photo-frame img {
+    width: 100%;
+    max-height: 110px;
+    object-fit: cover;
+    display: block;
+  }
+  .photo-caption {
+    font-size: 8.5px;
+    color: #888;
+    text-align: center;
+    padding: 2px;
+  }
+  .discovery-box {
+    background: #FFF9C4;
+    border-left: 4px solid #FF9800;
+    padding: 5px 8px;
+    border-radius: 0 6px 6px 0;
+    font-size: 9.5px;
+    line-height: 1.6;
+  }
+  .discovery-box b { color: #E65100; }
+  /* Mid section */
+  .mid-section {
+    flex: 1;
+    display: flex;
+    gap: 8px;
+    margin-bottom: 6px;
+    min-height: 0;
+  }
+  .mid-box {
+    flex: 1;
+    border-radius: 8px;
+    padding: 6px 8px;
+    font-size: 9.5px;
+    line-height: 1.6;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
+  .mid-box-title {
+    font-weight: 900;
+    font-size: 10.5px;
+    margin-bottom: 3px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+  .box-explain {
+    background: #FFF8E1;
+    border: 2px solid #FF9800;
+  }
+  .box-explain .mid-box-title { color: #E65100; }
+  .box-quiz {
+    background: #EBF5FB;
+    border: 2px solid #2196F3;
+  }
+  .box-quiz .mid-box-title { color: #1565C0; }
+  .quiz-answer {
+    background: rgba(255,255,255,0.6);
+    border-radius: 4px;
+    padding: 3px 6px;
+    margin-top: 4px;
+    font-size: 9.5px;
+  }
+  .box-try {
+    background: #E8F5E9;
+    border: 2px solid #4CAF50;
+  }
+  .box-try .mid-box-title { color: #2E7D32; }
+  .try-item { margin-bottom: 3px; }
+  /* Kids section */
+  .kids-section {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 5px;
+  }
+  .kid-card {
+    flex: 1;
+    border-radius: 8px;
+    padding: 0;
+    overflow: hidden;
+    font-size: 10.5px;
+    line-height: 1.6;
+  }
+  .kid-ribbon {
+    padding: 3px 10px;
+    font-weight: 700;
+    font-size: 10.5px;
+    color: white;
+  }
+  .kid-content { padding: 5px 9px; }
+  .tecchan { border: 2px solid #FF9800; }
+  .tecchan .kid-ribbon { background: #FF9800; }
+  .tecchan .kid-content { background: #FFF8E1; }
+  .taro { border: 2px solid #4CAF50; }
+  .taro .kid-ribbon { background: #4CAF50; }
+  .taro .kid-content { background: #E8F5E9; }
+  /* Trivia bar */
+  .trivia-bar {
+    background: #F5EEF8;
+    padding: 4px 20px;
+    font-size: 9.5px;
+    color: #6A1B9A;
+    text-align: center;
+    font-weight: 700;
+  }
+  /* Footer */
+  .footer {
+    background: #1B2A4A;
+    color: #ccc;
+    padding: 4px 20px;
+    font-size: 8.5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .footer-love { color: #F4D03F; font-weight: 700; }
+</style>
+</head>
+<body>
+<div class="page">
+  <!-- MASTHEAD -->
+  <div class="masthead">
+    <div class="masthead-title">📰 <ruby>豊田<rt>とよだ</rt></ruby>こども<ruby>新聞<rt>しんぶん</rt></ruby></div>
+    <div class="masthead-right">
+      <ruby>第<rt>だい</rt></ruby>10<ruby>号<rt>ごう</rt></ruby><br>
+      <span class="masthead-badge">🔬 365<ruby>日<rt>にち</rt></ruby>サイエンス</span>
+    </div>
+  </div>
+
+  <!-- COLOR LINE -->
+  <div class="color-line"></div>
+
+  <!-- DATE BAR -->
+  <div class="date-bar">
+    <span>2026<ruby>年<rt>ねん</rt></ruby>4<ruby>月<rt>がつ</rt></ruby>11<ruby>日<rt>にち</rt></ruby>（<ruby>土曜日<rt>どようび</rt></ruby>）</span>
+    <span class="genre-badge">🍽️ <ruby>食<rt>しょく</rt></ruby>・<ruby>栄養学<rt>えいようがく</rt></ruby></span>
+    <span><ruby>発行<rt>はっこう</rt></ruby>：<ruby>豊田<rt>とよだ</rt></ruby><ruby>元洋<rt>もとひろ</rt></ruby></span>
+  </div>
+
+  <!-- CONTENT -->
+  <div class="content">
+    <!-- HEADLINE -->
+    <div class="headline">
+      🫘 <ruby>山形大学<rt>やまがただいがく</rt></ruby>が<ruby>発見<rt>はっけん</rt></ruby>！「だだちゃ<ruby>豆<rt>まめ</rt></ruby>」をおいしくする<ruby>魔法<rt>まほう</rt></ruby>の<ruby>遺伝子<rt>いでんし</rt></ruby>「tof11」
+    </div>
+
+    <!-- TOP SECTION -->
+    <div class="top-section">
+      <div class="article-body">
+        <p>
+          <ruby>山形大学<rt>やまがただいがく</rt></ruby>の<ruby>研究<rt>けんきゅう</rt></ruby>チームが、<ruby>山形県<rt>やまがたけん</rt></ruby><ruby>鶴岡市<rt>つるおかし</rt></ruby>の<ruby>名産<rt>めいさん</rt></ruby>「だだちゃ<ruby>豆<rt>まめ</rt></ruby>」のおいしさの<ruby>秘密<rt>ひみつ</rt></ruby>を<ruby>解<rt>と</rt></ruby>き<ruby>明<rt>あ</rt></ruby>かしました！<ruby>鍵<rt>かぎ</rt></ruby>となるのは「tof11」という<ruby>遺伝子<rt>いでんし</rt></ruby>です。
+        </p>
+        <p>
+          この<ruby>遺伝子<rt>いでんし</rt></ruby>が<ruby>働<rt>はたら</rt></ruby>くと、<ruby>枝豆<rt>えだまめ</rt></ruby>の<ruby>中<rt>なか</rt></ruby>に「<ruby>遊離<rt>ゆうり</rt></ruby>アミノ<ruby>酸<rt>さん</rt></ruby>」というおいしさの<ruby>成分<rt>せいぶん</rt></ruby>がたくさん<ruby>作<rt>つく</rt></ruby>られます。<ruby>普通<rt>ふつう</rt></ruby>の<ruby>枝豆<rt>えだまめ</rt></ruby>よりも<ruby>甘<rt>あま</rt></ruby>みやうま<ruby>味<rt>み</rt></ruby>がぐんとアップするのです。
+        </p>
+        <p>
+          さらに、tof11のおかげで<ruby>豆<rt>まめ</rt></ruby>が<ruby>早<rt>はや</rt></ruby>く<ruby>育<rt>そだ</rt></ruby>つようになり、おいしさも<ruby>長持<rt>ながも</rt></ruby>ちするという<ruby>一石二鳥<rt>いっせきにちょう</rt></ruby>の<ruby>効果<rt>こうか</rt></ruby>もわかりました。
+        </p>
+      </div>
+      <div class="photo-side" id="illust-area">
+        <div class="photo-frame">
+          <img src="https://www.yamagata-u.ac.jp/jp/files/2417/7486/4619/dada011.jpg" alt="だだちゃ豆の研究">
+        </div>
+        <div class="photo-caption">📷 <ruby>山形大学<rt>やまがただいがく</rt></ruby> <ruby>研究<rt>けんきゅう</rt></ruby>プレスリリースより</div>
+        <div class="discovery-box">
+          <b>▶ <ruby>大発見<rt>だいはっけん</rt></ruby>！</b><br>
+          「tof11」<ruby>遺伝子<rt>いでんし</rt></ruby> → アミノ<ruby>酸<rt>さん</rt></ruby><ruby>大幅<rt>おおはば</rt></ruby>アップ！<br>
+          🫘✨ おいしさの<ruby>秘密<rt>ひみつ</rt></ruby>が<ruby>科学的<rt>かがくてき</rt></ruby>に<ruby>証明<rt>しょうめい</rt></ruby>！
+        </div>
+      </div>
+    </div>
+
+    <!-- MID SECTION -->
+    <div class="mid-section">
+      <div class="mid-box box-explain">
+        <div class="mid-box-title">📖 くわしく<ruby>解説<rt>かいせつ</rt></ruby></div>
+        <div>
+          <ruby>遺伝子<rt>いでんし</rt></ruby>とは、<ruby>生<rt>い</rt></ruby>き<ruby>物<rt>もの</rt></ruby>の<ruby>体<rt>からだ</rt></ruby>の「<ruby>設計図<rt>せっけいず</rt></ruby>」のようなもの。だだちゃ<ruby>豆<rt>まめ</rt></ruby>には「tof11」という<ruby>特別<rt>とくべつ</rt></ruby>な<ruby>設計図<rt>せっけいず</rt></ruby>があり、これが<ruby>働<rt>はたら</rt></ruby>くことで<ruby>豆<rt>まめ</rt></ruby>の<ruby>中<rt>なか</rt></ruby>にうま<ruby>味<rt>み</rt></ruby><ruby>成分<rt>せいぶん</rt></ruby>がいっぱいになります。まるで<ruby>料理<rt>りょうり</rt></ruby>のレシピがおいしさを<ruby>決<rt>き</rt></ruby>めるように、<ruby>遺伝子<rt>いでんし</rt></ruby>が<ruby>味<rt>あじ</rt></ruby>を<ruby>決<rt>き</rt></ruby>めているんですね！
+        </div>
+      </div>
+      <div class="mid-box box-quiz">
+        <div class="mid-box-title">❓ クイズ</div>
+        <div>
+          「だだちゃ<ruby>豆<rt>まめ</rt></ruby>」は<ruby>何県<rt>なにけん</rt></ruby>の<ruby>名産品<rt>めいさんひん</rt></ruby>でしょう？<br><br>
+          ①<ruby>北海道<rt>ほっかいどう</rt></ruby>　②<ruby>山形県<rt>やまがたけん</rt></ruby>　③<ruby>沖縄県<rt>おきなわけん</rt></ruby>
+        </div>
+        <div class="quiz-answer">💡 <ruby>答<rt>こた</rt></ruby>え：②<ruby>山形県<rt>やまがたけん</rt></ruby><ruby>鶴岡市<rt>つるおかし</rt></ruby>！「だだちゃ」は<ruby>庄内<rt>しょうない</rt></ruby><ruby>地方<rt>ちほう</rt></ruby>の<ruby>方言<rt>ほうげん</rt></ruby>で「おとうさん」のこと🫘</div>
+      </div>
+      <div class="mid-box box-try">
+        <div class="mid-box-title">💡 やってみよう</div>
+        <div>
+          <div class="try-item">🫘 <ruby>枝豆<rt>えだまめ</rt></ruby>を<ruby>食<rt>た</rt></ruby>べて「あまい」「うまい」の<ruby>味<rt>あじ</rt></ruby>を<ruby>分<rt>わ</rt></ruby>けて<ruby>感<rt>かん</rt></ruby>じてみよう</div>
+          <div class="try-item">🧬 <ruby>家族<rt>かぞく</rt></ruby>で「<ruby>遺伝<rt>いでん</rt></ruby>」を<ruby>探<rt>さが</rt></ruby>そう！<ruby>目<rt>め</rt></ruby>の<ruby>色<rt>いろ</rt></ruby>、<ruby>耳<rt>みみ</rt></ruby>の<ruby>形<rt>かたち</rt></ruby>…どこが<ruby>似<rt>に</rt></ruby>てる？</div>
+          <div class="try-item">🌱 <ruby>枝豆<rt>えだまめ</rt></ruby>の<ruby>種<rt>たね</rt></ruby>をプランターで<ruby>育<rt>そだ</rt></ruby>ててみよう！</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- KIDS SECTION -->
+    <div class="kids-section">
+      <div class="kid-card tecchan">
+        <div class="kid-ribbon">🐥 てっちゃん（5さい）のコーナー</div>
+        <div class="kid-content">
+          えだまめのなかに「おいしくなれ！」っていう おてがみがはいってるんだって。そのおてがみのおかげで、あまくておいしいまめになるんだよ🫘✨
+        </div>
+      </div>
+      <div class="kid-card taro">
+        <div class="kid-ribbon">🌱 たろう（7さい）のコーナー</div>
+        <div class="kid-content">
+          <ruby>山形<rt>やまがた</rt></ruby>の「だだちゃ<ruby>豆<rt>まめ</rt></ruby>」には、おいしさを<ruby>決<rt>き</rt></ruby>める<ruby>遺伝子<rt>いでんし</rt></ruby>があるんだって！この<ruby>遺伝子<rt>いでんし</rt></ruby>のおかげで、うま<ruby>味<rt>み</rt></ruby>がいっぱいの<ruby>枝豆<rt>えだまめ</rt></ruby>になるみたいだね🫘
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TRIVIA BAR -->
+  <div class="trivia-bar">
+    💜 <ruby>豆知識<rt>まめちしき</rt></ruby>：「だだちゃ」は<ruby>山形県<rt>やまがたけん</rt></ruby><ruby>庄内<rt>しょうない</rt></ruby><ruby>地方<rt>ちほう</rt></ruby>の<ruby>方言<rt>ほうげん</rt></ruby>で「おとうさん」という<ruby>意味<rt>いみ</rt></ruby>。おとうさんが<ruby>大好<rt>だいす</rt></ruby>きな<ruby>豆<rt>まめ</rt></ruby>だから「だだちゃ<ruby>豆<rt>まめ</rt></ruby>」になったよ！
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <span><ruby>出典<rt>しゅってん</rt></ruby>：<ruby>山形大学<rt>やまがただいがく</rt></ruby> <ruby>研究<rt>けんきゅう</rt></ruby>プレスリリース（2026<ruby>年<rt>ねん</rt></ruby>4<ruby>月<rt>がつ</rt></ruby>1<ruby>日<rt>にち</rt></ruby>）</span>
+    <span class="footer-love">📰 <ruby>豊田<rt>とよだ</rt></ruby>こども<ruby>新聞<rt>しんぶん</rt></ruby> ｜ <ruby>元洋<rt>もとひろ</rt></ruby>パパより❤️</span>
+  </div>
+</div>
+</body>
+</html>

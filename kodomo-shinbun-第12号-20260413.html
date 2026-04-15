@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>豊田こども新聞 第12号</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;900&family=Noto+Serif+JP:wght@700;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --header-dark: #1B2A4A;
+    --header-mid: #2196F3;
+    --yellow-accent: #F4D03F;
+    --box-blue-bg: #EBF5FB;
+    --box-blue-border: #2196F3;
+    --box-yellow-bg: #FFF9C4;
+    --box-yellow-border: #FF9800;
+    --box-orange: #FF9800;
+    --box-tecchan-bg: #FFF8E1;
+    --box-taro-bg: #E8F5E9;
+    --box-taro-border: #4CAF50;
+    --box-apply-bg: #E8F5E9;
+    --box-apply-border: #4CAF50;
+    --footer-bg: #1B2A4A;
+    --text-dark: #1a1a2e;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  ruby { ruby-align: center; }
+  rt { font-size: 0.5em; color: inherit; }
+
+  body {
+    font-family: 'Noto Sans JP', 'Hiragino Kaku Gothic ProN', 'Yu Gothic', sans-serif;
+    background: #f0f0f0;
+    color: var(--text-dark);
+    line-height: 1.6;
+  }
+
+  .page {
+    width: 210mm;
+    height: 297mm;
+    margin: 0 auto;
+    background: #fff;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    box-shadow: 0 2px 20px rgba(0,0,0,0.15);
+  }
+
+  /* MASTHEAD */
+  .masthead {
+    background: var(--header-dark);
+    color: white;
+    padding: 10px 20px 8px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .masthead-title {
+    font-family: 'Noto Serif JP', serif;
+    font-size: 30px;
+    font-weight: 900;
+    color: var(--yellow-accent);
+    letter-spacing: 3px;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+  }
+  .masthead-right {
+    text-align: right;
+    font-size: 11px;
+    line-height: 1.5;
+  }
+  .masthead-issue {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--yellow-accent);
+  }
+  .masthead-sub {
+    font-size: 10px;
+    opacity: 0.85;
+    letter-spacing: 2px;
+  }
+
+  /* COLOR LINE */
+  .color-line {
+    height: 4px;
+    background: linear-gradient(90deg, #FF6B6B, #FF9800, #F4D03F, #4CAF50, #2196F3, #9C27B0);
+  }
+
+  /* DATE BAR */
+  .date-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 5px 20px;
+    background: #F8F9FA;
+    border-bottom: 1px solid #E0E0E0;
+    font-size: 11px;
+  }
+  .genre-badge {
+    background: #E53935;
+    color: white;
+    padding: 2px 10px;
+    border-radius: 12px;
+    font-size: 10px;
+    font-weight: 700;
+  }
+
+  /* CONTENT */
+  .content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 8px 16px 4px;
+    gap: 6px;
+  }
+
+  /* HEADLINE */
+  .headline {
+    font-family: 'Noto Serif JP', serif;
+    font-size: 18px;
+    font-weight: 900;
+    color: var(--header-dark);
+    border-bottom: 3px double var(--header-dark);
+    padding-bottom: 4px;
+    line-height: 1.4;
+  }
+
+  /* TOP SECTION */
+  .top-section {
+    display: flex;
+    gap: 12px;
+  }
+  .article-body {
+    flex: 3;
+    font-size: 11px;
+    line-height: 1.75;
+  }
+  .article-body p { margin-bottom: 4px; }
+  .point-list {
+    list-style: none;
+    padding: 0;
+    margin: 4px 0;
+  }
+  .point-list li {
+    padding: 2px 0 2px 20px;
+    position: relative;
+    font-size: 10.5px;
+    line-height: 1.6;
+  }
+  .point-list li::before {
+    content: attr(data-num);
+    position: absolute;
+    left: 0;
+    top: 2px;
+    background: var(--header-dark);
+    color: white;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    font-size: 9px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .side-panel {
+    flex: 2;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  #illust-area {
+    background: linear-gradient(135deg, #EBF5FB, #E8F5E9);
+    border-radius: 10px;
+    padding: 10px;
+    text-align: center;
+    border: 2px dashed #90CAF9;
+  }
+  .emoji-big { font-size: 48px; line-height: 1.2; }
+  .emoji-arrow { font-size: 20px; }
+  .emoji-mid { font-size: 36px; }
+  .caption {
+    font-size: 9.5px;
+    color: #555;
+    margin-top: 2px;
+    line-height: 1.4;
+  }
+
+  .discovery-box {
+    background: var(--box-yellow-bg);
+    border-left: 4px solid var(--box-orange);
+    border-radius: 6px;
+    padding: 6px 8px;
+    font-size: 10px;
+    line-height: 1.6;
+  }
+  .discovery-box b { color: #E65100; }
+
+  /* MID SECTION */
+  .mid-section {
+    flex: 1;
+    display: flex;
+    gap: 8px;
+    min-height: 0;
+  }
+  .mid-col {
+    flex: 1;
+    border-radius: 8px;
+    padding: 8px;
+    display: flex;
+    flex-direction: column;
+    font-size: 10.5px;
+    line-height: 1.65;
+    overflow: hidden;
+  }
+  .mid-col h3 {
+    font-size: 11.5px;
+    margin-bottom: 4px;
+    font-weight: 900;
+  }
+  .col-explain {
+    background: #FFF8E1;
+    border: 2px solid var(--box-orange);
+  }
+  .col-explain h3 { color: #E65100; }
+
+  .col-quiz {
+    background: var(--box-blue-bg);
+    border: 2px solid var(--box-blue-border);
+  }
+  .col-quiz h3 { color: #1565C0; }
+  .quiz-q { font-weight: 700; margin-bottom: 3px; }
+  .quiz-a {
+    background: white;
+    border-radius: 4px;
+    padding: 3px 6px;
+    margin-top: 3px;
+    font-size: 10px;
+    border: 1px dashed #90CAF9;
+  }
+
+  .col-try {
+    background: var(--box-apply-bg);
+    border: 2px solid var(--box-apply-border);
+  }
+  .col-try h3 { color: #2E7D32; }
+  .try-item {
+    padding: 1px 0 1px 14px;
+    position: relative;
+    font-size: 10px;
+  }
+  .try-item::before {
+    content: "💡";
+    position: absolute;
+    left: 0;
+    font-size: 10px;
+  }
+
+  /* KIDS SECTION */
+  .kids-section {
+    display: flex;
+    gap: 8px;
+  }
+  .kid-card {
+    flex: 1;
+    border-radius: 8px;
+    padding: 0;
+    overflow: hidden;
+    font-size: 11.5px;
+    line-height: 1.7;
+  }
+  .kid-ribbon {
+    padding: 3px 10px;
+    font-weight: 900;
+    font-size: 11px;
+    color: white;
+  }
+  .kid-body {
+    padding: 6px 10px;
+  }
+  .tecchan .kid-ribbon { background: var(--box-orange); }
+  .tecchan .kid-body { background: var(--box-tecchan-bg); }
+  .tecchan { border: 2px solid var(--box-orange); }
+
+  .taro .kid-ribbon { background: var(--box-taro-border); }
+  .taro .kid-body { background: var(--box-taro-bg); }
+  .taro { border: 2px solid var(--box-taro-border); }
+
+  /* TRIVIA BAR */
+  .trivia-bar {
+    background: #F5EEF8;
+    padding: 5px 20px;
+    font-size: 10px;
+    color: #6A1B9A;
+    text-align: center;
+    font-weight: 700;
+  }
+
+  /* FOOTER */
+  .footer {
+    background: var(--footer-bg);
+    color: white;
+    padding: 6px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 9px;
+  }
+  .footer-love {
+    color: var(--yellow-accent);
+    font-weight: 700;
+  }
+
+  @media print {
+    @page {
+      size: A4;
+      margin: 0;
+    }
+    * {
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+    body {
+      margin: 0;
+      padding: 0;
+      background: white;
+    }
+    .page {
+      width: 100%;
+      height: 100%;
+      box-shadow: none;
+      border-radius: 0;
+    }
+  }
+</style>
+</head>
+<body>
+
+<div class="page">
+  <!-- MASTHEAD -->
+  <div class="masthead">
+    <div>
+      <div class="masthead-title">📰 <ruby>豊田<rt>とよだ</rt></ruby>こども<ruby>新聞<rt>しんぶん</rt></ruby></div>
+      <div class="masthead-sub">🔬 365<ruby>日<rt>にち</rt></ruby>サイエンス</div>
+    </div>
+    <div class="masthead-right">
+      <div class="masthead-issue"><ruby>第<rt>だい</rt></ruby>12<ruby>号<rt>ごう</rt></ruby></div>
+      <div>まいにち <ruby>発見<rt>はっけん</rt></ruby>！ まいにち ワクワク！</div>
+    </div>
+  </div>
+
+  <!-- COLOR LINE -->
+  <div class="color-line"></div>
+
+  <!-- DATE BAR -->
+  <div class="date-bar">
+    <span>2026<ruby>年<rt>ねん</rt></ruby>4<ruby>月<rt>がつ</rt></ruby>13<ruby>日<rt>にち</rt></ruby>（<ruby>月曜日<rt>げつようび</rt></ruby>）</span>
+    <span class="genre-badge">🏥 <ruby>医学<rt>いがく</rt></ruby>・<ruby>健康<rt>けんこう</rt></ruby></span>
+    <span><ruby>発行<rt>はっこう</rt></ruby>：<ruby>豊田<rt>とよだ</rt></ruby><ruby>元洋<rt>もとひろ</rt></ruby></span>
+  </div>
+
+  <!-- CONTENT -->
+  <div class="content">
+
+    <!-- HEADLINE -->
+    <div class="headline">
+      🧬 <ruby>世界初<rt>せかいはつ</rt></ruby>！<ruby>赤<rt>あか</rt></ruby>ちゃんの<ruby>遺伝子<rt>いでんし</rt></ruby>を「はさみ」で<ruby>直<rt>なお</rt></ruby>した！ ── CRISPR<ruby>治療<rt>ちりょう</rt></ruby>で<ruby>命<rt>いのち</rt></ruby>を<ruby>救<rt>すく</rt></ruby>う
+    </div>
+
+    <!-- TOP SECTION -->
+    <div class="top-section">
+      <div class="article-body">
+        <p>
+          アメリカのフィラデルフィア<ruby>小児<rt>しょうに</rt></ruby><ruby>病院<rt>びょういん</rt></ruby>で、<ruby>生<rt>う</rt></ruby>まれつき<ruby>重<rt>おも</rt></ruby>い<ruby>病気<rt>びょうき</rt></ruby>をもった<ruby>赤<rt>あか</rt></ruby>ちゃん「KJ」くんに、<ruby>世界<rt>せかい</rt></ruby>で<ruby>初<rt>はじ</rt></ruby>めて<ruby>個人専用<rt>こじんせんよう</rt></ruby>のCRISPR<ruby>遺伝子<rt>いでんし</rt></ruby><ruby>治療<rt>ちりょう</rt></ruby>が<ruby>行<rt>おこな</rt></ruby>われました。
+        </p>
+        <ul class="point-list">
+          <li data-num="1">KJくんは「CPS1<ruby>欠損症<rt>けっそんしょう</rt></ruby>」という<ruby>病気<rt>びょうき</rt></ruby>で、<ruby>体<rt>からだ</rt></ruby>の<ruby>中<rt>なか</rt></ruby>の<ruby>毒<rt>どく</rt></ruby>（アンモニア）をうまく<ruby>外<rt>そと</rt></ruby>に<ruby>出<rt>だ</rt></ruby>せない<ruby>状態<rt>じょうたい</rt></ruby>でした。<ruby>赤<rt>あか</rt></ruby>ちゃんの<ruby>半分<rt>はんぶん</rt></ruby>が<ruby>命<rt>いのち</rt></ruby>を<ruby>落<rt>お</rt></ruby>とす<ruby>怖<rt>こわ</rt></ruby>い<ruby>病気<rt>びょうき</rt></ruby>です。</li>
+          <li data-num="2"><ruby>科学者<rt>かがくしゃ</rt></ruby>たちは、たった6ヶ<ruby>月<rt>げつ</rt></ruby>でKJくん<ruby>専用<rt>せんよう</rt></ruby>の「<ruby>遺伝子<rt>いでんし</rt></ruby>のはさみ（CRISPR）」を<ruby>設計<rt>せっけい</rt></ruby>。<ruby>壊<rt>こわ</rt></ruby>れた<ruby>遺伝子<rt>いでんし</rt></ruby>をピンポイントで<ruby>修正<rt>しゅうせい</rt></ruby>しました。</li>
+          <li data-num="3"><ruby>治療後<rt>ちりょうご</rt></ruby>、KJくんの<ruby>症状<rt>しょうじょう</rt></ruby>は<ruby>劇的<rt>げきてき</rt></ruby>に<ruby>改善<rt>かいぜん</rt></ruby>！ <ruby>重症<rt>じゅうしょう</rt></ruby>だった<ruby>病気<rt>びょうき</rt></ruby>が<ruby>軽<rt>かる</rt></ruby>い<ruby>状態<rt>じょうたい</rt></ruby>になり、<ruby>退院<rt>たいいん</rt></ruby>できるまでに<ruby>回復<rt>かいふく</rt></ruby>しました。</li>
+        </ul>
+      </div>
+      <div class="side-panel">
+        <div id="illust-area">
+          <!-- 絵文字イラスト（後からMidjourney画像に差し替え可能） -->
+          <div class="emoji-big">👶🧬</div>
+          <div class="emoji-arrow">✂️✨</div>
+          <div class="emoji-mid">💪😊</div>
+          <p class="caption"><ruby>遺伝子<rt>いでんし</rt></ruby>の「はさみ」で<br><ruby>病気<rt>びょうき</rt></ruby>をチョキン！と<ruby>直<rt>なお</rt></ruby>す</p>
+        </div>
+        <div class="discovery-box">
+          <b>▶ <ruby>発見<rt>はっけん</rt></ruby>！</b><br>
+          CRISPRは「<ruby>遺伝子<rt>いでんし</rt></ruby>のはさみ」。<ruby>体<rt>からだ</rt></ruby>の<ruby>設計図<rt>せっけいず</rt></ruby>（DNA）の<ruby>間違<rt>まちが</rt></ruby>った<ruby>部分<rt>ぶぶん</rt></ruby>だけを<ruby>切<rt>き</rt></ruby>って<ruby>正<rt>ただ</rt></ruby>しく<ruby>書<rt>か</rt></ruby>き<ruby>換<rt>か</rt></ruby>える<ruby>技術<rt>ぎじゅつ</rt></ruby>。まるで<ruby>消<rt>け</rt></ruby>しゴムで<ruby>間違<rt>まちが</rt></ruby>いを<ruby>消<rt>け</rt></ruby>して<ruby>正解<rt>せいかい</rt></ruby>を<ruby>書<rt>か</rt></ruby>くみたい！
+        </div>
+      </div>
+    </div>
+
+    <!-- MID SECTION -->
+    <div class="mid-section">
+      <div class="mid-col col-explain">
+        <h3>📖 やさしく<ruby>解説<rt>かいせつ</rt></ruby></h3>
+        <div>
+          <ruby>人<rt>ひと</rt></ruby>の<ruby>体<rt>からだ</rt></ruby>には「DNA」という<ruby>設計図<rt>せっけいず</rt></ruby>があります。この<ruby>設計図<rt>せっけいず</rt></ruby>に<ruby>間違<rt>まちが</rt></ruby>いがあると<ruby>病気<rt>びょうき</rt></ruby>になることがあります。KJくんの<ruby>場合<rt>ばあい</rt></ruby>、<ruby>肝臓<rt>かんぞう</rt></ruby>で<ruby>毒<rt>どく</rt></ruby>を<ruby>分解<rt>ぶんかい</rt></ruby>する<ruby>酵素<rt>こうそ</rt></ruby>がうまく<ruby>作<rt>つく</rt></ruby>れませんでした。<ruby>科学者<rt>かがくしゃ</rt></ruby>はCRISPRという<ruby>道具<rt>どうぐ</rt></ruby>でDNAの<ruby>間違<rt>まちが</rt></ruby>いを<ruby>見<rt>み</rt></ruby>つけ、<ruby>正<rt>ただ</rt></ruby>しい<ruby>文字<rt>もじ</rt></ruby>に<ruby>書<rt>か</rt></ruby>き<ruby>換<rt>か</rt></ruby>えました。まさに「<ruby>体<rt>からだ</rt></ruby>の<ruby>中<rt>なか</rt></ruby>のお<ruby>医者<rt>いしゃ</rt></ruby>さん」です！
+        </div>
+      </div>
+      <div class="mid-col col-quiz">
+        <h3>❓ クイズ</h3>
+        <div class="quiz-q">CRISPRは<ruby>何<rt>なに</rt></ruby>のことを「はさみ」に<ruby>例<rt>たと</rt></ruby>えている？</div>
+        <div>A: <ruby>紙<rt>かみ</rt></ruby>を<ruby>切<rt>き</rt></ruby>るはさみ<br>
+        B: DNAを<ruby>切<rt>き</rt></ruby>るはさみ<br>
+        C: <ruby>髪<rt>かみ</rt></ruby>を<ruby>切<rt>き</rt></ruby>るはさみ</div>
+        <div class="quiz-a">💡 <ruby>答<rt>こた</rt></ruby>え：<b>B</b>！<br>DNAの<ruby>悪<rt>わる</rt></ruby>い<ruby>部分<rt>ぶぶん</rt></ruby>だけを<ruby>切<rt>き</rt></ruby>って<ruby>直<rt>なお</rt></ruby>せるよ！</div>
+      </div>
+      <div class="mid-col col-try">
+        <h3>🌟 やってみよう！</h3>
+        <div class="try-item"><ruby>自分<rt>じぶん</rt></ruby>の<ruby>体<rt>からだ</rt></ruby>の「すごいところ」を3つ<ruby>探<rt>さが</rt></ruby>してみよう！<ruby>目<rt>め</rt></ruby>が<ruby>見<rt>み</rt></ruby>える、<ruby>手<rt>て</rt></ruby>が<ruby>動<rt>うご</rt></ruby>く…ぜんぶDNAの<ruby>設計図<rt>せっけいず</rt></ruby>のおかげ！</div>
+        <div class="try-item"><ruby>折<rt>お</rt></ruby>り<ruby>紙<rt>がみ</rt></ruby>で「DNA」を<ruby>作<rt>つく</rt></ruby>ってみよう！<ruby>長<rt>なが</rt></ruby>い<ruby>紙<rt>かみ</rt></ruby>をねじるとDNAの<ruby>形<rt>かたち</rt></ruby>（<ruby>二重<rt>にじゅう</rt></ruby>らせん）になるよ。</div>
+        <div class="try-item">おうちの<ruby>人<rt>ひと</rt></ruby>と「もし<ruby>体<rt>からだ</rt></ruby>の<ruby>設計図<rt>せっけいず</rt></ruby>を<ruby>書<rt>か</rt></ruby>き<ruby>換<rt>か</rt></ruby>えられたら？」を<ruby>話<rt>はな</rt></ruby>してみよう！</div>
+      </div>
+    </div>
+
+    <!-- KIDS SECTION -->
+    <div class="kids-section">
+      <div class="kid-card tecchan">
+        <div class="kid-ribbon">🐥 てっちゃん（5さい）</div>
+        <div class="kid-body">
+          あかちゃんのからだのなかに「せっけいず」があるんだって。まちがいがあったら、ちいさな「はさみ」でちょきんとなおせるの！すごいね✨
+        </div>
+      </div>
+      <div class="kid-card taro">
+        <div class="kid-ribbon">🌱 たろう（7さい）</div>
+        <div class="kid-body">
+          <ruby>体<rt>からだ</rt></ruby>の<ruby>中<rt>なか</rt></ruby>にある「DNA」っていう<ruby>設計図<rt>せっけいず</rt></ruby>の<ruby>間違<rt>まちが</rt></ruby>いを、CRISPRっていう<ruby>道具<rt>どうぐ</rt></ruby>で<ruby>直<rt>なお</rt></ruby>したんだって。<ruby>赤<rt>あか</rt></ruby>ちゃんが<ruby>元気<rt>げんき</rt></ruby>になってよかったね😊
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- TRIVIA BAR -->
+  <div class="trivia-bar">
+    🔮 <ruby>豆知識<rt>まめちしき</rt></ruby>：<ruby>人間<rt>にんげん</rt></ruby>のDNAをぜんぶつなげると、<ruby>太陽<rt>たいよう</rt></ruby>まで<ruby>往復<rt>おうふく</rt></ruby>できるくらいの<ruby>長<rt>なが</rt></ruby>さ（<ruby>約<rt>やく</rt></ruby>600<ruby>億<rt>おく</rt></ruby>km）になるよ！
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <span><ruby>出典<rt>しゅってん</rt></ruby>：Children's Hospital of Philadelphia / Nature (2025) ── CRISPR<ruby>個別化<rt>こべつか</rt></ruby><ruby>遺伝子<rt>いでんし</rt></ruby><ruby>治療<rt>ちりょう</rt></ruby></span>
+    <span class="footer-love">📰 <ruby>豊田<rt>とよだ</rt></ruby>こども<ruby>新聞<rt>しんぶん</rt></ruby> ｜ <ruby>元洋<rt>もとひろ</rt></ruby>パパより❤️</span>
+  </div>
+</div>
+
+</body>
+</html>

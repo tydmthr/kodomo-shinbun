@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>豊田こども新聞 第14号</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;900&family=Noto+Serif+JP:wght@700;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --header-dark: #1B2A4A;
+    --gold: #F4D03F;
+    --box-yellow-bg: #FFF8E1;
+    --box-yellow-border: #FF9800;
+    --box-blue-bg: #EBF5FB;
+    --box-blue-border: #2196F3;
+    --box-green-bg: #E8F5E9;
+    --box-green-border: #4CAF50;
+    --box-purple-bg: #F5EEF8;
+    --text-dark: #1a1a2e;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Noto Sans JP', 'Hiragino Kaku Gothic ProN', sans-serif;
+    background: #f0f0f0;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+  ruby { ruby-align: center; }
+  rt { font-size: 0.5em; color: inherit; }
+
+  .page {
+    width: 210mm;
+    height: 297mm;
+    max-height: 297mm;
+    margin: 0 auto;
+    background: #fff;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    page-break-inside: avoid;
+    break-inside: avoid;
+    box-shadow: 0 2px 20px rgba(0,0,0,0.15);
+  }
+
+  /* MASTHEAD */
+  .masthead {
+    background: var(--header-dark);
+    padding: 7px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .masthead-title {
+    font-family: 'Noto Serif JP', serif;
+    font-size: 28px;
+    font-weight: 900;
+    color: var(--gold);
+    letter-spacing: 3px;
+  }
+  .masthead-right {
+    text-align: right;
+    color: #fff;
+  }
+  .masthead-issue {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--gold);
+  }
+  .masthead-slogan {
+    font-size: 9px;
+    color: #B0BEC5;
+    letter-spacing: 1px;
+  }
+
+  /* COLOR LINE */
+  .color-line {
+    height: 4px;
+    background: linear-gradient(90deg, #E74C3C, #F39C12, #F1C40F, #2ECC71, #3498DB, #9B59B6);
+  }
+
+  /* DATE BAR */
+  .date-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 3px 20px;
+    background: #FAFAFA;
+    border-bottom: 1px solid #E0E0E0;
+    font-size: 10px;
+    color: #555;
+  }
+  .genre-badge {
+    background: #2196F3;
+    color: #fff;
+    padding: 1px 10px;
+    border-radius: 10px;
+    font-size: 9.5px;
+    font-weight: 700;
+  }
+
+  /* CONTENT */
+  .content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 6px 14px;
+    overflow: hidden;
+  }
+
+  /* HEADLINE */
+  .headline {
+    font-family: 'Noto Serif JP', serif;
+    font-size: 17px;
+    font-weight: 900;
+    line-height: 1.4;
+    color: var(--text-dark);
+    padding-bottom: 4px;
+    margin-bottom: 5px;
+    border-bottom: 3px double #1B2A4A;
+  }
+
+  /* TOP SECTION */
+  .top-section {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 5px;
+  }
+  .article-body {
+    flex: 3;
+    font-size: 10px;
+    line-height: 1.65;
+    color: #333;
+  }
+  .article-body p { margin-bottom: 3px; }
+  .photo-side {
+    flex: 2;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+  .photo-frame {
+    border: 2px solid #ddd;
+    border-radius: 6px;
+    overflow: hidden;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+  }
+  .photo-frame img {
+    width: 100%;
+    max-height: 110px;
+    object-fit: cover;
+    display: block;
+  }
+  .photo-caption {
+    font-size: 8px;
+    color: #888;
+    text-align: center;
+    padding: 2px;
+  }
+  .discovery-box {
+    background: #EDE7F6;
+    border: 1.5px solid #9C27B0;
+    border-radius: 6px;
+    padding: 5px 8px;
+    font-size: 9.5px;
+    line-height: 1.6;
+  }
+  .discovery-box-title {
+    font-weight: 900;
+    color: #6A1B9A;
+    font-size: 10px;
+    margin-bottom: 2px;
+  }
+
+  /* MID SECTION */
+  .mid-section {
+    flex: 1;
+    min-height: 0;
+    overflow: hidden;
+    display: flex;
+    gap: 7px;
+    margin-bottom: 5px;
+  }
+  .mid-box {
+    flex: 1;
+    border-radius: 6px;
+    padding: 6px 8px;
+    font-size: 9.5px;
+    line-height: 1.6;
+    overflow: hidden;
+  }
+  .mid-box-title {
+    font-size: 10.5px;
+    font-weight: 900;
+    margin-bottom: 3px;
+  }
+  .mid-explain {
+    background: var(--box-yellow-bg);
+    border: 1.5px solid var(--box-yellow-border);
+  }
+  .mid-explain .mid-box-title { color: #E65100; }
+  .mid-quiz {
+    background: var(--box-blue-bg);
+    border: 1.5px solid var(--box-blue-border);
+  }
+  .mid-quiz .mid-box-title { color: #1565C0; }
+  .mid-try {
+    background: var(--box-green-bg);
+    border: 1.5px solid var(--box-green-border);
+  }
+  .mid-try .mid-box-title { color: #2E7D32; }
+
+  /* KIDS SECTION */
+  .kids-section {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 4px;
+  }
+  .kid-card {
+    flex: 1;
+    border-radius: 8px;
+    overflow: hidden;
+    font-size: 10.5px;
+    line-height: 1.6;
+  }
+  .kid-ribbon {
+    padding: 3px 10px;
+    font-size: 10.5px;
+    font-weight: 900;
+    color: #fff;
+  }
+  .tecchan-ribbon { background: #FF9800; }
+  .taro-ribbon { background: #4CAF50; }
+  .kid-content {
+    padding: 5px 9px;
+  }
+  .tecchan-content { background: #FFF8E1; }
+  .taro-content { background: #E8F5E9; }
+
+  /* TRIVIA BAR */
+  .trivia-bar {
+    background: var(--box-purple-bg);
+    padding: 4px 20px;
+    font-size: 9.5px;
+    color: #6A1B9A;
+    text-align: center;
+  }
+
+  /* FOOTER */
+  .footer {
+    background: var(--header-dark);
+    padding: 4px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 8.5px;
+    color: #B0BEC5;
+  }
+  .footer-love { color: var(--gold); }
+
+  @media print {
+    @page { size: A4; margin: 0; }
+    html, body { height: 297mm; overflow: hidden; }
+    body { background: #fff; }
+    .page { max-height: 296mm; box-shadow: none; border-radius: 0; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- MASTHEAD -->
+  <div class="masthead">
+    <div class="masthead-title">📰 <ruby>豊田<rt>とよだ</rt></ruby>こども<ruby>新聞<rt>しんぶん</rt></ruby></div>
+    <div class="masthead-right">
+      <div class="masthead-issue"><ruby>第<rt>だい</rt></ruby>14<ruby>号<rt>ごう</rt></ruby></div>
+      <div class="masthead-slogan">365<ruby>日<rt>にち</rt></ruby>サイエンス</div>
+    </div>
+  </div>
+
+  <!-- COLOR LINE -->
+  <div class="color-line"></div>
+
+  <!-- DATE BAR -->
+  <div class="date-bar">
+    <span>2026<ruby>年<rt>ねん</rt></ruby>4<ruby>月<rt>がつ</rt></ruby>15<ruby>日<rt>にち</rt></ruby>（<ruby>水曜日<rt>すいようび</rt></ruby>）</span>
+    <span class="genre-badge">🤖 AI・テクノロジー</span>
+    <span><ruby>発行<rt>はっこう</rt></ruby>：<ruby>豊田<rt>とよだ</rt></ruby><ruby>元洋<rt>もとひろ</rt></ruby></span>
+  </div>
+
+  <!-- CONTENT -->
+  <div class="content">
+
+    <!-- HEADLINE -->
+    <div class="headline">
+      🧠 AIが「<ruby>科学者<rt>かがくしゃ</rt></ruby>」になる<ruby>時代<rt>じだい</rt></ruby>がやってきた！ ─ <ruby>第<rt>だい</rt></ruby>5の<ruby>科学<rt>かがく</rt></ruby><ruby>革命<rt>かくめい</rt></ruby>
+    </div>
+
+    <!-- TOP SECTION -->
+    <div class="top-section">
+      <div class="article-body">
+        <p>🔬 <ruby>世界中<rt>せかいじゅう</rt></ruby>の<ruby>研究者<rt>けんきゅうしゃ</rt></ruby>たちが「AIが<ruby>科学<rt>かがく</rt></ruby>の<ruby>新<rt>あたら</rt></ruby>しい<ruby>時代<rt>じだい</rt></ruby>をひらいた」と<ruby>発表<rt>はっぴょう</rt></ruby>しました。<ruby>科学雑誌<rt>かがくざっし</rt></ruby>「PLOS Biology」にのった<ruby>論文<rt>ろんぶん</rt></ruby>「The Fifth Era of Science（<ruby>第<rt>だい</rt></ruby>5の<ruby>科学<rt>かがく</rt></ruby><ruby>時代<rt>じだい</rt></ruby>）」では、AIが<ruby>自分<rt>じぶん</rt></ruby>で<ruby>考<rt>かんが</rt></ruby>えて<ruby>実験<rt>じっけん</rt></ruby>して<ruby>発見<rt>はっけん</rt></ruby>できるようになったと<ruby>報告<rt>ほうこく</rt></ruby>しています。</p>
+        <p>💡 これまでの<ruby>科学<rt>かがく</rt></ruby>は、①<ruby>観察<rt>かんさつ</rt></ruby>の<ruby>時代<rt>じだい</rt></ruby> ②<ruby>実験<rt>じっけん</rt></ruby>の<ruby>時代<rt>じだい</rt></ruby> ③<ruby>計算<rt>けいさん</rt></ruby>の<ruby>時代<rt>じだい</rt></ruby> ④ビッグデータの<ruby>時代<rt>じだい</rt></ruby> と<ruby>進化<rt>しんか</rt></ruby>してきました。そして<ruby>今<rt>いま</rt></ruby>、<ruby>第<rt>だい</rt></ruby>5の<ruby>時代<rt>じだい</rt></ruby>として「AI<ruby>科学者<rt>かがくしゃ</rt></ruby>」が<ruby>登場<rt>とうじょう</rt></ruby>したのです！</p>
+        <p>🚀 AIは<ruby>人間<rt>にんげん</rt></ruby>が<ruby>何年<rt>なんねん</rt></ruby>もかかる<ruby>研究<rt>けんきゅう</rt></ruby>を、ほんの<ruby>数日<rt>すうじつ</rt></ruby>でこなすことができます。<ruby>新<rt>あたら</rt></ruby>しい<ruby>薬<rt>くすり</rt></ruby>や<ruby>材料<rt>ざいりょう</rt></ruby>の<ruby>発見<rt>はっけん</rt></ruby>、<ruby>宇宙<rt>うちゅう</rt></ruby>のなぞの<ruby>解明<rt>かいめい</rt></ruby>など、わくわくする<ruby>未来<rt>みらい</rt></ruby>がすぐそこまで<ruby>来<rt>き</rt></ruby>ています。</p>
+      </div>
+      <div class="photo-side">
+        <div id="illust-area" class="photo-frame">
+          <img src="https://journals.plos.org/plosbiology/article/figure/image?size=medium&id=10.1371/journal.pbio.3003230.g001" alt="第5の科学時代の図解">
+          <div class="photo-caption">📷 PLOS Biology「<ruby>第<rt>だい</rt></ruby>5の<ruby>科学<rt>かがく</rt></ruby><ruby>時代<rt>じだい</rt></ruby>」<ruby>論文<rt>ろんぶん</rt></ruby>より</div>
+        </div>
+        <div class="discovery-box">
+          <div class="discovery-box-title">🌟 3つのポイント</div>
+          ❶ AIが<ruby>科学<rt>かがく</rt></ruby>の「<ruby>第<rt>だい</rt></ruby>5の<ruby>時代<rt>じだい</rt></ruby>」をつくった<br>
+          ❷ <ruby>自分<rt>じぶん</rt></ruby>で<ruby>考<rt>かんが</rt></ruby>えて<ruby>実験<rt>じっけん</rt></ruby>する「AI<ruby>科学者<rt>かがくしゃ</rt></ruby>」が<ruby>誕生<rt>たんじょう</rt></ruby><br>
+          ❸ <ruby>人間<rt>にんげん</rt></ruby>とAIが<ruby>力<rt>ちから</rt></ruby>をあわせる<ruby>未来<rt>みらい</rt></ruby>へ
+        </div>
+      </div>
+    </div>
+
+    <!-- MID SECTION -->
+    <div class="mid-section">
+      <div class="mid-box mid-explain">
+        <div class="mid-box-title">📖 もっとくわしく</div>
+        <ruby>科学<rt>かがく</rt></ruby>の<ruby>歴史<rt>れきし</rt></ruby>は<ruby>長<rt>なが</rt></ruby>い<ruby>旅<rt>たび</rt></ruby>です。まず<ruby>昔<rt>むかし</rt></ruby>の<ruby>人<rt>ひと</rt></ruby>は<ruby>空<rt>そら</rt></ruby>や<ruby>海<rt>うみ</rt></ruby>を「<ruby>見<rt>み</rt></ruby>る」ことで<ruby>学<rt>まな</rt></ruby>びました。<ruby>次<rt>つぎ</rt></ruby>に「<ruby>試<rt>ため</rt></ruby>してみる」<ruby>実験<rt>じっけん</rt></ruby>の<ruby>時代<rt>じだい</rt></ruby>が<ruby>来<rt>き</rt></ruby>ました。コンピュータができて「<ruby>計算<rt>けいさん</rt></ruby>」の<ruby>時代<rt>じだい</rt></ruby>に。インターネットで「データ」の<ruby>時代<rt>じだい</rt></ruby>に。そして<ruby>今<rt>いま</rt></ruby>、AIが<ruby>自分<rt>じぶん</rt></ruby>で<ruby>仮説<rt>かせつ</rt></ruby>を<ruby>立<rt>た</rt></ruby>てて<ruby>検証<rt>けんしょう</rt></ruby>する「AI<ruby>科学<rt>かがく</rt></ruby>」の<ruby>時代<rt>じだい</rt></ruby>がはじまりました！
+      </div>
+      <div class="mid-box mid-quiz">
+        <div class="mid-box-title">❓ クイズ</div>
+        <ruby>科学<rt>かがく</rt></ruby>の<ruby>歴史<rt>れきし</rt></ruby>で、AIの<ruby>前<rt>まえ</rt></ruby>の「<ruby>第<rt>だい</rt></ruby>4の<ruby>時代<rt>じだい</rt></ruby>」はなんの<ruby>時代<rt>じだい</rt></ruby>でしょう？<br><br>
+        <span style="font-weight:700;">A.</span> ロケットの<ruby>時代<rt>じだい</rt></ruby><br>
+        <span style="font-weight:700;">B.</span> ビッグデータの<ruby>時代<rt>じだい</rt></ruby><br>
+        <span style="font-weight:700;">C.</span> おかしの<ruby>時代<rt>じだい</rt></ruby><br><br>
+        <span style="font-size:8.5px;color:#666;"><ruby>答<rt>こた</rt></ruby>え：<span style="font-weight:700;">B</span>！ たくさんのデータを<ruby>集<rt>あつ</rt></ruby>めて<ruby>分析<rt>ぶんせき</rt></ruby>する<ruby>時代<rt>じだい</rt></ruby>でした 📊</span>
+      </div>
+      <div class="mid-box mid-try">
+        <div class="mid-box-title">💡 やってみよう！</div>
+        おうちでAI<ruby>体験<rt>たいけん</rt></ruby>をしてみよう！<br><br>
+        🔹 スマホの<ruby>音声<rt>おんせい</rt></ruby>アシスタント（SiriやGoogleアシスタント）に「<ruby>面白<rt>おもしろ</rt></ruby>い<ruby>科学<rt>かがく</rt></ruby>のこと<ruby>教<rt>おし</rt></ruby>えて」と<ruby>聞<rt>き</rt></ruby>いてみよう<br>
+        🔹 AIがどんなふうに<ruby>答<rt>こた</rt></ruby>えるか<ruby>観察<rt>かんさつ</rt></ruby>して、パパやママに<ruby>報告<rt>ほうこく</rt></ruby>しよう！
+      </div>
+    </div>
+
+    <!-- KIDS SECTION -->
+    <div class="kids-section">
+      <div class="kid-card">
+        <div class="kid-ribbon tecchan-ribbon">🐥 てっちゃん（5さい）のコーナー</div>
+        <div class="kid-content tecchan-content">
+          ロボットが じぶんで かんがえて じっけんできるように なったんだって！ すごいね～ 🤖✨
+        </div>
+      </div>
+      <div class="kid-card">
+        <div class="kid-ribbon taro-ribbon">🌱 たろう（7さい）のコーナー</div>
+        <div class="kid-content taro-content">
+          AIが<ruby>自分<rt>じぶん</rt></ruby>で<ruby>考<rt>かんが</rt></ruby>えて<ruby>実験<rt>じっけん</rt></ruby>する「AI<ruby>科学者<rt>かがくしゃ</rt></ruby>」が<ruby>生<rt>う</rt></ruby>まれたんだって。<ruby>人間<rt>にんげん</rt></ruby>とAIが<ruby>力<rt>ちから</rt></ruby>を<ruby>合<rt>あ</rt></ruby>わせたら、もっとすごい<ruby>発見<rt>はっけん</rt></ruby>ができるね！ 🧪🌟
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /content -->
+
+  <!-- TRIVIA BAR -->
+  <div class="trivia-bar">
+    💜 <ruby>豆知識<rt>まめちしき</rt></ruby>：<ruby>世界<rt>せかい</rt></ruby>で<ruby>初<rt>はじ</rt></ruby>めての「AI<ruby>科学者<rt>かがくしゃ</rt></ruby>」は、2025<ruby>年<rt>ねん</rt></ruby>に<ruby>新<rt>あたら</rt></ruby>しい<ruby>材料<rt>ざいりょう</rt></ruby>を<ruby>発見<rt>はっけん</rt></ruby>したよ！<ruby>人間<rt>にんげん</rt></ruby>なら10<ruby>年<rt>ねん</rt></ruby>かかる<ruby>研究<rt>けんきゅう</rt></ruby>を、たった2<ruby>週間<rt>しゅうかん</rt></ruby>でやったんだ 🏃💨
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <span><ruby>出典<rt>しゅってん</rt></ruby>：PLOS Biology「The Fifth Era of Science: Artificial Scientific Intelligence」(2025)</span>
+    <span class="footer-love">📰 <ruby>豊田<rt>とよだ</rt></ruby>こども<ruby>新聞<rt>しんぶん</rt></ruby> ｜ <ruby>元洋<rt>もとひろ</rt></ruby>パパより ❤️</span>
+  </div>
+
+</div>
+</body>
+</html>

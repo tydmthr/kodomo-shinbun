@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>豊田こども新聞 第1号</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --header-dark: #1565C0;
+    --header-mid: #2196F3;
+    --yellow-accent: #FFF176;
+    --box-blue-bg: #E8F4FD;
+    --box-blue-border: #2196F3;
+    --box-yellow-bg: #FFF9C4;
+    --box-yellow-border: #FF9800;
+    --box-orange: #FF9800;
+    --box-tecchan-bg: #FFF8E1;
+    --box-taro-bg: #E8F5E9;
+    --box-taro-border: #4CAF50;
+    --box-apply-bg: #E8F5E9;
+    --box-apply-border: #4CAF50;
+    --footer-bg: #1565C0;
+    --text-dark: #1a1a2e;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Noto Sans JP', 'Hiragino Kaku Gothic ProN', 'Yu Gothic', sans-serif;
+    color: var(--text-dark);
+    background: #f0f0f0;
+    display: flex;
+    justify-content: center;
+    padding: 0;
+  }
+  ruby { ruby-align: center; }
+  rt { font-size: 0.55em; color: inherit; }
+  .newspaper {
+    width: 210mm;
+    height: 297mm;
+    background: #fff;
+    box-shadow: 0 2px 20px rgba(0,0,0,0.15);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* ===== HEADER ===== */
+  .header {
+    background: linear-gradient(135deg, var(--header-dark), var(--header-mid));
+    color: #fff;
+    padding: 14px 24px 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .header-left { display: flex; align-items: center; gap: 12px; }
+  .header-mascot { font-size: 36px; }
+  .header-title { font-size: 36px; font-weight: 900; letter-spacing: 3px; text-shadow: 2px 2px 4px rgba(0,0,0,0.2); }
+  .header-right { text-align: right; font-size: 14px; line-height: 1.6; }
+  .header-issue {
+    display: inline-block;
+    background: var(--yellow-accent);
+    color: var(--header-dark);
+    font-weight: 900;
+    font-size: 14px;
+    padding: 2px 12px;
+    border-radius: 12px;
+    margin-bottom: 2px;
+  }
+
+  /* ===== COLOR BAR ===== */
+  .color-bar {
+    height: 6px;
+    background: linear-gradient(90deg, #FF6B6B, #FFD93D, #6BCB77, #4D96FF, #9B59B6);
+  }
+
+  /* ===== HEADLINE ===== */
+  .headline {
+    padding: 14px 24px 10px;
+    text-align: center;
+  }
+  .headline h1 {
+    font-size: 24px;
+    font-weight: 900;
+    color: var(--header-dark);
+    line-height: 1.5;
+    margin-bottom: 6px;
+  }
+  .field-badge {
+    display: inline-block;
+    background: var(--box-orange);
+    color: #fff;
+    font-size: 13px;
+    font-weight: 700;
+    padding: 3px 14px;
+    border-radius: 12px;
+  }
+
+  /* ===== MAIN ROW ===== */
+  .main-row {
+    display: flex;
+    padding: 8px 24px;
+    gap: 16px;
+    flex: 0 0 auto;
+  }
+  .points-box {
+    flex: 1;
+    background: var(--box-blue-bg);
+    border: 2.5px solid var(--box-blue-border);
+    border-radius: 14px;
+    padding: 12px 16px;
+  }
+  .points-box h2 {
+    font-size: 16px;
+    color: var(--header-mid);
+    margin-bottom: 8px;
+  }
+  .points-box ol {
+    padding-left: 22px;
+    font-size: 14px;
+    line-height: 1.7;
+  }
+  .points-box li { margin-bottom: 4px; }
+
+  /* ===== ILLUST ===== */
+  #illust-area {
+    width: 200px;
+    min-width: 200px;
+    background: linear-gradient(135deg, #E3F2FD, #F3E5F5);
+    border-radius: 14px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 12px;
+    text-align: center;
+  }
+  .emoji-big { font-size: 52px; line-height: 1.1; }
+  .badge-num {
+    display: inline-block;
+    background: #FF5722;
+    color: #fff;
+    font-weight: 900;
+    font-size: 18px;
+    padding: 2px 12px;
+    border-radius: 10px;
+    margin: 4px 0;
+  }
+  .arrow { font-size: 20px; margin: 2px 0; }
+  .emoji-mid { font-size: 36px; }
+  .caption { font-size: 12px; color: #555; line-height: 1.5; margin-top: 4px; font-weight: 700; }
+
+  /* ===== EXPLANATION ===== */
+  .explain-box {
+    margin: 8px 24px;
+    background: var(--box-yellow-bg);
+    border: 2.5px solid var(--box-yellow-border);
+    border-radius: 14px;
+    padding: 12px 18px;
+  }
+  .explain-box h2 {
+    font-size: 16px;
+    color: #E65100;
+    margin-bottom: 6px;
+  }
+  .explain-box p {
+    font-size: 14px;
+    line-height: 1.8;
+  }
+
+  /* ===== KIDS ROW ===== */
+  .kids-row {
+    display: flex;
+    padding: 8px 24px;
+    gap: 16px;
+  }
+  .kid-box {
+    flex: 1;
+    border-radius: 14px;
+    padding: 12px 14px;
+  }
+  .tecchan {
+    background: var(--box-tecchan-bg);
+    border: 2.5px solid var(--box-orange);
+  }
+  .taro {
+    background: var(--box-taro-bg);
+    border: 2.5px solid var(--box-taro-border);
+  }
+  .kid-box h3 { font-size: 15px; margin-bottom: 6px; }
+  .kid-box p { font-size: 15px; line-height: 1.7; }
+
+  /* ===== APPLICATION ===== */
+  .apply-box {
+    margin: 8px 24px;
+    background: var(--box-apply-bg);
+    border: 2.5px solid var(--box-apply-border);
+    border-radius: 14px;
+    padding: 12px 18px;
+  }
+  .apply-box h2 {
+    font-size: 16px;
+    color: #2E7D32;
+    margin-bottom: 6px;
+  }
+  .apply-box ul {
+    list-style: none;
+    font-size: 14px;
+    line-height: 1.8;
+  }
+  .apply-box li::before { content: "✅ "; }
+
+  /* ===== FOOTER ===== */
+  .footer {
+    margin-top: auto;
+    background: var(--footer-bg);
+    color: #fff;
+    padding: 10px 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 11px;
+  }
+
+  /* ===== PRINT ===== */
+  @media print {
+    @page { size: A4; margin: 8mm 6mm; }
+    * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    body { margin: 0; padding: 0; background: #fff; }
+    .newspaper { width: 100%; height: 100%; box-shadow: none; border-radius: 0; }
+  }
+</style>
+</head>
+<body>
+<div class="newspaper">
+
+  <!-- HEADER -->
+  <div class="header">
+    <div class="header-left">
+      <div class="header-mascot">📰🧒</div>
+      <div class="header-title"><ruby>豊田<rt>とよた</rt></ruby>こども<ruby>新聞<rt>しんぶん</rt></ruby></div>
+    </div>
+    <div class="header-right">
+      <div class="header-issue"><ruby>第<rt>だい</rt></ruby>1<ruby>号<rt>ごう</rt></ruby></div><br>
+      2026<ruby>年<rt>ねん</rt></ruby>3<ruby>月<rt>がつ</rt></ruby>23<ruby>日<rt>にち</rt></ruby>（<ruby>月曜日<rt>げつようび</rt></ruby>）
+    </div>
+  </div>
+
+  <!-- COLOR BAR -->
+  <div class="color-bar"></div>
+
+  <!-- HEADLINE -->
+  <div class="headline">
+    <h1>🛏️ <ruby>子<rt>こ</rt></ruby>どもの83％の<ruby>親<rt>おや</rt></ruby>が<br>「<ruby>十分<rt>じゅうぶん</rt></ruby><ruby>寝<rt>ね</rt></ruby>てる」と<ruby>思<rt>おも</rt></ruby>っているけど…<br><ruby>本当<rt>ほんとう</rt></ruby>に<ruby>足<rt>た</rt></ruby>りていたのはたった14％！</h1>
+    <span class="field-badge"><ruby>睡眠<rt>すいみん</rt></ruby>・<ruby>小児科学<rt>しょうにかがく</rt></ruby></span>
+  </div>
+
+  <!-- MAIN ROW -->
+  <div class="main-row">
+    <div class="points-box">
+      <h2>💡 3つのポイント</h2>
+      <ol>
+        <li><ruby>親<rt>おや</rt></ruby>の83％が「うちの<ruby>子<rt>こ</rt></ruby>は<ruby>十分<rt>じゅうぶん</rt></ruby><ruby>寝<rt>ね</rt></ruby>ている」と<ruby>思<rt>おも</rt></ruby>っていたが、<ruby>実際<rt>じっさい</rt></ruby>に<ruby>基準<rt>きじゅん</rt></ruby>を<ruby>満<rt>み</rt></ruby>たしていたのは<strong>たった14％</strong></li>
+        <li><ruby>子<rt>こ</rt></ruby>どもの<ruby>平均<rt>へいきん</rt></ruby><ruby>睡眠<rt>すいみん</rt></ruby>は<strong>8<ruby>時間<rt>じかん</rt></ruby>20<ruby>分<rt>ふん</rt></ruby></strong>。6〜12<ruby>歳<rt>さい</rt></ruby>は<strong>9〜12<ruby>時間<rt>じかん</rt></ruby></strong><ruby>必要<rt>ひつよう</rt></ruby>！</li>
+        <li><ruby>睡眠不足<rt>すいみんぶそく</rt></ruby>は<ruby>集中力<rt>しゅうちゅうりょく</rt></ruby>・<ruby>気持<rt>きも</rt></ruby>ちの<ruby>安定<rt>あんてい</rt></ruby>・<ruby>体<rt>からだ</rt></ruby>の<ruby>成長<rt>せいちょう</rt></ruby>に<ruby>影響<rt>えいきょう</rt></ruby></li>
+      </ol>
+    </div>
+    <div id="illust-area">
+      <div class="emoji-big">😴💤</div>
+      <div class="badge-num">8h20m</div>
+      <div class="arrow">⬇️</div>
+      <div class="badge-num" style="background:#4CAF50;">9〜12h</div>
+      <div class="emoji-mid">😊✨</div>
+      <p class="caption">もうすこし<ruby>寝<rt>ね</rt></ruby>よう！<br><ruby>元気<rt>げんき</rt></ruby>いっぱいに！</p>
+    </div>
+  </div>
+
+  <!-- EXPLANATION -->
+  <div class="explain-box">
+    <h2>📖 わかりやすく<ruby>言<rt>い</rt></ruby>うと…</h2>
+    <p>アメリカのブラウン<ruby>大学<rt>だいがく</rt></ruby>が197<ruby>人<rt>にん</rt></ruby>の<ruby>子<rt>こ</rt></ruby>どもを<ruby>調<rt>しら</rt></ruby>べたところ、ほとんどの<ruby>親<rt>おや</rt></ruby>が「うちの<ruby>子<rt>こ</rt></ruby>は<ruby>十分<rt>じゅうぶん</rt></ruby><ruby>寝<rt>ね</rt></ruby>ている」と<ruby>思<rt>おも</rt></ruby>っていました。しかし<ruby>実際<rt>じっさい</rt></ruby>に<ruby>腕時計型<rt>うでどけいがた</rt></ruby>センサーで<ruby>測<rt>はか</rt></ruby>ると、<ruby>基準<rt>きじゅん</rt></ruby>を<ruby>満<rt>み</rt></ruby>たしていたのはたった14％。<ruby>親<rt>おや</rt></ruby>の「<ruby>感覚<rt>かんかく</rt></ruby>」と「データ」には<ruby>大<rt>おお</rt></ruby>きなギャップがあったのです。</p>
+  </div>
+
+  <!-- KIDS ROW -->
+  <div class="kids-row">
+    <div class="kid-box tecchan">
+      <h3>🐥 てっちゃん（5さい）のことば</h3>
+      <p>おとうさんは「もうねたでしょ」っておもってるけど、ほんとはもっとねたほうがげんきになるんだって！😴</p>
+    </div>
+    <div class="kid-box taro">
+      <h3>🌱 たろう（7さい）のことば</h3>
+      <p>おうちの<ruby>人<rt>ひと</rt></ruby>の83％が「<ruby>子<rt>こ</rt></ruby>どもは<ruby>十分<rt>じゅうぶん</rt></ruby>ねてる」と<ruby>思<rt>おも</rt></ruby>ってたけど、ほんとに<ruby>足<rt>た</rt></ruby>りてたのは14％だけ。もうちょっと<ruby>早<rt>はや</rt></ruby>くねよう💤</p>
+    </div>
+  </div>
+
+  <!-- APPLICATION -->
+  <div class="apply-box">
+    <h2>🏠 <ruby>毎日<rt>まいにち</rt></ruby>の<ruby>生活<rt>せいかつ</rt></ruby>でできること</h2>
+    <ul>
+      <li><ruby>夜<rt>よる</rt></ruby>8<ruby>時<rt>じ</rt></ruby>〜9<ruby>時<rt>じ</rt></ruby>には<ruby>布団<rt>ふとん</rt></ruby>に<ruby>入<rt>はい</rt></ruby>る<ruby>習慣<rt>しゅうかん</rt></ruby>をつけよう</li>
+      <li><ruby>寝<rt>ね</rt></ruby>る1<ruby>時間前<rt>じかんまえ</rt></ruby>からスマホやタブレットを<ruby>見<rt>み</rt></ruby>ないようにしよう</li>
+      <li>「<ruby>何時間<rt>なんじかん</rt></ruby><ruby>寝<rt>ね</rt></ruby>たかな？」と<ruby>家族<rt>かぞく</rt></ruby>で<ruby>話<rt>はな</rt></ruby>してみよう</li>
+    </ul>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <div><ruby>出典<rt>しゅってん</rt></ruby>：Brown University (2025) / <ruby>米国小児科学会<rt>べいこくしょうにかがっかい</rt></ruby>(AAP) <ruby>睡眠<rt>すいみん</rt></ruby>ガイドライン</div>
+    <div><ruby>豊田<rt>とよた</rt></ruby>こども<ruby>新聞<rt>しんぶん</rt></ruby> 📰 <ruby>第<rt>だい</rt></ruby>1<ruby>号<rt>ごう</rt></ruby></div>
+  </div>
+
+</div>
+</body>
+</html>

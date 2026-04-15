@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>豊田こども新聞 第3号（2026年3月24日）</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;900&display=swap" rel="stylesheet">
+<style>
+:root {
+  --header-dark: #1565C0;
+  --header-mid: #2196F3;
+  --yellow-accent: #FFF176;
+  --box-blue-bg: #E8F4FD;
+  --box-yellow-bg: #FFF176;
+  --box-yellow-border: #FF9800;
+  --box-orange: #FF9800;
+  --box-tecchan-bg: #FFF8E1;
+  --box-taro-bg: #E8F5E9;
+  --box-taro-border: #4CAF50;
+  --box-apply-bg: #E8F5E9;
+  --box-apply-border: #4CAF50;
+  --footer-bg: #1565C0;
+  --text-dark: #1a1a2e;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: 'Noto Sans JP', 'Hiragino Kaku Gothic ProN', 'Yu Gothic', sans-serif;
+  background: #f0f4f8;
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+}
+ruby { ruby-align: center; }
+rt { font-size: 0.5em; color: inherit; }
+
+.newspaper {
+  width: 210mm;
+  background: white;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+  border-radius: 4px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+/* HEADER */
+.header {
+  background: linear-gradient(135deg, #1565C0 0%, #2196F3 100%);
+  color: white;
+  padding: 8px 14px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.header-title {
+  font-size: 29px;
+  font-weight: 900;
+  letter-spacing: 1px;
+  flex: 1;
+}
+.header-mascot { font-size: 32px; }
+.header-meta { text-align: right; }
+.issue-num { font-size: 15px; font-weight: 700; }
+.date-line { font-size: 10px; opacity: 0.9; margin-top: 1px; }
+.genre-line {
+  font-size: 9px;
+  opacity: 0.85;
+  background: rgba(255,255,255,0.2);
+  padding: 1px 7px;
+  border-radius: 8px;
+  margin-top: 2px;
+  display: inline-block;
+}
+
+/* COLOR BAR */
+.color-bar {
+  height: 6px;
+  background: linear-gradient(to right, #FF9800, #FFC107, #FFEB3B, #8BC34A, #2196F3, #9C27B0);
+}
+
+/* HEADLINE */
+.headline-area {
+  padding: 8px 14px 7px;
+  background: #E8F4FD;
+  border-bottom: 2px solid #2196F3;
+}
+.genre-badge {
+  display: inline-block;
+  background: #2196F3;
+  color: white;
+  font-size: 9.5px;
+  font-weight: 700;
+  padding: 2px 9px;
+  border-radius: 10px;
+  margin-bottom: 5px;
+}
+.headline-title {
+  font-size: 19px;
+  font-weight: 900;
+  color: #1565C0;
+  line-height: 1.45;
+}
+
+/* MAIN CONTENT */
+.main-content {
+  display: grid;
+  grid-template-columns: 3fr 2fr;
+  border-bottom: 1px solid #e0e0e0;
+}
+.points-section {
+  padding: 9px 12px 9px 14px;
+  border-right: 1px solid #e0e0e0;
+}
+.section-title {
+  font-size: 11px;
+  font-weight: 700;
+  color: #1565C0;
+  background: #FFF176;
+  padding: 2px 8px;
+  border-radius: 3px;
+  margin-bottom: 7px;
+  display: inline-block;
+}
+.point-item {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 6px;
+  font-size: 10.5px;
+  line-height: 1.6;
+  color: #1a1a2e;
+}
+.point-num {
+  background: #2196F3;
+  color: white;
+  font-weight: 700;
+  font-size: 10px;
+  min-width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 7px;
+  flex-shrink: 0;
+  margin-top: 3px;
+}
+
+/* ILLUST AREA */
+#illust-area {
+  padding: 10px 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(180deg, #E3F2FD 0%, #F0F8FF 100%);
+  text-align: center;
+  gap: 4px;
+}
+.emoji-big { font-size: 44px; line-height: 1.1; }
+.illust-badge {
+  background: #2196F3;
+  color: white;
+  font-weight: 700;
+  font-size: 11px;
+  padding: 2px 10px;
+  border-radius: 12px;
+}
+.illust-arrow { font-size: 18px; }
+.emoji-mid { font-size: 32px; line-height: 1.1; }
+.caption {
+  font-size: 9.5px;
+  color: #555;
+  line-height: 1.5;
+  margin-top: 2px;
+}
+
+/* EXPLANATION */
+.explanation-box {
+  margin: 7px 14px;
+  background: #FFF176;
+  border: 2px solid #FF9800;
+  border-radius: 6px;
+  padding: 7px 11px;
+}
+.box-title-yellow {
+  font-size: 11px;
+  font-weight: 700;
+  color: #BF360C;
+  margin-bottom: 4px;
+}
+.explanation-text {
+  font-size: 11px;
+  line-height: 1.7;
+  color: #1a1a2e;
+}
+
+/* KIDS */
+.kids-section {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 7px;
+  padding: 7px 14px;
+}
+.tecchan-box {
+  background: #FFF8E1;
+  border: 2px solid #FF9800;
+  border-radius: 6px;
+  padding: 7px 9px;
+}
+.taro-box {
+  background: #E8F5E9;
+  border: 2px solid #4CAF50;
+  border-radius: 6px;
+  padding: 7px 9px;
+}
+.kids-label {
+  font-size: 11px;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+.tecchan-box .kids-label { color: #E65100; }
+.taro-box .kids-label { color: #2E7D32; }
+.kids-text {
+  font-size: 11.5px;
+  line-height: 1.7;
+  color: #1a1a2e;
+}
+
+/* APPLICATION */
+.application-box {
+  margin: 0 14px 8px;
+  background: #E8F5E9;
+  border: 2px solid #4CAF50;
+  border-radius: 6px;
+  padding: 7px 11px;
+}
+.box-title-green {
+  font-size: 11px;
+  font-weight: 700;
+  color: #1B5E20;
+  margin-bottom: 4px;
+}
+.app-item {
+  font-size: 11px;
+  line-height: 1.7;
+  color: #1a1a2e;
+  padding-left: 14px;
+  text-indent: -14px;
+  margin-bottom: 2px;
+}
+
+/* FOOTER */
+.footer {
+  margin-top: auto;
+  background: #1565C0;
+  color: rgba(255,255,255,0.9);
+  padding: 5px 14px;
+  font-size: 9px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* PRINT */
+@media print {
+  @page { size: A4; margin: 10mm 8mm; }
+  * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  body { margin: 0; padding: 0; background: white; }
+  .newspaper { width: 100%; box-shadow: none; border-radius: 0; }
+}
+</style>
+</head>
+<body>
+<div class="newspaper">
+
+<!-- HEADER -->
+<div class="header">
+  <div class="header-title">🗞 <ruby>豊田<rt>とよた</rt></ruby>こども<ruby>新聞<rt>しんぶん</rt></ruby></div>
+  <div class="header-mascot">🧒📚</div>
+  <div class="header-meta">
+    <div class="issue-num"><ruby>第<rt>だい</rt></ruby>3<ruby>号<rt>ごう</rt></ruby></div>
+    <div class="date-line">2026<ruby>年<rt>ねん</rt></ruby>3<ruby>月<rt>がつ</rt></ruby>24<ruby>日<rt>にち</rt></ruby>（<ruby>火曜日<rt>かようび</rt></ruby>）</div>
+    <div class="genre-line"><ruby>脳科学<rt>のうかがく</rt></ruby>・<ruby>心理学<rt>しんりがく</rt></ruby><ruby>号<rt>ごう</rt></ruby></div>
+  </div>
+</div>
+
+<!-- COLOR BAR -->
+<div class="color-bar"></div>
+
+<!-- HEADLINE -->
+<div class="headline-area">
+  <span class="genre-badge">🧠 <ruby>脳科学<rt>のうかがく</rt></ruby>・<ruby>心理学<rt>しんりがく</rt></ruby></span>
+  <div class="headline-title">
+    10<ruby>代<rt>だい</rt></ruby>の<ruby>脳<rt>のう</rt></ruby>に<ruby>隠<rt>かく</rt></ruby>れた<ruby>宝<rt>たから</rt></ruby>が<ruby>発見<rt>はっけん</rt></ruby>！<br>
+    「シナプスのホットスポット」って<ruby>何<rt>なに</rt></ruby>だろう？
+  </div>
+</div>
+
+<!-- MAIN CONTENT -->
+<div class="main-content">
+
+  <!-- POINTS -->
+  <div class="points-section">
+    <div class="section-title">✨ 3つの<ruby>要点<rt>ようてん</rt></ruby></div>
+
+    <div class="point-item">
+      <div class="point-num">1</div>
+      <div>
+        <ruby>九州大学<rt>きゅうしゅうだいがく</rt></ruby>の<ruby>研究<rt>けんきゅう</rt></ruby>チームが、10<ruby>代<rt>だい</rt></ruby>の<ruby>脳<rt>のう</rt></ruby>に「シナプスのホットスポット」という<ruby>新<rt>あたら</rt></ruby>しい<ruby>神経<rt>しんけい</rt></ruby>のかたまりを<ruby>発見<rt>はっけん</rt></ruby>した（2026<ruby>年<rt>ねん</rt></ruby>1<ruby>月<rt>がつ</rt></ruby>、Science Advances<ruby>掲載<rt>けいさい</rt></ruby>）
+      </div>
+    </div>
+
+    <div class="point-item">
+      <div class="point-num">2</div>
+      <div>
+        「<ruby>大人<rt>おとな</rt></ruby>になるにつれ<ruby>脳<rt>のう</rt></ruby>の<ruby>接続<rt>せつぞく</rt></ruby>は<ruby>減<rt>へ</rt></ruby>るだけ」という<ruby>長年<rt>ながねん</rt></ruby>の<ruby>考<rt>かんが</rt></ruby>えが<ruby>不完全<rt>ふかんぜん</rt></ruby>だったことが<ruby>判明<rt>はんめい</rt></ruby>した
+      </div>
+    </div>
+
+    <div class="point-item">
+      <div class="point-num">3</div>
+      <div>
+        このホットスポットは<ruby>計画<rt>けいかく</rt></ruby>を<ruby>立<rt>た</rt></ruby>てたり<ruby>判断<rt>はんだん</rt></ruby>したりする<ruby>高度<rt>こうど</rt></ruby>な<ruby>思考力<rt>しこうりょく</rt></ruby>の<ruby>発達<rt>はったつ</rt></ruby>と<ruby>関係<rt>かんけい</rt></ruby>しており、<ruby>統合失調症<rt>とうごうしっちょうしょう</rt></ruby>の<ruby>研究<rt>けんきゅう</rt></ruby>にも<ruby>役立<rt>やくだ</rt></ruby>つ<ruby>可能性<rt>かのうせい</rt></ruby>がある
+      </div>
+    </div>
+  </div>
+
+  <!-- ILLUST AREA -->
+  <div id="illust-area">
+    <!-- 絵文字イラスト（後からMidjourney画像に差し替え可能） -->
+    <div class="emoji-big">🧠✨</div>
+    <div class="illust-badge">NEW！ホットスポット</div>
+    <div class="illust-arrow">⬇️</div>
+    <div class="emoji-mid">💡🔗</div>
+    <p class="caption">
+      10<ruby>代<rt>だい</rt></ruby>の<ruby>脳<rt>のう</rt></ruby>に<ruby>新<rt>あたら</rt></ruby>しい<br>つながりが<ruby>生<rt>う</rt></ruby>まれる！
+    </p>
+  </div>
+
+</div><!-- /main-content -->
+
+<!-- EXPLANATION BOX -->
+<div class="explanation-box">
+  <div class="box-title-yellow">📖 <ruby>素人<rt>しろうと</rt></ruby>でもわかる<ruby>解説<rt>かいせつ</rt></ruby></div>
+  <div class="explanation-text">
+    <ruby>脳<rt>のう</rt></ruby>の<ruby>神経細胞<rt>しんけいさいぼう</rt></ruby>は「シナプス」という<ruby>接続点<rt>せつぞくてん</rt></ruby>で<ruby>情報<rt>じょうほう</rt></ruby>をやり<ruby>取<rt>と</rt></ruby>りしています。これまで、<ruby>思春期<rt>ししゅんき</rt></ruby>の<ruby>脳<rt>のう</rt></ruby>は<ruby>接続<rt>せつぞく</rt></ruby>を「<ruby>減<rt>へ</rt></ruby>らして<ruby>整理<rt>せいり</rt></ruby>する」だけだと<ruby>思<rt>おも</rt></ruby>われていました。しかし<ruby>九州大学<rt>きゅうしゅうだいがく</rt></ruby>の<ruby>研究<rt>けんきゅう</rt></ruby>で、10<ruby>代<rt>だい</rt></ruby>の<ruby>脳<rt>のう</rt></ruby>に<ruby>新<rt>あたら</rt></ruby>しいシナプスが<ruby>密集<rt>みっしゅう</rt></ruby>する<ruby>特別<rt>とくべつ</rt></ruby>な<ruby>場所<rt>ばしょ</rt></ruby>（ホットスポット）が<ruby>作<rt>つく</rt></ruby>られることが<ruby>判明<rt>はんめい</rt></ruby>。<ruby>計画力<rt>けいかくりょく</rt></ruby>や<ruby>判断力<rt>はんだんりょく</rt></ruby>の<ruby>発達<rt>はったつ</rt></ruby>のしくみの<ruby>解明<rt>かいめい</rt></ruby>につながる、<ruby>大切<rt>たいせつ</rt></ruby>な<ruby>発見<rt>はっけん</rt></ruby>です。
+  </div>
+</div>
+
+<!-- KIDS SECTION -->
+<div class="kids-section">
+  <div class="tecchan-box">
+    <div class="kids-label">🐥 てっちゃん（5さい）</div>
+    <div class="kids-text">
+      おおきくなると、あたまのなかに「ひかるつながり」ができるんだよ！それがかしこさのひみつだって！🧠✨
+    </div>
+  </div>
+  <div class="taro-box">
+    <div class="kids-label">🌱 <ruby>太郎<rt>たろう</rt></ruby>（7さい）</div>
+    <div class="kids-text">
+      10さいごろになると、あたまの<ruby>中<rt>なか</rt></ruby>にたくさんのつながりがあつまった「ホットスポット」ができるんだって。きみの<ruby>力<rt>ちから</rt></ruby>もそこからうまれているのかも！🧠✨
+    </div>
+  </div>
+</div>
+
+<!-- APPLICATION BOX -->
+<div class="application-box">
+  <div class="box-title-green">🌟 <ruby>生活<rt>せいかつ</rt></ruby>への<ruby>応用<rt>おうよう</rt></ruby></div>
+  <div class="app-item">・<ruby>新<rt>あたら</rt></ruby>しいことに<ruby>挑戦<rt>ちょうせん</rt></ruby>したり、いろいろなことを<ruby>学<rt>まな</rt></ruby>んだりすることで<ruby>脳<rt>のう</rt></ruby>のつながりが<ruby>育<rt>そだ</rt></ruby>ちます</div>
+  <div class="app-item">・<ruby>十分<rt>じゅうぶん</rt></ruby>な<ruby>睡眠<rt>すいみん</rt></ruby>をとることが<ruby>脳<rt>のう</rt></ruby>の<ruby>発達<rt>はったつ</rt></ruby>を<ruby>助<rt>たす</rt></ruby>けることが<ruby>知<rt>し</rt></ruby>られています</div>
+  <div class="app-item">・<ruby>友<rt>とも</rt></ruby>だちと<ruby>話<rt>はな</rt></ruby>し<ruby>合<rt>あ</rt></ruby>ったり、じっくり<ruby>考<rt>かんが</rt></ruby>えたりする<ruby>習慣<rt>しゅうかん</rt></ruby>が<ruby>脳<rt>のう</rt></ruby>の<ruby>発達<rt>はったつ</rt></ruby>を<ruby>促<rt>うなが</rt></ruby>すかもしれません</div>
+</div>
+
+<!-- FOOTER -->
+<div class="footer">
+  <span>📰 <ruby>豊田<rt>とよた</rt></ruby>こども<ruby>新聞<rt>しんぶん</rt></ruby> <ruby>第<rt>だい</rt></ruby>3<ruby>号<rt>ごう</rt></ruby></span>
+  <span><ruby>出典<rt>しゅってん</rt></ruby>：Science Advances（2026<ruby>年<rt>ねん</rt></ruby>1<ruby>月<rt>がつ</rt></ruby>）｜<ruby>九州大学<rt>きゅうしゅうだいがく</rt></ruby></span>
+  <span><ruby>豊田家<rt>とよたけ</rt></ruby> <ruby>元洋<rt>もとひろ</rt></ruby>より</span>
+</div>
+
+</div><!-- /newspaper -->
+</body>
+</html>

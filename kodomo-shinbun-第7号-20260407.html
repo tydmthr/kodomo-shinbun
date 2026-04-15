@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>豊田こども新聞 第7号</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --header-dark: #1565C0;
+    --header-mid: #2196F3;
+    --yellow-accent: #FFF176;
+    --box-blue-bg: #E8F4FD;
+    --box-blue-border: #2196F3;
+    --box-yellow-bg: #FFF176;
+    --box-yellow-border: #FF9800;
+    --box-orange: #FF9800;
+    --box-tecchan-bg: #FFF8E1;
+    --box-taro-bg: #E8F5E9;
+    --box-taro-border: #4CAF50;
+    --box-apply-bg: #E8F5E9;
+    --box-apply-border: #4CAF50;
+    --footer-bg: #1565C0;
+    --text-dark: #1a1a2e;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Noto Sans JP', 'Hiragino Kaku Gothic ProN', 'Yu Gothic', sans-serif;
+    background: #f0f0f0;
+    color: var(--text-dark);
+  }
+  ruby { ruby-align: center; }
+  rt { font-size: 0.5em; color: inherit; }
+  .newspaper {
+    width: 210mm;
+    min-height: 297mm;
+    margin: 0 auto;
+    background: #fff;
+    box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+    padding: 0;
+    overflow: hidden;
+  }
+  .header {
+    background: linear-gradient(135deg, var(--header-dark), var(--header-mid));
+    color: white;
+    padding: 14px 20px 10px;
+    text-align: center;
+    position: relative;
+  }
+  .header h1 {
+    font-size: 30px;
+    font-weight: 900;
+    letter-spacing: 3px;
+    margin-bottom: 2px;
+  }
+  .header .date-info {
+    font-size: 12px;
+    opacity: 0.95;
+  }
+  .header .mascot {
+    position: absolute;
+    right: 18px;
+    top: 10px;
+    font-size: 36px;
+  }
+  .header .mascot-left {
+    position: absolute;
+    left: 18px;
+    top: 10px;
+    font-size: 36px;
+  }
+  .color-bar {
+    height: 5px;
+    background: linear-gradient(90deg, #FF9800, #FFF176, #4CAF50, #2196F3, #9C27B0);
+  }
+  .content {
+    padding: 12px 18px 8px;
+  }
+  .headline {
+    text-align: center;
+    margin-bottom: 10px;
+  }
+  .headline h2 {
+    font-size: 18px;
+    font-weight: 900;
+    color: var(--header-dark);
+    line-height: 1.5;
+  }
+  .field-badge {
+    display: inline-block;
+    background: var(--box-orange);
+    color: white;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 2px 12px;
+    border-radius: 20px;
+    margin-bottom: 6px;
+  }
+  .main-grid {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 10px;
+  }
+  .points-box {
+    flex: 1;
+    background: var(--box-blue-bg);
+    border: 2px solid var(--box-blue-border);
+    border-radius: 10px;
+    padding: 10px 12px;
+  }
+  .points-box h3 {
+    font-size: 12px;
+    color: var(--header-mid);
+    margin-bottom: 6px;
+    font-weight: 700;
+  }
+  .points-box ol {
+    padding-left: 18px;
+    font-size: 10.5px;
+    line-height: 1.7;
+  }
+  .points-box ol li {
+    margin-bottom: 3px;
+  }
+  .illust-box {
+    width: 200px;
+    min-width: 200px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  .illust-box img {
+    max-width: 100%;
+    max-height: 180px;
+    border-radius: 8px;
+    border: 2px solid #4CAF50;
+  }
+  .illust-box .caption {
+    font-size: 9px;
+    color: #666;
+    margin-top: 4px;
+  }
+  .explain-box {
+    background: var(--box-yellow-bg);
+    border: 2px solid var(--box-yellow-border);
+    border-radius: 10px;
+    padding: 10px 14px;
+    margin-bottom: 10px;
+  }
+  .explain-box h3 {
+    font-size: 12px;
+    color: #E65100;
+    margin-bottom: 5px;
+    font-weight: 700;
+  }
+  .explain-box p {
+    font-size: 11px;
+    line-height: 1.8;
+  }
+  .kids-grid {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 10px;
+  }
+  .kids-box {
+    flex: 1;
+    border-radius: 10px;
+    padding: 10px 12px;
+  }
+  .tecchan-box {
+    background: var(--box-tecchan-bg);
+    border: 2px solid var(--box-orange);
+  }
+  .taro-box {
+    background: var(--box-taro-bg);
+    border: 2px solid var(--box-taro-border);
+  }
+  .kids-box h3 {
+    font-size: 12px;
+    font-weight: 700;
+    margin-bottom: 5px;
+  }
+  .kids-box p {
+    font-size: 11.5px;
+    line-height: 1.8;
+  }
+  .apply-box {
+    background: var(--box-apply-bg);
+    border: 2px solid var(--box-apply-border);
+    border-radius: 10px;
+    padding: 10px 14px;
+    margin-bottom: 10px;
+  }
+  .apply-box h3 {
+    font-size: 12px;
+    color: #2E7D32;
+    margin-bottom: 5px;
+    font-weight: 700;
+  }
+  .apply-box ul {
+    list-style: none;
+    padding: 0;
+    font-size: 11px;
+    line-height: 1.8;
+  }
+  .apply-box ul li::before {
+    content: "💡 ";
+  }
+  .footer {
+    background: var(--footer-bg);
+    color: white;
+    text-align: center;
+    padding: 8px;
+    font-size: 9px;
+  }
+  .footer .source {
+    opacity: 0.9;
+    margin-bottom: 2px;
+  }
+
+  @media print {
+    @page {
+      size: A4;
+      margin: 10mm 8mm;
+    }
+    * {
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+    body {
+      margin: 0;
+      padding: 0;
+      background: white;
+    }
+    .newspaper {
+      width: 100%;
+      box-shadow: none;
+      border-radius: 0;
+    }
+  }
+</style>
+</head>
+<body>
+<div class="newspaper">
+  <!-- HEADER -->
+  <div class="header">
+    <div class="mascot-left">🧒</div>
+    <h1>📰 <ruby>豊田<rt>とよだ</rt></ruby>こども<ruby>新聞<rt>しんぶん</rt></ruby></h1>
+    <div class="date-info">
+      <ruby>第<rt>だい</rt></ruby>7<ruby>号<rt>ごう</rt></ruby>　2026<ruby>年<rt>ねん</rt></ruby>4<ruby>月<rt>がつ</rt></ruby>7<ruby>日<rt>にち</rt></ruby>（<ruby>火曜日<rt>かようび</rt></ruby>）
+    </div>
+    <div class="mascot">👦</div>
+  </div>
+
+  <!-- COLOR BAR -->
+  <div class="color-bar"></div>
+
+  <!-- CONTENT -->
+  <div class="content">
+    <!-- HEADLINE -->
+    <div class="headline">
+      <span class="field-badge">🧠 <ruby>心理学<rt>しんりがく</rt></ruby>・<ruby>脳科学<rt>のうかがく</rt></ruby></span>
+      <h2>🤝 <ruby>特別<rt>とくべつ</rt></ruby>な<ruby>共通点<rt>きょうつうてん</rt></ruby>が<ruby>友<rt>とも</rt></ruby>だちづくりの<ruby>魔法<rt>まほう</rt></ruby>になる！？</h2>
+    </div>
+
+    <!-- MAIN GRID: Points + Illustration -->
+    <div class="main-grid">
+      <div class="points-box">
+        <h3>⭐ 3つのポイント</h3>
+        <ol>
+          <li>こどもたちは「みんなが<ruby>好<rt>す</rt></ruby>きなもの」より「<ruby>珍<rt>めずら</rt></ruby>しい<ruby>共通点<rt>きょうつうてん</rt></ruby>」を<ruby>友<rt>とも</rt></ruby>だち<ruby>選<rt>えら</rt></ruby>びの<ruby>大<rt>おお</rt></ruby>きな<ruby>手<rt>て</rt></ruby>がかりにしている！</li>
+          <li>この<ruby>傾向<rt>けいこう</rt></ruby>は<ruby>進化<rt>しんか</rt></ruby>の<ruby>過程<rt>かてい</rt></ruby>で<ruby>身<rt>み</rt></ruby>につけたもの。<ruby>珍<rt>めずら</rt></ruby>しい<ruby>共通点<rt>きょうつうてん</rt></ruby>は<ruby>信頼<rt>しんらい</rt></ruby>できる<ruby>絆<rt>きずな</rt></ruby>のサインなんだ。</li>
+          <li>5〜7<ruby>歳<rt>さい</rt></ruby>のこどもたちが<ruby>実験<rt>じっけん</rt></ruby>で「ユニークな<ruby>共通点<rt>きょうつうてん</rt></ruby>がある<ruby>子<rt>こ</rt></ruby>」を<ruby>選<rt>えら</rt></ruby>ぶことが<ruby>確認<rt>かくにん</rt></ruby>された！</li>
+        </ol>
+      </div>
+      <div class="illust-box" id="illust-area">
+        <img src="https://onlinelibrary.wiley.com/cms/asset/f1c86d09-5f55-4021-ba2b-f74eea7b544a/cdep12510-fig-0001-m.jpg" alt="友だち選びの研究図解">
+        <p class="caption">📷 <ruby>出典<rt>しゅってん</rt></ruby>: onlinelibrary.wiley.com</p>
+      </div>
+    </div>
+
+    <!-- EXPLAIN BOX -->
+    <div class="explain-box">
+      <h3>📖 わかりやすく<ruby>解説<rt>かいせつ</rt></ruby>！</h3>
+      <p>
+        「<ruby>赤<rt>あか</rt></ruby>いりんごが<ruby>好<rt>す</rt></ruby>き」はみんなに<ruby>共通<rt>きょうつう</rt></ruby>するけれど、「キラキラ<ruby>光<rt>ひか</rt></ruby>る<ruby>不思議<rt>ふしぎ</rt></ruby>な<ruby>石<rt>いし</rt></ruby>が<ruby>好<rt>す</rt></ruby>き」はなかなかいない<ruby>珍<rt>めずら</rt></ruby>しい<ruby>共通点<rt>きょうつうてん</rt></ruby>。この<ruby>研究<rt>けんきゅう</rt></ruby>では、こどもたちが<ruby>珍<rt>めずら</rt></ruby>しい<ruby>共通点<rt>きょうつうてん</rt></ruby>をもつ<ruby>相手<rt>あいて</rt></ruby>を「いっしょにあそびたい！」と<ruby>選<rt>えら</rt></ruby>ぶことがわかりました。<ruby>脳<rt>のう</rt></ruby>が「<ruby>特別<rt>とくべつ</rt></ruby>なつながり」を<ruby>感<rt>かん</rt></ruby>じるからなんです。
+      </p>
+    </div>
+
+    <!-- KIDS GRID -->
+    <div class="kids-grid">
+      <div class="kids-box tecchan-box">
+        <h3>🐥 てっちゃん（5さい）</h3>
+        <p>おともだちと「おなじもの、すき！」ってなると、うれしいよね。めずらしいものがおなじだと、もっとなかよくなれるんだって！🌟</p>
+      </div>
+      <div class="kids-box taro-box">
+        <h3>🌱 たろう（7さい）</h3>
+        <p>みんなが<ruby>好<rt>す</rt></ruby>きなものより、めずらしいものが<ruby>同<rt>おな</rt></ruby>じ<ruby>子<rt>こ</rt></ruby>の<ruby>方<rt>ほう</rt></ruby>が「この<ruby>子<rt>こ</rt></ruby>とあそびたい！」って<ruby>思<rt>おも</rt></ruby>うんだって。<ruby>特別<rt>とくべつ</rt></ruby>な<ruby>共通点<rt>きょうつうてん</rt></ruby>は<ruby>友<rt>とも</rt></ruby>だちの<ruby>魔法<rt>まほう</rt></ruby>だね✨</p>
+      </div>
+    </div>
+
+    <!-- APPLICATION BOX -->
+    <div class="apply-box">
+      <h3>🌍 <ruby>生活<rt>せいかつ</rt></ruby>への<ruby>応用<rt>おうよう</rt></ruby></h3>
+      <ul>
+        <li><ruby>友<rt>とも</rt></ruby>だちと「<ruby>珍<rt>めずら</rt></ruby>しい<ruby>共通点<rt>きょうつうてん</rt></ruby>」をさがしてみよう！いつもより<ruby>仲<rt>なか</rt></ruby>よくなれるかも。</li>
+        <li><ruby>自分<rt>じぶん</rt></ruby>だけの「<ruby>好<rt>す</rt></ruby>き」を<ruby>大切<rt>たいせつ</rt></ruby>にしよう。それが<ruby>特別<rt>とくべつ</rt></ruby>な<ruby>友<rt>とも</rt></ruby>だちとの<ruby>出会<rt>であ</rt></ruby>いにつながるよ。</li>
+        <li><ruby>新<rt>あたら</rt></ruby>しいお<ruby>友<rt>とも</rt></ruby>だちをつくるとき、「<ruby>好<rt>す</rt></ruby>きなもの」を<ruby>話<rt>はな</rt></ruby>してみよう！</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <div class="source">📚 <ruby>出典<rt>しゅってん</rt></ruby>: Evolution and Human Behavior（2025<ruby>年<rt>ねん</rt></ruby>）</div>
+    📰 <ruby>豊田<rt>とよだ</rt></ruby>こども<ruby>新聞<rt>しんぶん</rt></ruby> <ruby>第<rt>だい</rt></ruby>7<ruby>号<rt>ごう</rt></ruby> ｜ <ruby>毎日<rt>まいにち</rt></ruby>の<ruby>科学<rt>かがく</rt></ruby>をこどもたちへ ❤️
+  </div>
+</div>
+</body>
+</html>
