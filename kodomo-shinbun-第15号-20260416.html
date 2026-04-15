@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>豊田こども新聞 第15号</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;900&family=Noto+Serif+JP:wght@700;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --header-dark: #1B2A4A;
+    --gold: #F4D03F;
+    --yellow-bg: #FFF8E1;
+    --orange-border: #FF9800;
+    --blue-bg: #EBF5FB;
+    --blue-border: #2196F3;
+    --green-bg: #E8F5E9;
+    --green-border: #4CAF50;
+    --purple-bg: #F5EEF8;
+    --purple-text: #7D3C98;
+    --text-dark: #1a1a2e;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  ruby { ruby-align: center; }
+  rt { font-size: 0.5em; color: inherit; }
+
+  html, body {
+    width: 210mm;
+    height: 297mm;
+    overflow: hidden;
+    font-family: 'Noto Sans JP', 'Hiragino Kaku Gothic ProN', 'Yu Gothic', sans-serif;
+    color: var(--text-dark);
+    background: #fff;
+  }
+
+  .page {
+    width: 210mm;
+    height: 297mm;
+    max-height: 297mm;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    background: #fff;
+  }
+
+  /* マストヘッド */
+  .masthead {
+    background: var(--header-dark);
+    padding: 7px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-shrink: 0;
+  }
+  .masthead-left {
+    display: flex;
+    flex-direction: column;
+  }
+  .paper-title {
+    font-family: 'Noto Serif JP', serif;
+    font-size: 28px;
+    font-weight: 900;
+    color: var(--gold);
+    letter-spacing: 2px;
+    line-height: 1;
+  }
+  .paper-subtitle {
+    font-size: 9px;
+    color: #aac4e8;
+    letter-spacing: 1px;
+    margin-top: 2px;
+  }
+  .masthead-right {
+    text-align: right;
+  }
+  .issue-num {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--gold);
+  }
+  .issue-sub {
+    font-size: 9px;
+    color: #aac4e8;
+  }
+
+  /* カラーライン */
+  .color-line {
+    height: 4px;
+    background: linear-gradient(to right, #e74c3c, #e67e22, #f1c40f, #2ecc71, #3498db, #9b59b6);
+    flex-shrink: 0;
+  }
+
+  /* 日付バー */
+  .date-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 3px 14px;
+    background: #f0f4f8;
+    border-bottom: 1px solid #dde3ea;
+    flex-shrink: 0;
+  }
+  .date-text {
+    font-size: 10px;
+    color: #555;
+    font-weight: 700;
+  }
+  .genre-badge {
+    background: #FF9800;
+    color: #fff;
+    font-size: 9.5px;
+    font-weight: 700;
+    padding: 2px 10px;
+    border-radius: 20px;
+  }
+  .publisher {
+    font-size: 9px;
+    color: #888;
+  }
+
+  /* コンテンツエリア */
+  .content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 6px 14px;
+    overflow: hidden;
+    min-height: 0;
+  }
+
+  /* 見出し */
+  .headline {
+    font-family: 'Noto Serif JP', serif;
+    font-size: 17px;
+    font-weight: 900;
+    line-height: 1.4;
+    color: var(--header-dark);
+    border-bottom: 3px double var(--header-dark);
+    padding-bottom: 4px;
+    margin-bottom: 5px;
+    flex-shrink: 0;
+  }
+
+  /* 上段2カラム */
+  .top-section {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 5px;
+    flex-shrink: 0;
+  }
+  .article-body {
+    flex: 3;
+    font-size: 10px;
+    line-height: 1.65;
+  }
+  .article-body p {
+    margin-bottom: 3px;
+  }
+  .point-list {
+    list-style: none;
+    margin-top: 3px;
+  }
+  .point-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 5px;
+    margin-bottom: 3px;
+    font-size: 10px;
+    line-height: 1.55;
+  }
+  .point-num {
+    background: var(--header-dark);
+    color: var(--gold);
+    font-size: 9px;
+    font-weight: 900;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  /* 写真エリア */
+  .photo-area {
+    flex: 2;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .photo-frame {
+    border: 2px solid #bbb;
+    border-radius: 4px;
+    overflow: hidden;
+    box-shadow: 1px 1px 4px rgba(0,0,0,0.15);
+  }
+  .photo-frame img {
+    width: 100%;
+    max-height: 110px;
+    object-fit: cover;
+    display: block;
+  }
+  .photo-caption {
+    font-size: 8px;
+    color: #555;
+    text-align: center;
+    background: #f5f5f5;
+    padding: 2px 4px;
+  }
+
+  /* 中段3カラム */
+  .mid-section {
+    flex: 1;
+    min-height: 0;
+    display: flex;
+    gap: 8px;
+    margin-bottom: 5px;
+    overflow: hidden;
+  }
+  .mid-box {
+    flex: 1;
+    border-radius: 5px;
+    padding: 6px 8px;
+    font-size: 9.5px;
+    line-height: 1.6;
+    overflow: hidden;
+  }
+  .mid-box-title {
+    font-size: 10.5px;
+    font-weight: 900;
+    margin-bottom: 3px;
+    display: flex;
+    align-items: center;
+    gap: 3px;
+  }
+  .box-kaisetsu { background: var(--yellow-bg); border: 1.5px solid var(--orange-border); }
+  .box-quiz { background: var(--blue-bg); border: 1.5px solid var(--blue-border); }
+  .box-try { background: var(--green-bg); border: 1.5px solid var(--green-border); }
+
+  .quiz-answer {
+    margin-top: 4px;
+    background: #fff;
+    border: 1px solid var(--blue-border);
+    border-radius: 3px;
+    padding: 3px 6px;
+    font-size: 9px;
+    color: #1565C0;
+    font-weight: 700;
+  }
+  .try-item {
+    display: flex;
+    gap: 4px;
+    margin-bottom: 2px;
+  }
+
+  /* こども欄 */
+  .kids-section {
+    display: flex;
+    gap: 8px;
+    flex-shrink: 0;
+    margin-bottom: 0;
+  }
+  .kid-card {
+    flex: 1;
+    border-radius: 6px;
+    overflow: hidden;
+    font-size: 10.5px;
+    line-height: 1.6;
+  }
+  .kid-card-tecchan {
+    border: 2px solid #FF9800;
+  }
+  .kid-card-taro {
+    border: 2px solid var(--green-border);
+  }
+  .kid-ribbon {
+    padding: 3px 10px;
+    font-size: 10.5px;
+    font-weight: 900;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+  .ribbon-tecchan { background: #FF9800; }
+  .ribbon-taro { background: var(--green-border); }
+  .kid-content {
+    padding: 5px 9px;
+    font-size: 10.5px;
+    line-height: 1.6;
+  }
+  .kid-card-tecchan .kid-content { background: #FFF8E1; }
+  .kid-card-taro .kid-content { background: var(--green-bg); }
+
+  /* 豆知識バー */
+  .trivia-bar {
+    background: var(--purple-bg);
+    padding: 4px 20px;
+    font-size: 9.5px;
+    color: var(--purple-text);
+    font-weight: 700;
+    flex-shrink: 0;
+    border-top: 1px solid #d2b4de;
+  }
+
+  /* フッター */
+  .footer {
+    background: var(--header-dark);
+    padding: 4px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-shrink: 0;
+  }
+  .footer-source {
+    font-size: 8.5px;
+    color: #aac4e8;
+  }
+  .footer-love {
+    font-size: 8.5px;
+    color: var(--gold);
+    font-weight: 700;
+  }
+
+  @media print {
+    @page { size: A4; margin: 0; }
+    * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    html, body { height: 297mm; overflow: hidden; }
+    .page { max-height: 296mm; box-shadow: none; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- マストヘッド -->
+  <div class="masthead">
+    <div class="masthead-left">
+      <div class="paper-title">豊田こども新聞</div>
+      <div class="paper-subtitle">365日サイエンス ／ TOYODA KODOMO SHINBUN</div>
+    </div>
+    <div class="masthead-right">
+      <div class="issue-num">第15号</div>
+      <div class="issue-sub">2026年4月16日（木曜日）</div>
+    </div>
+  </div>
+
+  <!-- カラーライン -->
+  <div class="color-line"></div>
+
+  <!-- 日付バー -->
+  <div class="date-bar">
+    <div class="date-text">2026年（令和8年）4月16日　木曜日</div>
+    <div class="genre-badge">🐾 動物のすごい能力</div>
+    <div class="publisher">発行：豊田家</div>
+  </div>
+
+  <!-- コンテンツ -->
+  <div class="content">
+
+    <!-- 見出し -->
+    <div class="headline">
+      🐙 うみの<ruby>忍者<rt>にんじゃ</rt></ruby>タコ「ミミックオクトパス」のひみつ！<br>
+      15<ruby>種類<rt>しゅるい</rt></ruby>もの<ruby>動物<rt>どうぶつ</rt></ruby>に<ruby>変身<rt>へんしん</rt></ruby>できる、すごすぎるタコがいた！
+    </div>
+
+    <!-- 上段：記事本文 ＋ 写真 -->
+    <div class="top-section">
+      <div class="article-body">
+        <p>インドネシアの<ruby>海<rt>うみ</rt></ruby>に、まるで<ruby>魔法使<rt>まほうつか</rt></ruby>いみたいなタコがいるよ！その<ruby>名前<rt>なまえ</rt></ruby>は<strong>ミミックオクトパス</strong>。「ミミック」というのは「まねをする」という<ruby>意味<rt>いみ</rt></ruby>で、このタコはほかの<ruby>動物<rt>どうぶつ</rt></ruby>に<ruby>変身<rt>へんしん</rt></ruby>する<ruby>達人<rt>たつじん</rt></ruby>なんだ！</p>
+        <ul class="point-list">
+          <li>
+            <span class="point-num">1</span>
+            <span><strong>15<ruby>種類<rt>しゅるい</rt></ruby>以上<rt>いじょう</rt>の<ruby>動物<rt>どうぶつ</rt></ruby>に<ruby>変身<rt>へんしん</rt></ruby>できる！</strong> ヒラメ・ウミヘビ・ライオンフィッシュなど、<ruby>色<rt>いろ</rt></ruby>も<ruby>形<rt>かたち</rt></ruby>も<ruby>動<rt>うご</rt></ruby>きもそっくりにマネするよ。</span>
+          </li>
+          <li>
+            <span class="point-num">2</span>
+            <span><strong>1<ruby>秒<rt>びょう</rt></ruby>で<ruby>色<rt>いろ</rt></ruby>チェンジ！</strong> <ruby>体<rt>からだ</rt></ruby>の<ruby>中<rt>なか</rt></ruby>に<ruby>色<rt>いろ</rt></ruby>を<ruby>変<rt>か</rt></ruby>える<ruby>特別<rt>とくべつ</rt></ruby>な<ruby>細胞<rt>さいぼう</rt></ruby>があって、あっという<ruby>間<rt>ま</rt></ruby>に<ruby>変身<rt>へんしん</rt></ruby>完了<rt>かんりょう</rt></ruby>！</span>
+          </li>
+          <li>
+            <span class="point-num">3</span>
+            <span><strong><ruby>変身<rt>へんしん</rt></ruby>はさいきょうの<ruby>作戦<rt>さくせん</rt></ruby>！</strong> てきから<ruby>逃<rt>に</rt></ruby>げたり、<ruby>獲物<rt>えもの</rt></ruby>に<ruby>近<rt>ちか</rt></ruby>づいてエサをゲットしたり、<ruby>賢<rt>かしこ</rt></ruby>く<ruby>使<rt>つか</rt></ruby>い<ruby>分<rt>わ</rt></ruby>けているんだよ！</span>
+          </li>
+        </ul>
+      </div>
+
+      <!-- 写真エリア -->
+      <div class="photo-area" id="illust-area">
+        <div class="photo-frame">
+          <img src="https://assets.st-note.com/production/uploads/images/216007344/rectangle_large_type_2_f9928928fbc3717e2b22970fc09c44fe.jpeg?width=2000&height=2000&fit=bounds&quality=85" alt="ミミックオクトパス" onerror="this.parentElement.innerHTML='<div style=\'background:#e8f4fd;height:80px;display:flex;align-items:center;justify-content:center;font-size:40px;\'>🐙</div>'">
+          <div class="photo-caption">🐙 ミミックオクトパス（<ruby>変身中<rt>へんしんちゅう</rt></ruby>！）</div>
+        </div>
+        <div class="photo-frame">
+          <img src="https://okinawa-zukan.com/img/column_05_06.jpg" alt="タコの変身" onerror="this.parentElement.innerHTML='<div style=\'background:#e8f4fd;height:60px;display:flex;align-items:center;justify-content:center;font-size:32px;\'>🌊🐙</div>'">
+          <div class="photo-caption">🌊 <ruby>海<rt>うみ</rt></ruby>の<ruby>忍者<rt>にんじゃ</rt></ruby>タコ</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 中段3カラム -->
+    <div class="mid-section">
+
+      <!-- 解説 -->
+      <div class="mid-box box-kaisetsu">
+        <div class="mid-box-title">📖 もっとよくわかる！</div>
+        <p>ミミックオクトパスの<ruby>体<rt>からだ</rt></ruby>には、「クロマトフォア」という<ruby>特別<rt>とくべつ</rt></ruby>な<ruby>細胞<rt>さいぼう</rt></ruby>がたくさんあるよ。この<ruby>細胞<rt>さいぼう</rt></ruby>を<ruby>脳<rt>のう</rt></ruby>からの<ruby>信号<rt>しんごう</rt></ruby>で<ruby>動<rt>うご</rt></ruby>かすと、ピンクから<ruby>茶色<rt>ちゃいろ</rt></ruby>にあっという<ruby>間<rt>ま</rt></ruby>に<ruby>変<rt>か</rt></ruby>わる。<ruby>世界中<rt>せかいじゅう</rt></ruby>の<ruby>科学者<rt>かがくしゃ</rt></ruby>も「どうやって<ruby>覚<rt>おぼ</rt></ruby>えるの？」と<ruby>驚<rt>おどろ</rt></ruby>いている、まだまだ<ruby>謎<rt>なぞ</rt></ruby>がいっぱいのタコなんだ！</p>
+      </div>
+
+      <!-- クイズ -->
+      <div class="mid-box box-quiz">
+        <div class="mid-box-title">❓ クイズ！</div>
+        <p>ミミックオクトパスは<ruby>何種類<rt>なんしゅるい</rt></ruby>の<ruby>動物<rt>どうぶつ</rt></ruby>に<ruby>変身<rt>へんしん</rt></ruby>できるでしょう？</p>
+        <p style="margin-top:4px;">① 3<ruby>種類<rt>しゅるい</rt></ruby><br>② 15<ruby>種類以上<rt>しゅるいいじょう</rt></ruby><br>③ 100<ruby>種類<rt>しゅるい</rt></ruby></p>
+        <div class="quiz-answer">
+          こたえ：② 15<ruby>種類以上<rt>しゅるいいじょう</rt></ruby>！<br>まだ<ruby>新<rt>あたら</rt></ruby>しい<ruby>変身<rt>へんしん</rt></ruby>が<ruby>見<rt>み</rt></ruby>つかることも！
+        </div>
+      </div>
+
+      <!-- やってみよう -->
+      <div class="mid-box box-try">
+        <div class="mid-box-title">💡 やってみよう！</div>
+        <div class="try-item">💡 <span><strong>タコ<ruby>変装<rt>へんそう</rt></ruby>ごっこ</strong>をやってみよう！</span></div>
+        <div class="try-item">① <span><ruby>色紙<rt>いろがみ</rt></ruby>でタコの<ruby>足<rt>あし</rt></ruby>を<ruby>作<rt>つく</rt></ruby>って、<ruby>体<rt>からだ</rt></ruby>に<ruby>貼<rt>は</rt></ruby>る</span></div>
+        <div class="try-item">② <span>「ヒラメ<ruby>変身<rt>へんしん</rt></ruby>！」と<ruby>叫<rt>さけ</rt></ruby>んで<ruby>床<rt>ゆか</rt></ruby>にペタンと<ruby>寝<rt>ね</rt></ruby>そべる</span></div>
+        <div class="try-item">③ <span>「ウミヘビ！」でジグザグはってみよう！</span></div>
+        <p style="margin-top:3px;font-size:9px;color:#388e3c;">🏆 だれがいちばん<ruby>上手<rt>うまく</rt></ruby>に<ruby>変身<rt>へんしん</rt></ruby>できるか<ruby>競争<rt>きょうそう</rt></ruby>してみよう！</p>
+      </div>
+    </div>
+
+    <!-- こども欄 -->
+    <div class="kids-section">
+      <div class="kid-card kid-card-tecchan">
+        <div class="kid-ribbon ribbon-tecchan">🐥 てっちゃんバージョン（5さい）</div>
+        <div class="kid-content">
+          たこって へんしんできるんだよ！うみのにんじゃみたいですごいね！🐙
+        </div>
+      </div>
+      <div class="kid-card kid-card-taro">
+        <div class="kid-ribbon ribbon-taro">🌱 たろうバージョン（7さい）</div>
+        <div class="kid-content">
+          ミミックオクトパスというタコは、15しゅるいの<ruby>動物<rt>どうぶつ</rt></ruby>に<ruby>変身<rt>へんしん</rt></ruby>できるんだって！ウミヘビにもなれるよ🐙
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /.content -->
+
+  <!-- 豆知識バー -->
+  <div class="trivia-bar">
+    ✨ <ruby>豆知識<rt>まめちしき</rt></ruby>：ミミックオクトパスは1999年にインドネシアで<ruby>発見<rt>はっけん</rt></ruby>されたばかり！まだまだ<ruby>謎<rt>なぞ</rt></ruby>がいっぱいの「<ruby>海<rt>うみ</rt></ruby>の<ruby>研究者<rt>けんきゅうしゃ</rt></ruby>のあこがれ」なんだ。
+  </div>
+
+  <!-- フッター -->
+  <div class="footer">
+    <div class="footer-source">
+      📚 <ruby>参考<rt>さんこう</rt></ruby>：Perplexity AI / <ruby>海洋生物<rt>かいようせいぶつ</rt></ruby><ruby>研究<rt>けんきゅう</rt></ruby>レポート
+    </div>
+    <div class="footer-love">元洋パパより ❤️</div>
+  </div>
+
+</div>
+</body>
+</html>
