@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>豊田こども新聞 第16号</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;900&family=Noto+Serif+JP:wght@700;900&display=swap" rel="stylesheet">
+<style>
+:root {
+  --header-dark: #1B2A4A;
+  --header-mid: #2196F3;
+  --yellow-accent: #F4D03F;
+  --box-blue-bg: #EBF5FB;
+  --box-blue-border: #2196F3;
+  --box-yellow-bg: #FFF8E1;
+  --box-yellow-border: #FF9800;
+  --box-orange: #FF9800;
+  --box-tecchan-bg: #FFF8E1;
+  --box-taro-bg: #E8F5E9;
+  --box-taro-border: #4CAF50;
+  --box-apply-bg: #E8F5E9;
+  --box-apply-border: #4CAF50;
+  --footer-bg: #1B2A4A;
+  --text-dark: #1a1a2e;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: 'Noto Sans JP', 'Hiragino Kaku Gothic ProN', 'Yu Gothic', sans-serif;
+  color: var(--text-dark);
+  background: #f0f0f0;
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+ruby { ruby-align: center; }
+rt { font-size: 0.5em; color: inherit; }
+.page {
+  width: 210mm;
+  height: 297mm;
+  max-height: 297mm;
+  margin: 0 auto;
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  page-break-inside: avoid;
+  break-inside: avoid;
+  box-shadow: 0 2px 20px rgba(0,0,0,0.15);
+}
+.masthead {
+  background: var(--header-dark);
+  padding: 7px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.masthead-title {
+  font-family: 'Noto Serif JP', serif;
+  font-size: 28px;
+  font-weight: 900;
+  color: var(--yellow-accent);
+  letter-spacing: 3px;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+}
+.masthead-right {
+  text-align: right;
+  color: #fff;
+  font-size: 10px;
+  line-height: 1.5;
+}
+.masthead-issue {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--yellow-accent);
+}
+.masthead-sub {
+  font-size: 9px;
+  color: #aabbdd;
+  letter-spacing: 1px;
+}
+.color-line {
+  height: 4px;
+  background: linear-gradient(90deg, #FF6B6B, #FFE66D, #4ECDC4, #45B7D1, #96CEB4, #FFEAA7, #DDA0DD, #FF6B6B);
+}
+.date-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 4px 20px;
+  background: #f8f9fa;
+  border-bottom: 1px solid #e0e0e0;
+  font-size: 10px;
+}
+.date-text { font-weight: 700; color: #333; }
+.genre-badge {
+  background: linear-gradient(135deg, #9b59b6, #8e44ad);
+  color: #fff;
+  padding: 2px 12px;
+  border-radius: 12px;
+  font-size: 10px;
+  font-weight: 700;
+}
+.publisher { color: #888; font-size: 9px; }
+.content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 6px 14px;
+  overflow: hidden;
+}
+.headline {
+  font-family: 'Noto Serif JP', serif;
+  font-size: 17px;
+  font-weight: 900;
+  line-height: 1.4;
+  color: var(--header-dark);
+  padding-bottom: 4px;
+  margin-bottom: 5px;
+  border-bottom: 3px double var(--header-dark);
+}
+.top-section {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 5px;
+}
+.article-body {
+  flex: 3;
+  font-size: 10px;
+  line-height: 1.65;
+}
+.article-body p { margin-bottom: 3px; }
+.photo-side {
+  flex: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.photo-frame {
+  border: 2px solid #ddd;
+  border-radius: 6px;
+  overflow: hidden;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+  text-align: center;
+  background: #f9f9f9;
+}
+.photo-frame img {
+  width: 100%;
+  max-height: 110px;
+  object-fit: cover;
+  display: block;
+}
+.photo-caption {
+  font-size: 8.5px;
+  color: #666;
+  padding: 2px 4px;
+  text-align: center;
+}
+.discovery-box {
+  background: #FFF3E0;
+  border: 1.5px solid var(--box-orange);
+  border-radius: 6px;
+  padding: 5px 8px;
+  font-size: 9.5px;
+  line-height: 1.6;
+}
+.discovery-box-title {
+  font-weight: 900;
+  color: #E65100;
+  font-size: 10px;
+  margin-bottom: 2px;
+}
+.mid-section {
+  flex: 1;
+  min-height: 0;
+  overflow: hidden;
+  display: flex;
+  gap: 6px;
+  margin-bottom: 5px;
+}
+.mid-box {
+  flex: 1;
+  border-radius: 6px;
+  padding: 6px 8px;
+  font-size: 9.5px;
+  line-height: 1.6;
+  overflow: hidden;
+}
+.mid-box-title {
+  font-size: 10.5px;
+  font-weight: 900;
+  margin-bottom: 3px;
+}
+.mid-box.explain {
+  background: #FFF8E1;
+  border: 1.5px solid var(--box-orange);
+}
+.mid-box.explain .mid-box-title { color: #E65100; }
+.mid-box.quiz {
+  background: var(--box-blue-bg);
+  border: 1.5px solid var(--box-blue-border);
+}
+.mid-box.quiz .mid-box-title { color: #1565C0; }
+.mid-box.try {
+  background: var(--box-apply-bg);
+  border: 1.5px solid var(--box-apply-border);
+}
+.mid-box.try .mid-box-title { color: #2E7D32; }
+.quiz-q { font-weight: 700; margin-bottom: 2px; }
+.quiz-choices { padding-left: 2px; }
+.quiz-answer { margin-top: 3px; font-weight: 700; color: #1565C0; font-size: 9px; }
+.try-item { margin-bottom: 2px; }
+.kids-section {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 4px;
+}
+.kid-card {
+  flex: 1;
+  border-radius: 8px;
+  overflow: hidden;
+  font-size: 10.5px;
+  line-height: 1.6;
+}
+.kid-ribbon {
+  padding: 3px 10px;
+  font-size: 10.5px;
+  font-weight: 900;
+  color: #fff;
+}
+.kid-content {
+  padding: 5px 9px;
+}
+.tecchan .kid-ribbon { background: linear-gradient(90deg, #FF9800, #FFB74D); }
+.tecchan .kid-content { background: var(--box-tecchan-bg); }
+.taro .kid-ribbon { background: linear-gradient(90deg, #4CAF50, #81C784); }
+.taro .kid-content { background: var(--box-taro-bg); }
+.trivia-bar {
+  background: #F5EEF8;
+  padding: 4px 20px;
+  font-size: 9.5px;
+  color: #6A1B9A;
+  text-align: center;
+  font-weight: 700;
+}
+.footer {
+  background: var(--footer-bg);
+  padding: 4px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 8.5px;
+  color: #aabbdd;
+}
+.footer-love { color: var(--yellow-accent); font-weight: 700; }
+div#illust-area {
+  text-align: center;
+  padding: 5px;
+}
+.emoji-big { font-size: 36px; line-height: 1.2; }
+.emoji-mid { font-size: 24px; }
+.badge {
+  display: inline-block;
+  background: #E3F2FD;
+  color: #1565C0;
+  padding: 1px 8px;
+  border-radius: 10px;
+  font-size: 11px;
+  font-weight: 700;
+  margin: 2px 0;
+}
+.arrow { font-size: 16px; }
+.caption { font-size: 9px; color: #555; margin-top: 2px; line-height: 1.4; }
+@media print {
+  @page { size: A4; margin: 0; }
+  * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  html, body { height: 297mm; overflow: hidden; margin: 0; padding: 0; }
+  body { background: #fff; }
+  .page { max-height: 296mm; box-shadow: none; border-radius: 0; }
+}
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- MASTHEAD -->
+  <div class="masthead">
+    <div>
+      <div class="masthead-title">🗞 <ruby>豊田<rt>とよだ</rt></ruby>こども<ruby>新聞<rt>しんぶん</rt></ruby></div>
+      <div class="masthead-sub">365<ruby>日<rt>にち</rt></ruby>サイエンス</div>
+    </div>
+    <div class="masthead-right">
+      <div class="masthead-issue"><ruby>第<rt>だい</rt></ruby>16<ruby>号<rt>ごう</rt></ruby></div>
+    </div>
+  </div>
+
+  <!-- COLOR LINE -->
+  <div class="color-line"></div>
+
+  <!-- DATE BAR -->
+  <div class="date-bar">
+    <span class="date-text">2026<ruby>年<rt>ねん</rt></ruby>4<ruby>月<rt>がつ</rt></ruby>17<ruby>日<rt>にち</rt></ruby>（<ruby>金曜日<rt>きんようび</rt></ruby>）</span>
+    <span class="genre-badge">🧪 <ruby>実験<rt>じっけん</rt></ruby>・びっくり<ruby>科学<rt>かがく</rt></ruby></span>
+    <span class="publisher"><ruby>発行<rt>はっこう</rt></ruby>：<ruby>豊田<rt>とよだ</rt></ruby><ruby>元洋<rt>もとひろ</rt></ruby></span>
+  </div>
+
+  <!-- CONTENT -->
+  <div class="content">
+
+    <!-- HEADLINE -->
+    <div class="headline">
+      🧊 <ruby>水<rt>みず</rt></ruby>が<ruby>一瞬<rt>いっしゅん</rt></ruby>で<ruby>氷<rt>こおり</rt></ruby>になる！？「<ruby>過冷却<rt>かれいきゃく</rt></ruby>」のふしぎな<ruby>世界<rt>せかい</rt></ruby>
+    </div>
+
+    <!-- TOP SECTION -->
+    <div class="top-section">
+      <div class="article-body">
+        <p>🔬 <ruby>冷<rt>つめ</rt></ruby>たい<ruby>水<rt>みず</rt></ruby>をそーっとコップに<ruby>注<rt>そそ</rt></ruby>ぐと…<ruby>一瞬<rt>いっしゅん</rt></ruby>でバリバリッと<ruby>氷<rt>こおり</rt></ruby>になる！そんな<ruby>魔法<rt>まほう</rt></ruby>みたいな<ruby>実験<rt>じっけん</rt></ruby>があるんだって！</p>
+        <p>これは「<ruby>過冷却<rt>かれいきゃく</rt></ruby>」という<ruby>現象<rt>げんしょう</rt></ruby>。<ruby>水<rt>みず</rt></ruby>は<ruby>普通<rt>ふつう</rt></ruby>0℃で<ruby>凍<rt>こお</rt></ruby>るけど、とても<ruby>静<rt>しず</rt></ruby>かにゆっくり<ruby>冷<rt>ひ</rt></ruby>やすと、0℃より<ruby>低<rt>ひく</rt></ruby>くなっても<ruby>凍<rt>こお</rt></ruby>らないことがあるんだ。</p>
+        <p>でも、その<ruby>水<rt>みず</rt></ruby>にショックを<ruby>与<rt>あた</rt></ruby>えると…<ruby>一気<rt>いっき</rt></ruby>に<ruby>氷<rt>こおり</rt></ruby>に<ruby>変身<rt>へんしん</rt></ruby>！コップをトンと<ruby>叩<rt>たた</rt></ruby>いたり、<ruby>氷<rt>こおり</rt></ruby>のかけらを<ruby>入<rt>い</rt></ruby>れるだけで、みるみる<ruby>凍<rt>こお</rt></ruby>っていくよ。</p>
+        <p><ruby>映画<rt>えいが</rt></ruby>の<ruby>魔法<rt>まほう</rt></ruby>みたいだけど、ぜんぶ<ruby>科学<rt>かがく</rt></ruby>で<ruby>説明<rt>せつめい</rt></ruby>できるんだ！すごいよね！</p>
+      </div>
+      <div class="photo-side">
+        <div id="illust-area">
+          <div class="emoji-big">💧➡️🧊</div>
+          <div class="badge">0℃いかでも<ruby>凍<rt>こお</rt></ruby>らない！</div>
+          <div class="arrow">⬇️ トンッ！</div>
+          <div class="emoji-mid">❄️✨🪄</div>
+          <p class="caption">しずかな<ruby>水<rt>みず</rt></ruby>にショックを<ruby>与<rt>あた</rt></ruby>えると<br><ruby>一瞬<rt>いっしゅん</rt></ruby>で<ruby>氷<rt>こおり</rt></ruby>に<ruby>変身<rt>へんしん</rt></ruby>！</p>
+        </div>
+        <div class="discovery-box">
+          <div class="discovery-box-title">💡 <ruby>発見<rt>はっけん</rt></ruby>ポイント</div>
+          <ruby>水<rt>みず</rt></ruby>が<ruby>凍<rt>こお</rt></ruby>るには「きっかけ」が<ruby>必要<rt>ひつよう</rt></ruby>。ホコリや<ruby>振動<rt>しんどう</rt></ruby>がそのきっかけになるよ！
+        </div>
+      </div>
+    </div>
+
+    <!-- MID SECTION -->
+    <div class="mid-section">
+      <div class="mid-box explain">
+        <div class="mid-box-title">📖 やさしく<ruby>解説<rt>かいせつ</rt></ruby></div>
+        <ruby>水<rt>みず</rt></ruby>の<ruby>分子<rt>ぶんし</rt></ruby>（とっても<ruby>小<rt>ちい</rt></ruby>さなつぶ）は、<ruby>凍<rt>こお</rt></ruby>るとき<ruby>整列<rt>せいれつ</rt></ruby>して<ruby>並<rt>なら</rt></ruby>ぶ<ruby>必要<rt>ひつよう</rt></ruby>があるんだ。でも<ruby>静<rt>しず</rt></ruby>かすぎると<ruby>並<rt>なら</rt></ruby>び<ruby>始<rt>はじ</rt></ruby>めるきっかけがない。だからマイナス<ruby>温度<rt>おんど</rt></ruby>でも<ruby>液体<rt>えきたい</rt></ruby>のまま！ショックで<ruby>一斉<rt>いっせい</rt></ruby>に<ruby>整列<rt>せいれつ</rt></ruby>スタート→<ruby>一瞬<rt>いっしゅん</rt></ruby>で<ruby>氷<rt>こおり</rt></ruby>に！
+      </div>
+      <div class="mid-box quiz">
+        <div class="mid-box-title">❓ クイズ</div>
+        <div class="quiz-q"><ruby>過冷却<rt>かれいきゃく</rt></ruby>の<ruby>水<rt>みず</rt></ruby>を<ruby>凍<rt>こお</rt></ruby>らせるには<ruby>何<rt>なに</rt></ruby>をする？</div>
+        <div class="quiz-choices">
+          ① あたためる<br>
+          ② トンと<ruby>叩<rt>たた</rt></ruby>く<br>
+          ③ <ruby>砂糖<rt>さとう</rt></ruby>を<ruby>入<rt>い</rt></ruby>れる
+        </div>
+        <div class="quiz-answer">こたえ：② トンと<ruby>叩<rt>たた</rt></ruby>く！ショックがきっかけになるよ</div>
+      </div>
+      <div class="mid-box try">
+        <div class="mid-box-title">🔧 やってみよう！</div>
+        <div class="try-item">💡 ペットボトルに<ruby>水<rt>みず</rt></ruby>を<ruby>入<rt>い</rt></ruby>れて<ruby>冷凍庫<rt>れいとうこ</rt></ruby>で2〜3<ruby>時間<rt>じかん</rt></ruby>ゆっくり<ruby>冷<rt>ひ</rt></ruby>やそう（<ruby>凍<rt>こお</rt></ruby>る<ruby>手前<rt>てまえ</rt></ruby>で<ruby>取<rt>と</rt></ruby>り<ruby>出<rt>だ</rt></ruby>す）</div>
+        <div class="try-item">💡 そーっと<ruby>取<rt>と</rt></ruby>り<ruby>出<rt>だ</rt></ruby>して、テーブルにトンッ！</div>
+        <div class="try-item">💡 みるみる<ruby>凍<rt>こお</rt></ruby>っていくのを<ruby>観察<rt>かんさつ</rt></ruby>しよう！</div>
+        <div class="try-item" style="font-size:8.5px;color:#666;">※おうちの<ruby>人<rt>ひと</rt></ruby>と<ruby>一緒<rt>いっしょ</rt></ruby>にやってね</div>
+      </div>
+    </div>
+
+    <!-- KIDS SECTION -->
+    <div class="kids-section">
+      <div class="kid-card tecchan">
+        <div class="kid-ribbon">🐥 てっちゃん（5さい）</div>
+        <div class="kid-content">
+          おみずがいっしゅんでこおりになるんだよ！まほうみたいだけど、かがくなんだって！すごいね ❄️
+        </div>
+      </div>
+      <div class="kid-card taro">
+        <div class="kid-ribbon">🌱 たろう（7さい）</div>
+        <div class="kid-content">
+          <ruby>水<rt>みず</rt></ruby>は0℃で<ruby>凍<rt>こお</rt></ruby>るけど、しずかに<ruby>冷<rt>ひ</rt></ruby>やすと<ruby>凍<rt>こお</rt></ruby>らないことがあるんだって。トンって<ruby>叩<rt>たた</rt></ruby>くと<ruby>一気<rt>いっき</rt></ruby>に<ruby>氷<rt>こおり</rt></ruby>になるよ！🧊
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- TRIVIA BAR -->
+  <div class="trivia-bar">
+    💜 <ruby>豆知識<rt>まめちしき</rt></ruby>：<ruby>冬<rt>ふゆ</rt></ruby>の<ruby>雨<rt>あめ</rt></ruby>が<ruby>木<rt>き</rt></ruby>の<ruby>枝<rt>えだ</rt></ruby>にぶつかって<ruby>一瞬<rt>いっしゅん</rt></ruby>で<ruby>凍<rt>こお</rt></ruby>る「<ruby>雨氷<rt>うひょう</rt></ruby>」も<ruby>過冷却<rt>かれいきゃく</rt></ruby>のしくみ。<ruby>木<rt>き</rt></ruby>がガラスみたいにキラキラするよ！✨
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <span><ruby>出典<rt>しゅってん</rt></ruby>：NGKサイエンスサイト／<ruby>科学<rt>かがく</rt></ruby><ruby>実験<rt>じっけん</rt></ruby><ruby>資料<rt>しりょう</rt></ruby>より</span>
+    <span class="footer-love"><ruby>元洋<rt>もとひろ</rt></ruby>パパより ❤️</span>
+  </div>
+
+</div>
+</body>
+</html>
