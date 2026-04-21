@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>豊田こども新聞 第21号 2026年4月22日</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;900&family=Noto+Serif+JP:wght@700;900&display=swap" rel="stylesheet">
+<style>
+@page { size: A4; margin: 0; }
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body {
+  font-family: 'Noto Sans JP', 'Hiragino Kaku Gothic ProN', 'Yu Gothic', sans-serif;
+  background: #ddd;
+  color: #1a1a2e;
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+ruby { ruby-align: center; }
+rt { font-size: 0.5em; color: inherit; font-weight: 400; }
+
+.page {
+  width: 210mm;
+  height: 297mm;
+  max-height: 297mm;
+  margin: 0 auto;
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  page-break-inside: avoid;
+  break-inside: avoid;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+}
+
+.masthead {
+  background: #1B2A4A;
+  color: #F4D03F;
+  padding: 7px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 2px solid #F4D03F;
+}
+.masthead-title {
+  font-family: 'Noto Serif JP', serif;
+  font-size: 28px;
+  font-weight: 900;
+  letter-spacing: 2px;
+  color: #F4D03F;
+}
+.masthead-meta {
+  text-align: right;
+  font-size: 10px;
+  color: #fff;
+  line-height: 1.4;
+}
+.masthead-meta .issue-num {
+  font-size: 14px;
+  font-weight: 900;
+  color: #F4D03F;
+}
+
+.color-line {
+  height: 4px;
+  background: linear-gradient(90deg, #e74c3c, #f39c12, #f1c40f, #2ecc71, #3498db, #9b59b6);
+}
+
+.date-bar {
+  background: #F8F9FA;
+  padding: 4px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 10.5px;
+  border-bottom: 1px solid #ddd;
+}
+.genre-badge {
+  background: #8E44AD;
+  color: #fff;
+  padding: 2px 10px;
+  border-radius: 10px;
+  font-size: 10px;
+  font-weight: 700;
+}
+
+.content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 6px 14px;
+  overflow: hidden;
+}
+
+.headline {
+  font-family: 'Noto Serif JP', serif;
+  font-size: 17px;
+  font-weight: 900;
+  line-height: 1.4;
+  color: #1B2A4A;
+  padding-bottom: 4px;
+  margin-bottom: 5px;
+  border-bottom: 3px double #1B2A4A;
+  text-align: center;
+}
+.headline .sub {
+  display: block;
+  font-size: 11px;
+  color: #8E44AD;
+  font-weight: 700;
+  margin-bottom: 2px;
+}
+
+.top-section {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 5px;
+}
+.article-body {
+  flex: 3;
+  font-size: 10px;
+  line-height: 1.65;
+}
+.article-body p {
+  margin-bottom: 3px;
+  text-indent: 1em;
+}
+.article-body .lead {
+  font-weight: 700;
+  color: #1B2A4A;
+  background: #FFF8E1;
+  padding: 4px 6px;
+  border-left: 3px solid #F4D03F;
+  text-indent: 0;
+  margin-bottom: 4px;
+  font-size: 10px;
+}
+.photo-area {
+  flex: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.photo-frame {
+  border: 2px solid #1B2A4A;
+  box-shadow: 2px 2px 0 #F4D03F;
+  overflow: hidden;
+  background: #fff;
+}
+.photo-frame img {
+  width: 100%;
+  max-height: 110px;
+  object-fit: cover;
+  display: block;
+}
+.photo-caption {
+  font-size: 8.5px;
+  background: #1B2A4A;
+  color: #fff;
+  padding: 2px 5px;
+  text-align: center;
+}
+.discovery-box {
+  background: #FDF2E9;
+  border: 2px solid #E67E22;
+  border-radius: 4px;
+  padding: 5px 8px;
+  font-size: 9.5px;
+  line-height: 1.6;
+}
+.discovery-box .title {
+  font-weight: 900;
+  color: #E67E22;
+  font-size: 10.5px;
+  margin-bottom: 2px;
+}
+
+.mid-section {
+  flex: 1;
+  min-height: 0;
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 6px;
+  margin-bottom: 5px;
+}
+.mid-box {
+  padding: 6px 8px;
+  font-size: 9.5px;
+  line-height: 1.6;
+  border-radius: 4px;
+  overflow: hidden;
+}
+.mid-box-title {
+  font-size: 10.5px;
+  font-weight: 900;
+  margin-bottom: 3px;
+}
+.box-explain {
+  background: #FFF8E1;
+  border: 2px solid #F39C12;
+}
+.box-explain .mid-box-title { color: #E67E22; }
+.box-quiz {
+  background: #EBF5FB;
+  border: 2px solid #3498DB;
+}
+.box-quiz .mid-box-title { color: #2980B9; }
+.box-quiz .q { font-weight: 700; margin-bottom: 2px; }
+.box-quiz .choices { margin-left: 4px; font-size: 9px; }
+.box-quiz .answer { margin-top: 3px; font-size: 9px; color: #2980B9; font-weight: 700; }
+.box-try {
+  background: #E8F5E9;
+  border: 2px solid #27AE60;
+}
+.box-try .mid-box-title { color: #1E8449; }
+.box-try ul { list-style: none; padding-left: 0; }
+.box-try li { padding-left: 14px; position: relative; margin-bottom: 2px; }
+.box-try li::before { content: "💡"; position: absolute; left: 0; top: 0; font-size: 9px; }
+
+.kids-section {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px;
+  margin-bottom: 5px;
+}
+.kid-card {
+  border-radius: 4px;
+  overflow: hidden;
+  font-size: 10.5px;
+  line-height: 1.6;
+  background: #fff;
+  border: 2px solid;
+}
+.kid-tecchan { border-color: #F39C12; background: #FFF8E1; }
+.kid-taro { border-color: #27AE60; background: #E8F5E9; }
+.kid-ribbon {
+  padding: 3px 10px;
+  font-size: 10.5px;
+  font-weight: 900;
+  color: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.kid-tecchan .kid-ribbon { background: #F39C12; }
+.kid-taro .kid-ribbon { background: #27AE60; }
+.kid-content { padding: 5px 9px; }
+
+.trivia-bar {
+  background: #F5EEF8;
+  padding: 4px 20px;
+  font-size: 9.5px;
+  color: #6C3483;
+  border-top: 1px dashed #8E44AD;
+  border-bottom: 1px dashed #8E44AD;
+}
+.trivia-bar b { color: #8E44AD; }
+
+.footer {
+  background: #1B2A4A;
+  color: #fff;
+  padding: 4px 20px;
+  font-size: 8.5px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.footer .papa { color: #F4D03F; font-weight: 700; }
+
+@media print {
+  html, body { height: 297mm; overflow: hidden; background: #fff; }
+  .page {
+    max-height: 296mm;
+    box-shadow: none;
+    margin: 0;
+  }
+  * {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+}
+</style>
+</head>
+<body>
+<div class="page">
+
+  <header class="masthead">
+    <div class="masthead-title">豊田こども新聞</div>
+    <div class="masthead-meta">
+      <div class="issue-num">第21号</div>
+      <div>365<ruby>日<rt>にち</rt></ruby>サイエンス</div>
+    </div>
+  </header>
+
+  <div class="color-line"></div>
+
+  <div class="date-bar">
+    <div>2026<ruby>年<rt>ねん</rt></ruby> 4<ruby>月<rt>がつ</rt></ruby> 22<ruby>日<rt>にち</rt></ruby>（<ruby>水曜日<rt>すいようび</rt></ruby>）</div>
+    <div class="genre-badge">🤖 ロボット・<ruby>発明<rt>はつめい</rt></ruby></div>
+    <div><ruby>発行<rt>はっこう</rt></ruby>：<ruby>元洋<rt>もとひろ</rt></ruby>パパ</div>
+  </div>
+
+  <div class="content">
+
+    <h1 class="headline">
+      <span class="sub">🤖 ロボットと<ruby>心<rt>こころ</rt></ruby>のびっくり<ruby>研究<rt>けんきゅう</rt></ruby></span>
+      ロボットが<ruby>見<rt>み</rt></ruby>ていると、<ruby>子<rt>こ</rt></ruby>どもは「やさしい<ruby>子<rt>こ</rt></ruby>」になるってホント！？
+    </h1>
+
+    <div class="top-section">
+      <div class="article-body">
+        <p class="lead">おしゃべりができるロボットの<ruby>前<rt>まえ</rt></ruby>だと、<ruby>子<rt>こ</rt></ruby>どもは<ruby>友<rt>とも</rt></ruby>だちにやさしくなるんだって！びっくりだよね。</p>
+        <p><ruby>日本<rt>にほん</rt></ruby>のNTTという<ruby>会社<rt>かいしゃ</rt></ruby>が、おもしろい<ruby>実験<rt>じっけん</rt></ruby>をしたよ。5さいの<ruby>子<rt>こ</rt></ruby>どもに、「<ruby>話<rt>はな</rt></ruby>しかけたらお<ruby>返事<rt>へんじ</rt></ruby>してくれるロボット」と「<ruby>動<rt>うご</rt></ruby>かないロボット」をそれぞれ<ruby>見<rt>み</rt></ruby>せたんだ。すると、<ruby>動<rt>うご</rt></ruby>いてしゃべるロボットの<ruby>前<rt>まえ</rt></ruby>では、みんなおもちゃをお<ruby>友<rt>とも</rt></ruby>だちに<ruby>分<rt>わ</rt></ruby>けてあげるようになったんだって！</p>
+        <p><ruby>動<rt>うご</rt></ruby>かないロボットの<ruby>前<rt>まえ</rt></ruby>だと、<ruby>自分<rt>じぶん</rt></ruby>のぶんだけ<ruby>取<rt>と</rt></ruby>ってしまう<ruby>子<rt>こ</rt></ruby>が<ruby>多<rt>おお</rt></ruby>かったみたい。つまりロボットの<ruby>目<rt>め</rt></ruby>が、<ruby>先生<rt>せんせい</rt></ruby>や<ruby>大人<rt>おとな</rt></ruby>の<ruby>目<rt>め</rt></ruby>と<ruby>同<rt>おな</rt></ruby>じように<ruby>感<rt>かん</rt></ruby>じられたってこと！すごいよね。</p>
+        <p><ruby>人<rt>ひと</rt></ruby>の<ruby>脳<rt>のう</rt></ruby>は、<ruby>動<rt>うご</rt></ruby>いたり<ruby>話<rt>はな</rt></ruby>したりするものを「<ruby>仲間<rt>なかま</rt></ruby>」だとかんじる<ruby>力<rt>ちから</rt></ruby>があるんだ。<ruby>未来<rt>みらい</rt></ruby>はロボットが<ruby>本当<rt>ほんとう</rt></ruby>の<ruby>友<rt>とも</rt></ruby>だちになる<ruby>日<rt>ひ</rt></ruby>が<ruby>来<rt>く</rt></ruby>るかもしれないね！</p>
+      </div>
+      <div class="photo-area">
+        <div class="photo-frame" id="illust-area">
+          <img src="https://robotstart.info/imgs/zoom1/99780.jpg" alt="コミュニケーションロボット">
+          <div class="photo-caption">👀 おしゃべりロボットのれい</div>
+        </div>
+        <div class="discovery-box">
+          <div class="title">🔬 ここがすごい！</div>
+          <ruby>子<rt>こ</rt></ruby>どもの<ruby>脳<rt>のう</rt></ruby>は、5さいごろから「<ruby>誰<rt>だれ</rt></ruby>が<ruby>見<rt>み</rt></ruby>てるかな？」と<ruby>考<rt>かんが</rt></ruby>える<ruby>力<rt>ちから</rt></ruby>がそだつよ。だからロボットでも「<ruby>見<rt>み</rt></ruby>られてる！」と<ruby>感<rt>かん</rt></ruby>じるとやさしくなるんだ。
+        </div>
+      </div>
+    </div>
+
+    <div class="mid-section">
+      <div class="mid-box box-explain">
+        <div class="mid-box-title">📖 もっとくわしく</div>
+        <ruby>社会的<rt>しゃかいてき</rt></ruby>ロボットとは、<ruby>目<rt>め</rt></ruby>をあわせたり、<ruby>手<rt>て</rt></ruby>をふったり、お<ruby>返事<rt>へんじ</rt></ruby>をしてくれるロボットのこと。びょういんや<ruby>学校<rt>がっこう</rt></ruby>で、<ruby>子<rt>こ</rt></ruby>どもを<ruby>元気<rt>げんき</rt></ruby>にするおしごとをしているよ。
+      </div>
+      <div class="mid-box box-quiz">
+        <div class="mid-box-title">🎯 きょうのクイズ</div>
+        <div class="q">Q. ロボットはどれくらいの<ruby>大<rt>おお</rt></ruby>きさがある？</div>
+        <div class="choices">
+          ① <ruby>虫<rt>むし</rt></ruby>より<ruby>小<rt>ちい</rt></ruby>さいロボット<br>
+          ② <ruby>車<rt>くるま</rt></ruby>くらいのロボット<br>
+          ③ ①も②もある
+        </div>
+        <div class="answer">▶ <ruby>答<rt>こた</rt></ruby>え：③！ナノロボットから<ruby>巨大<rt>きょだい</rt></ruby>ロボまである！</div>
+      </div>
+      <div class="mid-box box-try">
+        <div class="mid-box-title">💪 やってみよう</div>
+        <ul>
+          <li>おうちのスマートスピーカーに「おはよう」と<ruby>話<rt>はな</rt></ruby>しかけてみる</li>
+          <li><ruby>空<rt>あ</rt></ruby>きばこでじぶんだけのロボットを<ruby>工作<rt>こうさく</rt></ruby>してみる</li>
+          <li>ロボットに<ruby>名前<rt>なまえ</rt></ruby>をつけてみる</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="kids-section">
+      <div class="kid-card kid-tecchan">
+        <div class="kid-ribbon">
+          <span>🐥 てっちゃん（5さい）</span>
+          <span style="font-size:8.5px;">ひらがなばん</span>
+        </div>
+        <div class="kid-content">
+          ロボットがみてると、おともだちにやさしくなるんだって！ロボットのめって、ふしぎだね✨🤖
+        </div>
+      </div>
+      <div class="kid-card kid-taro">
+        <div class="kid-ribbon">
+          <span>🌱 たろう（7さい）</span>
+          <span style="font-size:8.5px;"><ruby>小<rt>しょう</rt></ruby>1バージョン</span>
+        </div>
+        <div class="kid-content">
+          おしゃべりするロボットの<ruby>前<rt>まえ</rt></ruby>だと、<ruby>子<rt>こ</rt></ruby>どもはやさしくなるみたい。<ruby>学校<rt>がっこう</rt></ruby>の<ruby>先生<rt>せんせい</rt></ruby>とおなじ<ruby>力<rt>ちから</rt></ruby>だね！🤖💛
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="trivia-bar">
+    <b>💡 へぇ〜！</b> ロボットという<ruby>言葉<rt>ことば</rt></ruby>は、100<ruby>年<rt>ねん</rt></ruby>まえのチェコの<ruby>国<rt>くに</rt></ruby>の<ruby>劇<rt>げき</rt></ruby>からうまれた「はたらく」という<ruby>意味<rt>いみ</rt></ruby>のことば！
+  </div>
+
+  <footer class="footer">
+    <div><ruby>出典<rt>しゅってん</rt></ruby>：NTT<ruby>社会<rt>しゃかい</rt></ruby>ロボット<ruby>研究<rt>けんきゅう</rt></ruby>／Perplexity AI</div>
+    <div class="papa">元洋パパより ❤️</div>
+  </footer>
+
+</div>
+</body>
+</html>
