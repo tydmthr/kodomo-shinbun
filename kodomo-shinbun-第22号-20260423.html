@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>豊田こども新聞 第22号 2026年4月23日</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;900&family=Noto+Serif+JP:wght@700;900&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  ruby { ruby-align: center; }
+  rt { font-size: 0.5em; color: inherit; font-weight: normal; }
+  html, body { background:#e8e8e8; font-family: 'Noto Sans JP', 'Hiragino Kaku Gothic ProN', 'Yu Gothic', sans-serif; color:#1a1a2e; }
+
+  .page {
+    width: 210mm;
+    height: 297mm;
+    max-height: 297mm;
+    margin: 0 auto;
+    background: #fff;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    page-break-inside: avoid;
+    break-inside: avoid;
+    box-shadow: 0 2px 16px rgba(0,0,0,.15);
+  }
+
+  /* masthead */
+  .masthead {
+    background:#1B2A4A;
+    color:#fff;
+    padding: 7px 20px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+  }
+  .masthead .title {
+    font-family: 'Noto Serif JP', serif;
+    font-weight:900;
+    font-size: 28px;
+    color:#F4D03F;
+    letter-spacing: 2px;
+  }
+  .masthead .sub { font-size:10px; color:#cfd6e6; margin-top:2px; }
+  .masthead .right { text-align:right; font-size:10px; line-height:1.5; }
+  .masthead .issue { font-size:14px; font-weight:700; color:#F4D03F;}
+
+  .color-line {
+    height:4px;
+    background: linear-gradient(90deg,#E74C3C,#F39C12,#F4D03F,#2ECC71,#3498DB,#9B59B6);
+  }
+
+  .date-bar {
+    display:flex; align-items:center; justify-content:space-between;
+    padding: 5px 20px;
+    background: #FDF6E3;
+    border-bottom: 1px solid #e4d4a8;
+    font-size: 11px;
+    color:#444;
+  }
+  .date-bar .genre {
+    background:#FF7F50; color:#fff; padding:3px 10px; border-radius:12px;
+    font-weight:700; font-size:11px;
+  }
+
+  .content {
+    flex:1;
+    display:flex;
+    flex-direction:column;
+    padding: 6px 14px;
+    overflow:hidden;
+  }
+
+  .headline {
+    font-family: 'Noto Serif JP', serif;
+    font-weight:900;
+    font-size: 17px;
+    color:#1B2A4A;
+    line-height:1.4;
+    text-align:center;
+    border-bottom: 3px double #1B2A4A;
+    padding-bottom: 4px;
+    margin-bottom: 5px;
+  }
+  .headline .small { font-size:11px; color:#C0392B; display:block; margin-bottom:2px; font-weight:700; }
+
+  /* top section */
+  .top-section {
+    display:flex;
+    gap: 10px;
+    margin-bottom: 6px;
+  }
+  .article-body {
+    flex: 3;
+    font-size: 10px;
+    line-height: 1.65;
+    color:#222;
+  }
+  .article-body p { margin-bottom: 3px; text-indent: 1em; }
+  .article-body .lead { font-weight:700; color:#1B2A4A; text-indent:0; }
+
+  .photo-col {
+    flex: 2;
+    display:flex;
+    flex-direction:column;
+    gap: 5px;
+  }
+  .photo-frame {
+    border: 2px solid #1B2A4A;
+    background:#fff;
+    padding:2px;
+    box-shadow: 1px 2px 4px rgba(0,0,0,.15);
+  }
+  .photo-frame img {
+    width:100%;
+    max-height: 110px;
+    object-fit: cover;
+    display:block;
+  }
+  .photo-frame .cap {
+    font-size: 8.5px;
+    text-align:center;
+    padding: 2px 0 0 0;
+    color:#666;
+  }
+  .finding-box {
+    background:#FEF9E7;
+    border: 1.5px solid #F4D03F;
+    border-radius: 5px;
+    padding: 5px 8px;
+    font-size: 9.5px;
+    line-height:1.6;
+  }
+  .finding-box .flabel {
+    display:inline-block;
+    background:#F4D03F;
+    color:#1B2A4A;
+    font-weight:700;
+    padding: 1px 6px;
+    border-radius:3px;
+    font-size:9px;
+    margin-bottom:3px;
+  }
+
+  /* mid-section */
+  .mid-section {
+    flex:1;
+    min-height:0;
+    overflow:hidden;
+    display:grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 6px;
+    margin-bottom: 6px;
+  }
+  .mid-box {
+    padding: 6px 8px;
+    font-size: 9.5px;
+    line-height: 1.6;
+    overflow:hidden;
+    border-radius: 5px;
+  }
+  .mid-box-title {
+    font-size: 10.5px;
+    font-weight:900;
+    margin-bottom: 3px;
+    display:flex; align-items:center; gap:4px;
+  }
+  .explain-box { background:#FFF8E1; border:1.5px solid #FF9800; }
+  .explain-box .mid-box-title { color:#E65100; }
+  .quiz-box { background:#EBF5FB; border:1.5px solid #3498DB; }
+  .quiz-box .mid-box-title { color:#1B4F72; }
+  .quiz-q { font-weight:700; margin-bottom:2px; }
+  .quiz-a { background:#D6EAF8; padding:3px 5px; border-radius:3px; font-size:9px; margin-top:3px; }
+  .try-box { background:#E8F5E9; border:1.5px solid #4CAF50; }
+  .try-box .mid-box-title { color:#1B5E20; }
+  .try-box p::before { content:"💡 "; }
+
+  /* kids-section */
+  .kids-section {
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    gap:8px;
+    margin-bottom: 4px;
+  }
+  .kid-card {
+    border-radius: 6px;
+    overflow:hidden;
+    font-size: 10.5px;
+    line-height:1.6;
+    border: 1.5px solid;
+  }
+  .kid-ribbon {
+    padding: 3px 10px;
+    font-size: 10.5px;
+    font-weight:900;
+    color:#fff;
+    display:flex; align-items:center; gap:5px;
+  }
+  .kid-content {
+    padding: 5px 9px;
+    background: #fff;
+  }
+  .tecchan { border-color:#FFB74D; background:#FFF8E1; }
+  .tecchan .kid-ribbon { background:#FB8C00; }
+  .tecchan .kid-content { background:#FFF8E1; color:#4E342E; }
+  .taro { border-color:#66BB6A; background:#E8F5E9; }
+  .taro .kid-ribbon { background:#43A047; }
+  .taro .kid-content { background:#E8F5E9; color:#1B5E20; }
+
+  .trivia-bar {
+    background:#F5EEF8;
+    color:#6C3483;
+    padding: 4px 20px;
+    font-size: 9.5px;
+    border-top:1px solid #D7BDE2;
+    border-bottom:1px solid #D7BDE2;
+    display:flex; align-items:center; gap:6px;
+  }
+  .trivia-bar strong { color:#4A235A; }
+
+  .footer {
+    background:#1B2A4A;
+    color:#cfd6e6;
+    padding: 4px 20px;
+    font-size: 8.5px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+  }
+  .footer b { color:#F4D03F; }
+
+  @page { size: A4; margin: 0; }
+  @media print {
+    html, body { height: 297mm; overflow: hidden; background:#fff; }
+    body { margin:0; padding:0; }
+    .page { width:210mm; max-height: 296mm; box-shadow:none; margin:0; }
+    * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <div class="masthead">
+    <div>
+      <div class="title">豊田こども新聞</div>
+      <div class="sub">365日サイエンス・TOYODA KODOMO SHIMBUN</div>
+    </div>
+    <div class="right">
+      <div class="issue">第22号</div>
+      <div>2026年（令和8年）</div>
+      <div>4月23日 木曜日</div>
+    </div>
+  </div>
+
+  <div class="color-line"></div>
+
+  <div class="date-bar">
+    <div><ruby>発行<rt>はっこう</rt></ruby>：<ruby>元洋<rt>もとひろ</rt></ruby>パパ</div>
+    <div class="genre">🐾 <ruby>動物<rt>どうぶつ</rt></ruby>のすごい<ruby>能力<rt>のうりょく</rt></ruby></div>
+    <div>2026.4.23（<ruby>木<rt>もく</rt></ruby>）</div>
+  </div>
+
+  <div class="content">
+
+    <div class="headline">
+      <span class="small">きょうのふしぎ・<ruby>羽<rt>はね</rt></ruby>ばたきの<ruby>魔法<rt>まほう</rt></ruby></span>
+      ハチドリはなぜ<ruby>空中<rt>くうちゅう</rt></ruby>でピタッと<ruby>止<rt>と</rt></ruby>まれるの？
+    </div>
+
+    <div class="top-section">
+      <div class="article-body">
+        <p class="lead">ブンブン、ブーン。<ruby>花<rt>はな</rt></ruby>のすぐそばで「<ruby>虫<rt>むし</rt></ruby>みたいな<ruby>音<rt>おと</rt></ruby>」をさせながら、ピタッと<ruby>空<rt>そら</rt></ruby>で<ruby>止<rt>と</rt></ruby>まる<ruby>小<rt>ちい</rt></ruby>さな<ruby>鳥<rt>とり</rt></ruby>、それがハチドリだよ。</p>
+        <p>ハチドリは１<ruby>秒<rt>びょう</rt></ruby><ruby>間<rt>かん</rt></ruby>に<strong>50〜55<ruby>回<rt>かい</rt></ruby></strong>も<ruby>羽<rt>はね</rt></ruby>をうごかすんだ。ふつうの<ruby>鳥<rt>とり</rt></ruby>の<strong>10<ruby>倍<rt>ばい</rt></ruby>いじょう</strong>。<ruby>目<rt>め</rt></ruby>ではぜんぜん<ruby>見<rt>み</rt></ruby>えないくらい<ruby>速<rt>はや</rt></ruby>くて、その<ruby>音<rt>おと</rt></ruby>がまるでハチみたいだから「ハチドリ」って<ruby>名前<rt>なまえ</rt></ruby>がついたんだって！</p>
+        <p><ruby>秘密<rt>ひみつ</rt></ruby>は<ruby>羽<rt>はね</rt></ruby>のうごかし<ruby>方<rt>かた</rt></ruby>。ふつうの<ruby>鳥<rt>とり</rt></ruby>は<ruby>羽<rt>はね</rt></ruby>を<strong>上<ruby><rt>うえ</rt></ruby>と<ruby>下<rt>した</rt></ruby></strong>にパタパタさせるけど、ハチドリは<strong>「∞（<ruby>8<rt>はち</rt></ruby>の<ruby>字<rt>じ</rt></ruby>）」</strong>の<ruby>形<rt>かたち</rt></ruby>にぐるっと<ruby>回<rt>まわ</rt></ruby>すんだ。だから<ruby>上<rt>うえ</rt></ruby>にあげるときも<ruby>下<rt>した</rt></ruby>におろすときも、<ruby>両方<rt>りょうほう</rt></ruby>で<ruby>体<rt>からだ</rt></ruby>をうかせる<ruby>力<rt>ちから</rt></ruby>が<ruby>生<rt>う</rt></ruby>まれるんだよ。</p>
+        <p>しかもハチドリの<ruby>胸<rt>むね</rt></ruby>の<ruby>筋肉<rt>きんにく</rt></ruby>は、<ruby>体<rt>からだ</rt></ruby>の<strong>30％</strong>もあるスーパーマッチョ！<ruby>小<rt>ちい</rt></ruby>さな<ruby>体<rt>からだ</rt></ruby>だけど、<ruby>世界<rt>せかい</rt></ruby>チャンピオンみたいな<ruby>筋肉<rt>きんにく</rt></ruby>で<ruby>羽<rt>はね</rt></ruby>を<ruby>動<rt>うご</rt></ruby>かしているんだ。すごいぞ、ハチドリ！</p>
+      </div>
+
+      <div class="photo-col">
+        <div id="illust-area" class="photo-frame">
+          <img src="https://images.unsplash.com/photo-1553736277-055142d018f0?fm=jpg&q=60&w=800&auto=format&fit=crop" alt="ハチドリの写真">
+          <div class="cap">▲ 花のミツをのむハチドリ</div>
+        </div>
+        <div class="finding-box">
+          <span class="flabel">✨ きょうの発見</span><br>
+          ハチドリは<ruby>後<rt>うし</rt></ruby>ろ<ruby>向<rt>む</rt></ruby>きにも<ruby>飛<rt>と</rt></ruby>べる<ruby>唯一<rt>ゆいいつ</rt></ruby>の<ruby>鳥<rt>とり</rt></ruby>！ <ruby>空中<rt>くうちゅう</rt></ruby>で<ruby>止<rt>と</rt></ruby>まれるから、そのまま<ruby>後<rt>うし</rt></ruby>ろに<ruby>下<rt>さ</rt></ruby>がって<ruby>逃<rt>に</rt></ruby>げることもできるんだよ。
+        </div>
+      </div>
+    </div>
+
+    <div class="mid-section">
+      <div class="mid-box explain-box">
+        <div class="mid-box-title">📖 もっとくわしく</div>
+        <p>ハチドリは<ruby>花<rt>はな</rt></ruby>のミツをのむために<ruby>空中<rt>くうちゅう</rt></ruby>で<ruby>止<rt>と</rt></ruby>まる<ruby>力<rt>ちから</rt></ruby>を<ruby>手<rt>て</rt></ruby>に<ruby>入<rt>い</rt></ruby>れたんだ。<ruby>花<rt>はな</rt></ruby>がゆれても、<ruby>体<rt>からだ</rt></ruby>をピタッと<ruby>合<rt>あ</rt></ruby>わせて<ruby>細<rt>ほそ</rt></ruby>いくちばしでミツをのむ。まさに<ruby>空<rt>そら</rt></ruby>のストローだね！</p>
+      </div>
+
+      <div class="mid-box quiz-box">
+        <div class="mid-box-title">❓ きょうのクイズ</div>
+        <div class="quiz-q">ハチドリの<ruby>羽<rt>はね</rt></ruby>ばたきは<ruby>１<rt>いち</rt></ruby><ruby>秒<rt>びょう</rt></ruby>に<ruby>何<rt>なん</rt></ruby><ruby>回<rt>かい</rt></ruby>？</div>
+        <div>① 5〜10<ruby>回<rt>かい</rt></ruby><br>② 50〜55<ruby>回<rt>かい</rt></ruby><br>③ 500<ruby>回<rt>かい</rt></ruby>いじょう</div>
+        <div class="quiz-a"><strong>こたえ：②</strong> <ruby>目<rt>め</rt></ruby>ではおえないよ！</div>
+      </div>
+
+      <div class="mid-box try-box">
+        <div class="mid-box-title">🏠 やってみよう</div>
+        <p><ruby>両手<rt>りょうて</rt></ruby>を<ruby>体<rt>からだ</rt></ruby>の<ruby>前<rt>まえ</rt></ruby>であわせて、<ruby>前<rt>まえ</rt></ruby>と<ruby>後<rt>うし</rt></ruby>ろに<ruby>素早<rt>すばや</rt></ruby>く<ruby>動<rt>うご</rt></ruby>かしてみよう。<ruby>上下<rt>じょうげ</rt></ruby>と<ruby>違<rt>ちが</rt></ruby>って、フワッとうく<ruby>感<rt>かん</rt></ruby>じがするよ。これがハチドリの<ruby>秘密<rt>ひみつ</rt></ruby>！</p>
+      </div>
+    </div>
+
+    <div class="kids-section">
+      <div class="kid-card tecchan">
+        <div class="kid-ribbon">🐥 てっちゃん（5さい）へ</div>
+        <div class="kid-content">ハチドリはね、ちっちゃいのに はねを ぶんぶん うごかして おはなの まえで ぴたっと とまれるんだよ！ すごいね✨</div>
+      </div>
+      <div class="kid-card taro">
+        <div class="kid-ribbon">🌱 たろう（7さい）へ</div>
+        <div class="kid-content">ハチドリは１<ruby>秒<rt>びょう</rt></ruby>に50<ruby>回<rt>かい</rt></ruby>も<ruby>羽<rt>はね</rt></ruby>ばたくんだって！ <ruby>筋肉<rt>きんにく</rt></ruby>もりもりで、<ruby>後<rt>うし</rt></ruby>ろにも<ruby>飛<rt>と</rt></ruby>べる<ruby>唯一<rt>ゆいいつ</rt></ruby>の<ruby>鳥<rt>とり</rt></ruby>なんだね🐦</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="trivia-bar">
+    <strong>💡 へぇ〜 豆知識：</strong> ハチドリは<ruby>世界<rt>せかい</rt></ruby>でいちばん<ruby>小<rt>ちい</rt></ruby>さい<ruby>鳥<rt>とり</rt></ruby>の<ruby>仲間<rt>なかま</rt></ruby>で、<ruby>一番<rt>いちばん</rt></ruby><ruby>小<rt>ちい</rt></ruby>さい<ruby>種類<rt>しゅるい</rt></ruby>は<ruby>体<rt>からだ</rt></ruby>の<ruby>長<rt>なが</rt></ruby>さがたったの5cm！ <ruby>１<rt>いっ</rt></ruby><ruby>円玉<rt>えんだま</rt></ruby>とおなじくらいなんだって！
+  </div>
+
+  <div class="footer">
+    <div>出典：Perplexity AI 調べ（動物の行動学・鳥類学）</div>
+    <div><b>豊田こども新聞</b>　元洋パパより ❤️</div>
+  </div>
+
+</div>
+</body>
+</html>
