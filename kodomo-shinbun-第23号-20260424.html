@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>豊田こども新聞 第23号 2026年4月24日</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;900&family=Noto+Serif+JP:wght@700;900&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { font-family: 'Noto Sans JP', 'Hiragino Kaku Gothic ProN', 'Yu Gothic', sans-serif; background: #e5e5e5; color: #1a1a2e; }
+  ruby { ruby-align: center; }
+  rt { font-size: 0.5em; color: inherit; font-weight: normal; }
+  @page { size: A4; margin: 0; }
+  @media print {
+    html, body { height: 297mm; overflow: hidden; background: #fff; }
+    * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .page { max-height: 296mm; box-shadow: none; }
+  }
+  .page {
+    width: 210mm;
+    height: 297mm;
+    max-height: 297mm;
+    margin: 0 auto;
+    background: #fff;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    page-break-inside: avoid;
+    break-inside: avoid;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+  }
+  .masthead {
+    background: #1B2A4A;
+    color: #fff;
+    padding: 7px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .masthead .title {
+    font-family: 'Noto Serif JP', serif;
+    font-size: 28px;
+    color: #F4D03F;
+    font-weight: 900;
+    letter-spacing: 2px;
+  }
+  .masthead .sub {
+    font-size: 10px;
+    color: #F4D03F;
+    font-weight: bold;
+    letter-spacing: 2px;
+    margin-top: 2px;
+  }
+  .masthead .issue {
+    text-align: right;
+    font-size: 11px;
+    color: #F4D03F;
+  }
+  .masthead .issue .no { font-size: 15px; font-weight: 900; }
+  .color-line {
+    height: 4px;
+    background: linear-gradient(90deg, #E74C3C 0%, #F39C12 20%, #F4D03F 40%, #27AE60 60%, #3498DB 80%, #9B59B6 100%);
+  }
+  .date-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 4px 20px;
+    font-size: 10px;
+    background: #F8F9FA;
+    border-bottom: 1px solid #ddd;
+  }
+  .date-bar .date { font-weight: bold; color: #1B2A4A; }
+  .date-bar .genre-badge {
+    background: #F4D03F;
+    color: #1B2A4A;
+    padding: 2px 10px;
+    border-radius: 10px;
+    font-weight: bold;
+    font-size: 10px;
+  }
+  .date-bar .publisher { color: #666; }
+  .content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 6px 14px;
+    overflow: hidden;
+  }
+  .headline {
+    font-family: 'Noto Serif JP', serif;
+    font-size: 17px;
+    font-weight: 900;
+    color: #1B2A4A;
+    text-align: center;
+    line-height: 1.4;
+    padding-bottom: 4px;
+    margin-bottom: 5px;
+    border-bottom: 3px double #1B2A4A;
+  }
+  .headline .sub-headline { font-size: 11px; color: #E74C3C; font-weight: 700; display: block; margin-top: 2px; }
+  .top-section {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 5px;
+  }
+  .article-body {
+    flex: 3;
+    font-size: 10px;
+    line-height: 1.65;
+  }
+  .article-body p { margin-bottom: 3px; text-indent: 1em; }
+  .article-body p.lead { text-indent: 0; font-weight: bold; color: #1B2A4A; }
+  .article-body .emphasis { background: linear-gradient(transparent 60%, #FFF176 60%); font-weight: 700; }
+  .photo-column {
+    flex: 2;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+  .photo-frame {
+    border: 2px solid #1B2A4A;
+    box-shadow: 2px 2px 0 rgba(0,0,0,0.1);
+    overflow: hidden;
+    background: #fff;
+  }
+  .photo-frame img {
+    width: 100%;
+    max-height: 110px;
+    object-fit: cover;
+    display: block;
+  }
+  .photo-frame .caption {
+    font-size: 8px;
+    padding: 2px 4px;
+    background: #1B2A4A;
+    color: #fff;
+    text-align: center;
+  }
+  .discovery-box {
+    background: #FFF8E1;
+    border: 2px solid #F39C12;
+    border-radius: 4px;
+    padding: 5px 8px;
+    font-size: 9.5px;
+    line-height: 1.6;
+  }
+  .discovery-box .dlabel {
+    font-weight: 900;
+    color: #E67E22;
+    font-size: 10px;
+    display: block;
+    margin-bottom: 2px;
+  }
+  .mid-section {
+    flex: 1;
+    min-height: 0;
+    overflow: hidden;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 6px;
+    margin-bottom: 5px;
+  }
+  .mid-box {
+    padding: 6px 8px;
+    font-size: 9.5px;
+    line-height: 1.6;
+    overflow: hidden;
+    border-radius: 4px;
+    border-left: 4px solid;
+  }
+  .mid-box-title {
+    font-size: 10.5px;
+    font-weight: 900;
+    margin-bottom: 3px;
+  }
+  .mid-kaisetsu {
+    background: #FFF8E1;
+    border-left-color: #F39C12;
+  }
+  .mid-kaisetsu .mid-box-title { color: #E67E22; }
+  .mid-quiz {
+    background: #EBF5FB;
+    border-left-color: #3498DB;
+  }
+  .mid-quiz .mid-box-title { color: #2874A6; }
+  .mid-quiz .question { font-weight: bold; margin-bottom: 2px; }
+  .mid-quiz .choice { margin-left: 4px; }
+  .mid-quiz .answer { margin-top: 3px; padding-top: 3px; border-top: 1px dashed #3498DB; font-size: 9px; color: #1B4F72; }
+  .mid-try {
+    background: #E8F5E9;
+    border-left-color: #27AE60;
+  }
+  .mid-try .mid-box-title { color: #1E8449; }
+  .mid-try li { list-style: none; margin-bottom: 2px; padding-left: 14px; position: relative; }
+  .mid-try li::before { content: "💡"; position: absolute; left: 0; top: 0; }
+  .kids-section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+  }
+  .kid-card {
+    border-radius: 6px;
+    overflow: hidden;
+    font-size: 10.5px;
+    line-height: 1.6;
+    border: 2px solid;
+  }
+  .kid-card.tetsu { border-color: #F39C12; }
+  .kid-card.taro { border-color: #27AE60; }
+  .kid-ribbon {
+    padding: 3px 10px;
+    font-size: 10.5px;
+    font-weight: 900;
+    color: #fff;
+  }
+  .kid-card.tetsu .kid-ribbon { background: #F39C12; }
+  .kid-card.taro .kid-ribbon { background: #27AE60; }
+  .kid-content {
+    padding: 5px 9px;
+  }
+  .kid-card.tetsu .kid-content { background: #FFF8E1; }
+  .kid-card.taro .kid-content { background: #E8F5E9; }
+  .trivia-bar {
+    padding: 4px 20px;
+    font-size: 9.5px;
+    background: #F5EEF8;
+    color: #6C3483;
+    border-top: 1px solid #D7BDE2;
+    border-bottom: 1px solid #D7BDE2;
+    text-align: center;
+  }
+  .trivia-bar .tlabel { font-weight: 900; margin-right: 6px; }
+  .footer {
+    padding: 4px 20px;
+    font-size: 8.5px;
+    background: #1B2A4A;
+    color: #fff;
+    display: flex;
+    justify-content: space-between;
+  }
+  .footer .papa { color: #F4D03F; font-weight: bold; }
+</style>
+</head>
+<body>
+<div class="page">
+  <header class="masthead">
+    <div>
+      <div class="title">豊田こども新聞</div>
+      <div class="sub">365日サイエンス ✦ TOYODA KIDS PAPER</div>
+    </div>
+    <div class="issue">
+      <div class="no">第23号</div>
+      <div>2026年4月24日</div>
+    </div>
+  </header>
+  <div class="color-line"></div>
+  <div class="date-bar">
+    <div class="date">2026年4月24日（<ruby>金曜日<rt>きんようび</rt></ruby>）</div>
+    <div class="genre-badge">🧪 きょうのテーマ：じっけん・びっくりかがく</div>
+    <div class="publisher">発行：元洋パパ</div>
+  </div>
+  <div class="content">
+    <h1 class="headline">
+      さかさまにしても、水がこぼれない！？
+      <span class="sub-headline">〜 <ruby>紙<rt>かみ</rt></ruby>いちまいで水をとめる「<ruby>空気<rt>くうき</rt></ruby>の力」のヒミツ 〜</span>
+    </h1>
+
+    <div class="top-section">
+      <div class="article-body">
+        <p class="lead">みんな、ちょっと<ruby>想像<rt>そうぞう</rt></ruby>してみて。コップに水をなみなみ入れて、<ruby>上<rt>うえ</rt></ruby>に<ruby>紙<rt>かみ</rt></ruby>をペタッとのせる。そのまま<ruby>上下<rt>じょうげ</rt></ruby>をひっくりかえしたら…どうなると思う？</p>
+        <p>ふつうは「バシャーン！」って水がこぼれちゃうよね。でも、じつは<span class="emphasis">紙一枚で水はピタッと止まる</span>んだ。まるでまほうみたい！</p>
+        <p>なんで水がこぼれないのかというと、ヒミツは「<span class="emphasis">大気圧（たいきあつ）</span>」という<ruby>空気<rt>くうき</rt></ruby>の力。<ruby>空気<rt>くうき</rt></ruby>は<ruby>目<rt>め</rt></ruby>に見えないけど、じつは<ruby>下<rt>した</rt></ruby>からグイーッと紙を<ruby>押<rt>お</rt></ruby>し上げているんだ。その力が、コップの中の水の<ruby>重<rt>おも</rt></ruby>さよりずっと強いから、水は落ちてこない。</p>
+        <p>しかも、紙と水の間には「<ruby>表面張力<rt>ひょうめんちょうりょく</rt></ruby>」という水のねばり気みたいな力もはたらいて、紙をピタッとくっつけてくれる。ダブルのパワーで水はこぼれないんだ！</p>
+        <p>こんなに身近な所に、<span class="emphasis">目に見えない「空気のパワー」</span>がかくれているなんて、びっくりだよね。</p>
+      </div>
+      <div class="photo-column">
+        <div class="photo-frame">
+          <img src="https://mizuiku.suntory.jp/kids/research/img/j2_4/photo.png" alt="さかさコップの実験">
+          <div class="caption">📷 紙をのせて、さかさま！</div>
+        </div>
+        <div class="discovery-box">
+          <span class="dlabel">💥 ビックリ<ruby>発見<rt>はっけん</rt></ruby>！</span>
+          <ruby>空気<rt>くうき</rt></ruby>の<ruby>力<rt>ちから</rt></ruby>は、じつは1cm×1cmの小さな<ruby>面積<rt>めんせき</rt></ruby>に<span class="emphasis">だいたい1kg</span>もかかってるんだって！おもたい<ruby>牛乳<rt>ぎゅうにゅう</rt></ruby>パック1本<ruby>分<rt>ぶん</rt></ruby>の力が、いつも<ruby>僕<rt>ぼく</rt></ruby>らを<ruby>押<rt>お</rt></ruby>してるんだよ。
+        </div>
+      </div>
+    </div>
+
+    <div class="mid-section">
+      <div class="mid-box mid-kaisetsu">
+        <div class="mid-box-title">📖 かいせつ</div>
+        「<ruby>大気圧<rt>たいきあつ</rt></ruby>」って、<ruby>空気<rt>くうき</rt></ruby>がもってる<ruby>押<rt>お</rt></ruby>す力のこと。みんなの<ruby>頭<rt>あたま</rt></ruby>の上にも、今も<ruby>何<rt>なん</rt></ruby>トンもの<ruby>空気<rt>くうき</rt></ruby>がのってるんだ。でも、<ruby>体<rt>からだ</rt></ruby>の<ruby>中<rt>なか</rt></ruby>からも<ruby>同<rt>おな</rt></ruby>じ力で<ruby>押<rt>お</rt></ruby>し<ruby>返<rt>かえ</rt></ruby>してるから、ぺちゃんこにならないんだよ！
+      </div>
+      <div class="mid-box mid-quiz">
+        <div class="mid-box-title">❓ きょうのクイズ</div>
+        <div class="question">Q.コップに水を「<ruby>少<rt>すこ</rt></ruby>しだけ」入れるのと、「いっぱい」入れるの、どっちがうまくいく？</div>
+        <div class="choice">A. <ruby>少<rt>すこ</rt></ruby>しだけ</div>
+        <div class="choice">B. いっぱい（なみなみ）</div>
+        <div class="answer">✅ <ruby>答<rt>こた</rt></ruby>え：B！<ruby>空気<rt>くうき</rt></ruby>が<ruby>中<rt>なか</rt></ruby>に<ruby>少<rt>すく</rt></ruby>ない方が、紙がピタッとくっつくんだ。</div>
+      </div>
+      <div class="mid-box mid-try">
+        <div class="mid-box-title">🧪 やってみよう！</div>
+        <ul>
+          <li>コップに水をなみなみ入れる</li>
+          <li><ruby>厚<rt>あつ</rt></ruby>めの紙（はがきOK）をのせる</li>
+          <li>手でおさえて、お<ruby>風呂場<rt>ふろば</rt></ruby>でゆっくりひっくり<ruby>返<rt>かえ</rt></ruby>す</li>
+          <li>そーっと手をはなすと…！</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="kids-section">
+      <div class="kid-card tetsu">
+        <div class="kid-ribbon">🐥 てっちゃん（5さい）のコーナー</div>
+        <div class="kid-content">
+          こっぷのみずがね、さかさまにしても こぼれないんだって！まほうみたいだけど くうきのちからなんだ✨すごいね！
+        </div>
+      </div>
+      <div class="kid-card taro">
+        <div class="kid-ribbon">🌱 たろう（7さい）のコーナー</div>
+        <div class="kid-content">
+          コップに<ruby>水<rt>みず</rt></ruby>を入れて<ruby>紙<rt>かみ</rt></ruby>でフタすると、さかさでもこぼれないんだって！<ruby>空気<rt>くうき</rt></ruby>の<ruby>力<rt>ちから</rt></ruby>ってすごいね🧪
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="trivia-bar">
+    <span class="tlabel">💡 もっとビックリ豆<ruby>知識<rt>ちしき</rt></ruby>！</span>
+    <ruby>深<rt>ふか</rt></ruby>い<ruby>海<rt>うみ</rt></ruby>の<ruby>底<rt>そこ</rt></ruby>では、<ruby>大気圧<rt>たいきあつ</rt></ruby>の1000<ruby>倍<rt>ばい</rt></ruby>もの<ruby>水圧<rt>すいあつ</rt></ruby>がかかる。<ruby>発泡<rt>はっぽう</rt></ruby>スチロールの<ruby>人形<rt>にんぎょう</rt></ruby>を<ruby>沈<rt>しず</rt></ruby>めると、こぶしぐらいまで<ruby>縮<rt>ちぢ</rt></ruby>んじゃうんだよ！
+  </div>
+  <footer class="footer">
+    <div>出典：Suntory「水育キッズ」研究ひろば／実験サイエンス資料</div>
+    <div class="papa">元洋パパより ❤️</div>
+  </footer>
+</div>
+</body>
+</html>
