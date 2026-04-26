@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>豊田こども新聞 第25号</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;900&family=Noto+Serif+JP:wght@700;900&display=swap" rel="stylesheet">
+<style>
+@page { size: A4; margin: 0; }
+* { margin:0; padding:0; box-sizing:border-box; }
+html, body { font-family:'Noto Sans JP','Hiragino Kaku Gothic ProN',sans-serif; color:#1a1a2e; background:#fff; }
+ruby { ruby-align:center; }
+rt { font-size:0.5em; color:inherit; font-weight:400; }
+.page { width:210mm; height:297mm; max-height:297mm; display:flex; flex-direction:column; overflow:hidden; page-break-inside:avoid; break-inside:avoid; background:#fff; }
+.masthead { background:#1B2A4A; color:#F4D03F; padding:7px 20px; display:flex; justify-content:space-between; align-items:center; }
+.masthead .title { font-family:'Noto Serif JP',serif; font-size:28px; font-weight:900; letter-spacing:2px; }
+.masthead .subtitle { font-size:11px; color:#fff; opacity:0.9; }
+.masthead .issue { font-size:11px; color:#fff; text-align:right; }
+.color-line { height:4px; background:linear-gradient(90deg,#E74C3C,#F39C12,#F1C40F,#27AE60,#3498DB,#9B59B6); }
+.date-bar { padding:5px 20px; background:#FAF9F6; display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid #ddd; font-size:11px; }
+.date-bar .badge { background:#8B4513; color:#fff; padding:2px 10px; border-radius:12px; font-weight:700; font-size:10.5px; }
+.content { flex:1; display:flex; flex-direction:column; padding:6px 14px; overflow:hidden; }
+.headline { font-family:'Noto Serif JP',serif; font-size:17px; font-weight:900; line-height:1.4; padding-bottom:4px; margin-bottom:5px; border-bottom:3px double #1B2A4A; color:#1B2A4A; }
+.top-section { display:flex; gap:10px; margin-bottom:5px; }
+.article-body { flex:3; font-size:10px; line-height:1.65; }
+.article-body p { margin-bottom:3px; text-align:justify; }
+.article-body strong { color:#C0392B; font-weight:700; }
+.photo-area { flex:2; display:flex; flex-direction:column; gap:4px; }
+.photo-frame { border:2px solid #1B2A4A; box-shadow:2px 2px 4px rgba(0,0,0,0.15); overflow:hidden; background:#eee; }
+.photo-frame img { display:block; width:100%; max-height:110px; object-fit:cover; }
+.photo-caption { font-size:8px; color:#555; padding:2px 4px; background:#f5f5f5; border-top:1px solid #ddd; line-height:1.3; }
+.discovery-box { background:#FDF2E9; border:1.5px solid #E67E22; padding:5px 8px; font-size:9.5px; line-height:1.6; border-radius:4px; }
+.discovery-box .dtitle { font-weight:900; color:#D35400; font-size:10px; margin-bottom:2px; }
+.mid-section { flex:1; min-height:0; display:grid; grid-template-columns:1fr 1fr 1fr; gap:6px; margin-bottom:5px; overflow:hidden; }
+.mid-box { padding:6px 8px; font-size:9.5px; line-height:1.6; border-radius:4px; overflow:hidden; }
+.mid-box-title { font-size:10.5px; font-weight:900; margin-bottom:3px; }
+.box-explain { background:#FFF8E1; border:1.5px solid #FF9800; }
+.box-explain .mid-box-title { color:#E65100; }
+.box-quiz { background:#EBF5FB; border:1.5px solid #2980B9; }
+.box-quiz .mid-box-title { color:#1F618D; }
+.box-quiz .answer { margin-top:3px; padding-top:3px; border-top:1px dashed #2980B9; color:#1F618D; font-weight:700; }
+.box-try { background:#E8F5E9; border:1.5px solid #4CAF50; }
+.box-try .mid-box-title { color:#1B5E20; }
+.box-try ul { list-style:none; padding-left:0; }
+.box-try li { padding-left:14px; position:relative; margin-bottom:2px; }
+.box-try li::before { content:'💡'; position:absolute; left:0; font-size:9px; }
+.kids-section { display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-bottom:4px; }
+.kid-card { border-radius:6px; overflow:hidden; box-shadow:1px 1px 3px rgba(0,0,0,0.1); }
+.kid-ribbon { padding:3px 10px; font-size:10.5px; font-weight:900; color:#fff; }
+.tecchan .kid-ribbon { background:#F39C12; }
+.taro .kid-ribbon { background:#27AE60; }
+.kid-content { padding:5px 9px; font-size:10.5px; line-height:1.6; }
+.tecchan .kid-content { background:#FFF8E1; }
+.taro .kid-content { background:#E8F5E9; }
+.trivia-bar { background:#F5EEF8; padding:4px 20px; font-size:9.5px; color:#6C3483; border-top:1px solid #D2B4DE; border-bottom:1px solid #D2B4DE; }
+.trivia-bar strong { color:#4A235A; }
+.footer { background:#1B2A4A; color:#fff; padding:4px 20px; font-size:8.5px; display:flex; justify-content:space-between; align-items:center; }
+.footer .heart { color:#F4D03F; font-weight:700; }
+@media print {
+  html, body { height:297mm; overflow:hidden; }
+  .page { max-height:296mm; box-shadow:none; }
+  * { -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+}
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="masthead">
+    <div>
+      <div class="title">豊田こども新聞</div>
+      <div class="subtitle">365日サイエンス 〜元洋パパの毎日学びアラカルト〜</div>
+    </div>
+    <div class="issue">第25号<br>2026年4月27日（月）</div>
+  </div>
+  <div class="color-line"></div>
+  <div class="date-bar">
+    <div>2026<ruby>年<rt>ねん</rt></ruby>4<ruby>月<rt>がつ</rt></ruby>27<ruby>日<rt>にち</rt></ruby>（<ruby>月<rt>げつ</rt></ruby><ruby>曜<rt>よう</rt></ruby><ruby>日<rt>び</rt></ruby>）</div>
+    <div class="badge">🦖 きょうのテーマ：恐竜</div>
+    <div><ruby>発<rt>はっ</rt></ruby><ruby>行<rt>こう</rt></ruby>：<ruby>元<rt>もと</rt></ruby><ruby>洋<rt>ひろ</rt></ruby>パパ</div>
+  </div>
+  <div id="illust-area" class="content">
+    <div class="headline">🦴 <ruby>北<rt>ほっ</rt></ruby><ruby>海<rt>かい</rt></ruby><ruby>道<rt>どう</rt></ruby>でみつかった「むかわ<ruby>竜<rt>りゅう</rt></ruby>」<ruby>日<rt>に</rt></ruby><ruby>本<rt>ほん</rt></ruby>でいちばん<ruby>大<rt>おお</rt></ruby>きい<ruby>恐<rt>きょう</rt></ruby><ruby>竜<rt>りゅう</rt></ruby>のひみつ！</div>
+    <div class="top-section">
+      <div class="article-body">
+        <p><ruby>北<rt>ほっ</rt></ruby><ruby>海<rt>かい</rt></ruby><ruby>道<rt>どう</rt></ruby>のむかわ<ruby>町<rt>ちょう</rt></ruby>で、すごい<ruby>恐<rt>きょう</rt></ruby><ruby>竜<rt>りゅう</rt></ruby>のほね が みつかったよ！ <strong>「むかわ<ruby>竜<rt>りゅう</rt></ruby>」</strong>とよばれていたんだけど、<ruby>研<rt>けん</rt></ruby><ruby>究<rt>きゅう</rt></ruby>がすすんで <strong>「カムイサウルス・ジャポニクス」</strong>という<ruby>名<rt>な</rt></ruby><ruby>前<rt>まえ</rt></ruby>になったんだ。「カムイ」は アイヌ<ruby>語<rt>ご</rt></ruby>で「<ruby>神<rt>かみ</rt></ruby>さま」っていういみ。すごい<ruby>名<rt>な</rt></ruby><ruby>前<rt>まえ</rt></ruby>だね！</p>
+        <p>このきょうりゅうは<strong>７２００<ruby>万<rt>まん</rt></ruby><ruby>年<rt>ねん</rt></ruby><ruby>前<rt>まえ</rt></ruby></strong>に<ruby>生<rt>い</rt></ruby>きていたんだ。<ruby>体<rt>からだ</rt></ruby>のながさは<strong>８メートル</strong>もあって、<ruby>重<rt>おも</rt></ruby>さは<strong>５トン</strong>！<ruby>軽<rt>けい</rt></ruby>トラック５<ruby>台<rt>だい</rt></ruby>ぶんもあるんだよ。アヒルみたいなくちばしを もっていて、<ruby>草<rt>くさ</rt></ruby>や<ruby>葉<rt>は</rt></ruby>っぱを たくさん たべていたんだって。</p>
+        <p>すごいのは <strong>ほねのほとんどぜんぶ がみつかった</strong>こと！<ruby>日<rt>に</rt></ruby><ruby>本<rt>ほん</rt></ruby>でこんなに きれいに のこっている<ruby>恐<rt>きょう</rt></ruby><ruby>竜<rt>りゅう</rt></ruby>のかせきは <strong>はじめて</strong>なんだ。だから「<ruby>奇<rt>き</rt></ruby><ruby>跡<rt>せき</rt></ruby>のパーフェクト<ruby>恐<rt>きょう</rt></ruby><ruby>竜<rt>りゅう</rt></ruby>」とも よばれているよ。むかしの<ruby>日<rt>に</rt></ruby><ruby>本<rt>ほん</rt></ruby>は<ruby>海<rt>うみ</rt></ruby>の そばだったから、<ruby>波<rt>なみ</rt></ruby>に ながされて<ruby>海<rt>うみ</rt></ruby>のそこに しずんで、ねむっていたんだね。</p>
+      </div>
+      <div class="photo-area">
+        <div class="photo-frame">
+          <img src="https://www.hokudai.ac.jp/researchtimes/pic/2019/kamui_1.jpg" alt="カムイサウルス全身骨格">
+          <div class="photo-caption"><ruby>北<rt>ほっ</rt></ruby><ruby>海<rt>かい</rt></ruby><ruby>道<rt>どう</rt></ruby><ruby>大<rt>だい</rt></ruby><ruby>学<rt>がく</rt></ruby>で<ruby>復<rt>ふく</rt></ruby><ruby>元<rt>げん</rt></ruby>された カムイサウルスの<ruby>全<rt>ぜん</rt></ruby><ruby>身<rt>しん</rt></ruby>こっかく</div>
+        </div>
+        <div class="discovery-box">
+          <div class="dtitle">🔎 だれが みつけたの？</div>
+          ２００３<ruby>年<rt>ねん</rt></ruby>に、むかわ<ruby>町<rt>ちょう</rt></ruby>のかせきマニアの <ruby>堀<rt>ほり</rt></ruby>田<ruby>良<rt>よし</rt></ruby><ruby>之<rt>ゆき</rt></ruby>さんが <ruby>川<rt>かわ</rt></ruby>のそばで しっぽのほねを みつけたのが はじまり！その<ruby>後<rt>ご</rt></ruby>１０<ruby>年<rt>ねん</rt></ruby>かけて<ruby>研<rt>けん</rt></ruby><ruby>究<rt>きゅう</rt></ruby>チームが ほりだしたんだ。
+        </div>
+      </div>
+    </div>
+    <div class="mid-section">
+      <div class="mid-box box-explain">
+        <div class="mid-box-title">📖 もっとくわしく</div>
+        カムイサウルスは<strong>ハドロサウルス</strong>のなかま。<ruby>歯<rt>は</rt></ruby>が<strong>１０００<ruby>本<rt>ぼん</rt></ruby>以<rt>い</rt></ruby><ruby>上<rt>じょう</rt></ruby></strong>もあって、<ruby>草<rt>くさ</rt></ruby>を すりつぶして たべていたよ。<ruby>頭<rt>あたま</rt></ruby>の<ruby>上<rt>うえ</rt></ruby>に<ruby>小<rt>ちい</rt></ruby>さなトサカが あったかも しれないんだって！
+      </div>
+      <div class="mid-box box-quiz">
+        <div class="mid-box-title">🎯 きょうのクイズ</div>
+        カムイサウルスは どれくらいの<ruby>長<rt>なが</rt></ruby>さ？<br>
+        ① ２メートル ② ８メートル ③ ２０メートル
+        <div class="answer">こたえ：② ８メートル！キリン２<ruby>頭<rt>とう</rt></ruby>ぶんくらい！</div>
+      </div>
+      <div class="mid-box box-try">
+        <div class="mid-box-title">🔧 やってみよう</div>
+        <ul>
+          <li><ruby>砂<rt>すな</rt></ruby><ruby>場<rt>ば</rt></ruby>に<ruby>葉<rt>は</rt></ruby>っぱや<ruby>石<rt>いし</rt></ruby>をうめて「かせきはっくつごっこ」！</li>
+          <li>ねんどで カムイサウルスのほね を つくってみよう</li>
+          <li>キリンと<ruby>背<rt>せ</rt></ruby>くらべ！どっちが<ruby>高<rt>たか</rt></ruby>い？</li>
+        </ul>
+      </div>
+    </div>
+    <div class="kids-section">
+      <div class="kid-card tecchan">
+        <div class="kid-ribbon">🐥 てっちゃん（５さい）</div>
+        <div class="kid-content">きょうりゅうのほねが ぜんぶ みつかったんだって！すごいよね🦖✨おおきさは アヒルさん１００にんぶん くらい！</div>
+      </div>
+      <div class="kid-card taro">
+        <div class="kid-ribbon">🌱 たろう（７さい）</div>
+        <div class="kid-content"><ruby>北<rt>ほっ</rt></ruby><ruby>海<rt>かい</rt></ruby><ruby>道<rt>どう</rt></ruby>で<ruby>見<rt>み</rt></ruby>つかった カムイサウルスは「<ruby>神<rt>かみ</rt></ruby>のトカゲ」っていういみ！<ruby>日<rt>に</rt></ruby><ruby>本<rt>ほん</rt></ruby>でいちばん<ruby>大<rt>おお</rt></ruby>きい<ruby>恐<rt>きょう</rt></ruby><ruby>竜<rt>りゅう</rt></ruby>なんだって🦴</div>
+      </div>
+    </div>
+  </div>
+  <div class="trivia-bar">💡 <strong>へぇ〜！</strong> カムイサウルスは <ruby>海<rt>うみ</rt></ruby>のちかくに <ruby>住<rt>す</rt></ruby>んでいた めずらしい<ruby>恐<rt>きょう</rt></ruby><ruby>竜<rt>りゅう</rt></ruby>。<ruby>世<rt>せ</rt></ruby><ruby>界<rt>かい</rt></ruby>でも こんなに <ruby>海<rt>うみ</rt></ruby>そばで みつかったハドロサウルスは すごく<ruby>少<rt>すく</rt></ruby>ないんだって！</div>
+  <div class="footer">
+    <div><ruby>出<rt>しゅっ</rt></ruby><ruby>典<rt>てん</rt></ruby>：<ruby>北<rt>ほっ</rt></ruby><ruby>海<rt>かい</rt></ruby><ruby>道<rt>どう</rt></ruby><ruby>大<rt>だい</rt></ruby><ruby>学<rt>がく</rt></ruby>・むかわ<ruby>町<rt>ちょう</rt></ruby>穂別博物館 / Perplexity AI</div>
+    <div class="heart"><ruby>元<rt>もと</rt></ruby><ruby>洋<rt>ひろ</rt></ruby>パパより ❤️</div>
+  </div>
+</div>
+</body>
+</html>
