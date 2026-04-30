@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>豊田こども新聞 第26号</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;900&family=Noto+Serif+JP:wght@700;900&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy: #1B2A4A;
+  --gold: #F4D03F;
+  --orange: #FF9800;
+  --red: #E74C3C;
+  --blue: #2980B9;
+  --green: #27AE60;
+  --purple: #8E44AD;
+  --text: #1a1a2e;
+  --paper: #FAFAF7;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+@page { size: A4; margin: 0; }
+html, body {
+  font-family: 'Noto Sans JP', 'Hiragino Kaku Gothic ProN', 'Yu Gothic', sans-serif;
+  background: #ddd;
+  color: var(--text);
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+ruby { ruby-align: center; }
+rt { font-size: 0.5em; color: inherit; font-weight: 400; }
+
+.page {
+  width: 210mm;
+  height: 297mm;
+  max-height: 297mm;
+  margin: 0 auto;
+  background: var(--paper);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  page-break-inside: avoid;
+  break-inside: avoid;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.15);
+}
+
+/* MASTHEAD */
+.masthead {
+  background: var(--navy);
+  color: white;
+  padding: 7px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 2px solid var(--gold);
+}
+.masthead-left {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+}
+.title {
+  font-family: 'Noto Serif JP', serif;
+  font-size: 28px;
+  font-weight: 900;
+  color: var(--gold);
+  letter-spacing: 1px;
+}
+.subtitle {
+  font-size: 10px;
+  color: #ccc;
+  letter-spacing: 2px;
+}
+.issue-no {
+  font-family: 'Noto Serif JP', serif;
+  font-size: 14px;
+  color: var(--gold);
+  font-weight: 700;
+}
+
+/* COLOR LINE */
+.color-line {
+  height: 4px;
+  background: linear-gradient(90deg, #E74C3C, #F4D03F, #27AE60, #2980B9, #8E44AD);
+}
+
+/* DATE BAR */
+.date-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px 20px;
+  background: #F5F5F0;
+  border-bottom: 1px solid #ddd;
+  font-size: 10.5px;
+}
+.date-bar .date { font-weight: 700; color: var(--navy); }
+.genre-badge {
+  background: var(--orange);
+  color: white;
+  padding: 3px 12px;
+  border-radius: 12px;
+  font-size: 10px;
+  font-weight: 700;
+}
+.publisher { color: #666; font-size: 9.5px; }
+
+/* CONTENT */
+.content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 6px 14px;
+  overflow: hidden;
+}
+
+/* HEADLINE */
+.headline {
+  font-family: 'Noto Serif JP', serif;
+  font-size: 17px;
+  font-weight: 900;
+  color: var(--navy);
+  line-height: 1.4;
+  padding-bottom: 4px;
+  margin-bottom: 5px;
+  border-bottom: 3px double var(--navy);
+  text-align: center;
+}
+.headline .accent { color: var(--red); }
+
+/* TOP SECTION */
+.top-section {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 6px;
+}
+.article-body {
+  flex: 3;
+  font-size: 10px;
+  line-height: 1.65;
+}
+.article-body p { margin-bottom: 3px; }
+.article-body .lead {
+  font-weight: 700;
+  color: var(--navy);
+  font-size: 10.5px;
+  margin-bottom: 4px;
+}
+.side-col {
+  flex: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.photo-frame {
+  border: 2px solid var(--navy);
+  border-radius: 4px;
+  overflow: hidden;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.15);
+  background: #fff;
+}
+.photo-frame img {
+  width: 100%;
+  max-height: 110px;
+  object-fit: cover;
+  display: block;
+}
+.photo-caption {
+  font-size: 8.5px;
+  color: #555;
+  padding: 2px 5px;
+  background: #f5f5f0;
+  text-align: center;
+}
+.discovery-box {
+  background: #FFF3E0;
+  border: 2px solid var(--orange);
+  border-radius: 4px;
+  padding: 5px 8px;
+  font-size: 9.5px;
+  line-height: 1.6;
+}
+.discovery-box .dtitle {
+  font-weight: 700;
+  color: var(--orange);
+  font-size: 10px;
+  margin-bottom: 2px;
+}
+
+/* MID SECTION */
+.mid-section {
+  flex: 1;
+  min-height: 0;
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 6px;
+  margin-bottom: 6px;
+}
+.mid-box {
+  padding: 6px 8px;
+  font-size: 9.5px;
+  line-height: 1.6;
+  overflow: hidden;
+  border-radius: 4px;
+}
+.mid-box-title {
+  font-size: 10.5px;
+  font-weight: 900;
+  margin-bottom: 3px;
+}
+.box-explain {
+  background: #FFF8E1;
+  border: 2px solid var(--orange);
+}
+.box-explain .mid-box-title { color: var(--orange); }
+.box-quiz {
+  background: #EBF5FB;
+  border: 2px solid var(--blue);
+}
+.box-quiz .mid-box-title { color: var(--blue); }
+.box-quiz .q { font-weight: 700; margin-bottom: 2px; }
+.box-quiz .choices { padding-left: 0; list-style: none; margin-bottom: 3px; }
+.box-quiz .choices li { padding: 1px 0; }
+.box-quiz .answer {
+  background: var(--blue);
+  color: white;
+  padding: 1px 5px;
+  border-radius: 8px;
+  font-size: 9px;
+  font-weight: 700;
+  display: inline-block;
+}
+.box-try {
+  background: #E8F5E9;
+  border: 2px solid var(--green);
+}
+.box-try .mid-box-title { color: var(--green); }
+.box-try ul { list-style: none; padding: 0; }
+.box-try li { padding-left: 14px; position: relative; margin-bottom: 1px; }
+.box-try li::before {
+  content: '💡';
+  position: absolute;
+  left: 0;
+  font-size: 9px;
+}
+
+/* KIDS SECTION */
+.kids-section {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px;
+}
+.kid-card {
+  font-size: 10.5px;
+  line-height: 1.6;
+  border-radius: 4px;
+  overflow: hidden;
+  border: 2px solid;
+}
+.kid-tecchan { border-color: #FF9800; }
+.kid-taro { border-color: var(--green); }
+.kid-ribbon {
+  padding: 3px 10px;
+  font-size: 10.5px;
+  font-weight: 700;
+  color: white;
+}
+.kid-tecchan .kid-ribbon { background: #FF9800; }
+.kid-taro .kid-ribbon { background: var(--green); }
+.kid-content {
+  padding: 5px 9px;
+}
+.kid-tecchan .kid-content { background: #FFF8E1; }
+.kid-taro .kid-content { background: #E8F5E9; }
+
+/* TRIVIA BAR */
+.trivia-bar {
+  background: #F5EEF8;
+  color: var(--purple);
+  padding: 4px 20px;
+  font-size: 9.5px;
+  border-top: 1px solid #d6c2e4;
+  border-bottom: 1px solid #d6c2e4;
+}
+.trivia-bar b { color: var(--purple); }
+
+/* FOOTER */
+.footer {
+  background: var(--navy);
+  color: white;
+  padding: 4px 20px;
+  font-size: 8.5px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.footer .src { color: #aaa; }
+.footer .papa { color: var(--gold); font-weight: 700; }
+
+@media print {
+  html, body { height: 297mm; overflow: hidden; background: white; }
+  .page {
+    max-height: 296mm;
+    box-shadow: none;
+    margin: 0;
+  }
+}
+</style>
+</head>
+<body>
+<div class="page">
+  <!-- MASTHEAD -->
+  <div class="masthead">
+    <div class="masthead-left">
+      <div class="title">豊田こども新聞</div>
+      <div class="subtitle">365日サイエンス</div>
+    </div>
+    <div class="issue-no">第26号</div>
+  </div>
+  <div class="color-line"></div>
+
+  <!-- DATE BAR -->
+  <div class="date-bar">
+    <div class="date">2026<ruby>年<rt>ねん</rt></ruby>5<ruby>月<rt>がつ</rt></ruby>1<ruby>日<rt>にち</rt></ruby>（<ruby>金<rt>きん</rt></ruby><ruby>曜日<rt>ようび</rt></ruby>）</div>
+    <div class="genre-badge">🧪 びっくり実験</div>
+    <div class="publisher"><ruby>発行<rt>はっこう</rt></ruby>：<ruby>元洋<rt>もとひろ</rt></ruby>パパ</div>
+  </div>
+
+  <!-- CONTENT -->
+  <div class="content">
+
+    <!-- HEADLINE -->
+    <div class="headline">
+      おうちで<span class="accent"><ruby>火山<rt>かざん</rt></ruby><ruby>大噴火<rt>だいふんか</rt></ruby></span>！？<br>
+      <ruby>水<rt>みず</rt></ruby>と<ruby>油<rt>あぶら</rt></ruby>でできる<ruby>赤<rt>あか</rt></ruby>いマグマのひみつ
+    </div>
+
+    <!-- TOP SECTION -->
+    <div class="top-section">
+      <div class="article-body">
+        <p class="lead">グラスのなかで<ruby>本物<rt>ほんもの</rt></ruby>みたいな<ruby>火山<rt>かざん</rt></ruby>をつくれるって、<ruby>知<rt>し</rt></ruby>ってる？</p>
+        <p><ruby>水<rt>みず</rt></ruby>のうえに<ruby>油<rt>あぶら</rt></ruby>をそ〜っと<ruby>注<rt>そそ</rt></ruby>いで、メントスをポンといれるだけ。<ruby>赤<rt>あか</rt></ruby>くそめた<ruby>水<rt>みず</rt></ruby>が、<ruby>泡<rt>あわ</rt></ruby>になって<ruby>下<rt>した</rt></ruby>からブクブク<ruby>上<rt>あ</rt></ruby>がってくるんだって！まるで<ruby>地球<rt>ちきゅう</rt></ruby>の<ruby>底<rt>そこ</rt></ruby>からマグマがふきだすみたい。</p>
+        <p>これは「<ruby>水<rt>みず</rt></ruby>と<ruby>油<rt>あぶら</rt></ruby>はまざらない」というふしぎなパワーがおこすマジック。<ruby>油<rt>あぶら</rt></ruby>は<ruby>軽<rt>かる</rt></ruby>くて<ruby>水<rt>みず</rt></ruby>は<ruby>重<rt>おも</rt></ruby>いから、ぜったいに<ruby>仲<rt>なか</rt></ruby><ruby>良<rt>よ</rt></ruby>くならない。メントスから<ruby>出<rt>で</rt></ruby>る<ruby>細<rt>こま</rt></ruby>かい<ruby>泡<rt>あわ</rt></ruby>が<ruby>赤<rt>あか</rt></ruby>い<ruby>水<rt>みず</rt></ruby>をだきあげて、<ruby>油<rt>あぶら</rt></ruby>のなかをスーッとのぼっていくんだ。</p>
+        <p>じつはこれ、<ruby>海<rt>うみ</rt></ruby>の<ruby>底<rt>そこ</rt></ruby>でおきる<ruby>本物<rt>ほんもの</rt></ruby>の<ruby>火山<rt>かざん</rt></ruby>とおなじしくみ。すごいよね！</p>
+      </div>
+      <div class="side-col">
+        <div class="photo-frame">
+          <img src="https://kids.gakken.co.jp/wp-content/uploads/2022/10/science0267_2210.jpg.webp" alt="火山実験">
+          <div class="photo-caption">📷 おうちでできる<ruby>火山<rt>かざん</rt></ruby><ruby>実験<rt>じっけん</rt></ruby></div>
+        </div>
+        <div class="discovery-box">
+          <div class="dtitle">🌋 ここがすごい！</div>
+          <div>① マグマがかってに<ruby>噴<rt>ふ</rt></ruby>きだす<br>
+          ② <ruby>赤<rt>あか</rt></ruby>と<ruby>黄色<rt>きいろ</rt></ruby>がふしぎに<ruby>分<rt>わ</rt></ruby>かれる<br>
+          ③ <ruby>何度<rt>なんど</rt></ruby>でも<ruby>繰<rt>く</rt></ruby>りかえせる！</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- MID SECTION -->
+    <div class="mid-section">
+      <div class="mid-box box-explain">
+        <div class="mid-box-title">📖 どうしておこるの？</div>
+        <div><ruby>水<rt>みず</rt></ruby>と<ruby>油<rt>あぶら</rt></ruby>はぜったいにまざらない。メントスからシュワっと<ruby>出<rt>で</rt></ruby>る<ruby>気<rt>き</rt></ruby><ruby>体<rt>たい</rt></ruby>のあわが、<ruby>赤<rt>あか</rt></ruby>い<ruby>水<rt>みず</rt></ruby>をつかまえて<ruby>上<rt>うえ</rt></ruby>へはこぶんだよ。</div>
+      </div>
+      <div class="mid-box box-quiz">
+        <div class="mid-box-title">❓ クイズ！</div>
+        <div class="q"><ruby>水<rt>みず</rt></ruby>と<ruby>油<rt>あぶら</rt></ruby>、<ruby>上<rt>うえ</rt></ruby>にうかぶのはどっち？</div>
+        <ul class="choices">
+          <li>① <ruby>水<rt>みず</rt></ruby></li>
+          <li>② <ruby>油<rt>あぶら</rt></ruby></li>
+          <li>③ いっしょにまざる</li>
+        </ul>
+        <div class="answer">こたえ：② <ruby>油<rt>あぶら</rt></ruby>！</div>
+      </div>
+      <div class="mid-box box-try">
+        <div class="mid-box-title">🛠 やってみよう</div>
+        <ul>
+          <li>コップに<ruby>水<rt>みず</rt></ruby>を<ruby>半分<rt>はんぶん</rt></ruby>＋<ruby>食<rt>しょく</rt></ruby><ruby>紅<rt>べに</rt></ruby>で<ruby>赤<rt>あか</rt></ruby>く</li>
+          <li><ruby>油<rt>あぶら</rt></ruby>をそ〜っと<ruby>注<rt>そそ</rt></ruby>ぐ</li>
+          <li>メントス1〜2<ruby>粒<rt>つぶ</rt></ruby>をポン！</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- KIDS SECTION -->
+    <div class="kids-section">
+      <div class="kid-card kid-tecchan">
+        <div class="kid-ribbon">🐥 てっちゃん（5さい）</div>
+        <div class="kid-content">
+          あぶらとみずはなかよしじゃないんだって！あわがあかいマグマをぐーんっとはこんでくよ✨
+        </div>
+      </div>
+      <div class="kid-card kid-taro">
+        <div class="kid-ribbon">🌱 たろう（7<ruby>歳<rt>さい</rt></ruby>）</div>
+        <div class="kid-content">
+          <ruby>水<rt>みず</rt></ruby>と<ruby>油<rt>あぶら</rt></ruby>はまざらないんだ。<ruby>給<rt>きゅう</rt></ruby><ruby>食<rt>しょく</rt></ruby>のドレッシングをふるのとおなじ<ruby>理<rt>り</rt></ruby><ruby>由<rt>ゆう</rt></ruby>みたいだね！🌋
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- TRIVIA -->
+  <div class="trivia-bar">
+    💡 <b><ruby>豆<rt>まめ</rt></ruby><ruby>知識<rt>ちしき</rt></ruby>：</b><ruby>海<rt>うみ</rt></ruby>の<ruby>底<rt>そこ</rt></ruby>では、<ruby>今<rt>いま</rt></ruby>もマグマがふきだして「<ruby>枕<rt>まくら</rt></ruby><ruby>状<rt>じょう</rt></ruby><ruby>溶岩<rt>ようがん</rt></ruby>」というまるい<ruby>岩<rt>いわ</rt></ruby>ができてるんだって！
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <div class="src"><ruby>出典<rt>しゅってん</rt></ruby>：Gakken キッズネット／<ruby>科学実験<rt>かがくじっけん</rt></ruby>レポートより</div>
+    <div class="papa">🧪 <ruby>元洋<rt>もとひろ</rt></ruby>パパより ❤️</div>
+  </div>
+
+</div>
+</body>
+</html>
