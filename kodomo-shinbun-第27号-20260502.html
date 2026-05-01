@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>豊田こども新聞 第27号</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;900&family=Noto+Serif+JP:wght@700;900&display=swap" rel="stylesheet">
+<style>
+  @page { size: A4; margin: 0; }
+  * { margin: 0; padding: 0; box-sizing: border-box; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  html, body { font-family: 'Noto Sans JP', sans-serif; color: #1a1a2e; background: #fff; }
+  ruby { ruby-align: center; }
+  rt { font-size: 0.5em; color: inherit; font-weight: 400; }
+  @media print {
+    html, body { height: 297mm; overflow: hidden; }
+    .page { max-height: 296mm; box-shadow: none; }
+  }
+  .page {
+    width: 210mm;
+    height: 297mm;
+    max-height: 297mm;
+    margin: 0 auto;
+    background: #fff;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    page-break-inside: avoid;
+    break-inside: avoid;
+    box-shadow: 0 0 12px rgba(0,0,0,0.1);
+  }
+  /* MASTHEAD */
+  .masthead {
+    background: #1B2A4A;
+    color: #fff;
+    padding: 7px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .masthead .title-block { display: flex; align-items: baseline; gap: 10px; }
+  .masthead h1 {
+    font-family: 'Noto Serif JP', serif;
+    font-size: 28px;
+    font-weight: 900;
+    color: #F4D03F;
+    letter-spacing: 2px;
+  }
+  .masthead .sub { font-size: 11px; color: #F4D03F; opacity: 0.85; }
+  .masthead .meta { text-align: right; font-size: 10.5px; line-height: 1.4; }
+  .masthead .issue-no { font-size: 14px; font-weight: 900; color: #F4D03F; }
+  /* COLOR LINE */
+  .color-line {
+    height: 4px;
+    background: linear-gradient(90deg, #E74C3C 0%, #F39C12 20%, #F1C40F 40%, #2ECC71 60%, #3498DB 80%, #9B59B6 100%);
+  }
+  /* DATE BAR */
+  .date-bar {
+    background: #FAFAFA;
+    border-bottom: 1px solid #ddd;
+    padding: 5px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 11px;
+  }
+  .date-bar .date { color: #555; font-weight: 700; }
+  .genre-badge {
+    background: linear-gradient(90deg, #E67E22, #C0392B);
+    color: #fff;
+    padding: 3px 12px;
+    border-radius: 12px;
+    font-size: 10.5px;
+    font-weight: 700;
+  }
+  .date-bar .author { color: #777; font-size: 10px; }
+  /* CONTENT */
+  .content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 6px 14px;
+    overflow: hidden;
+  }
+  .headline {
+    font-family: 'Noto Serif JP', serif;
+    font-size: 17px;
+    font-weight: 900;
+    color: #1B2A4A;
+    line-height: 1.4;
+    padding-bottom: 4px;
+    margin-bottom: 5px;
+    border-bottom: 3px double #1B2A4A;
+    text-align: center;
+  }
+  .headline .accent { color: #C0392B; }
+  /* TOP SECTION */
+  .top-section {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 5px;
+  }
+  .article-body {
+    flex: 3;
+    font-size: 10px;
+    line-height: 1.65;
+  }
+  .article-body p { margin-bottom: 3px; }
+  .article-body .lead {
+    font-weight: 700;
+    color: #C0392B;
+    font-size: 10.5px;
+  }
+  .photo-side { flex: 2; display: flex; flex-direction: column; gap: 4px; }
+  .photo-frame {
+    border: 2px solid #1B2A4A;
+    box-shadow: 2px 2px 4px rgba(0,0,0,0.15);
+    background: #fff;
+    overflow: hidden;
+  }
+  .photo-frame img {
+    display: block;
+    width: 100%;
+    max-height: 110px;
+    object-fit: cover;
+  }
+  .photo-caption {
+    background: #1B2A4A;
+    color: #F4D03F;
+    font-size: 8.5px;
+    padding: 2px 5px;
+    text-align: center;
+  }
+  .discovery-box {
+    background: #FDEDEC;
+    border-left: 4px solid #C0392B;
+    padding: 5px 8px;
+    font-size: 9.5px;
+    line-height: 1.6;
+  }
+  .discovery-box .title {
+    font-weight: 900;
+    color: #C0392B;
+    font-size: 10.5px;
+    margin-bottom: 2px;
+  }
+  /* MID SECTION */
+  .mid-section {
+    flex: 1;
+    min-height: 0;
+    display: flex;
+    gap: 6px;
+    margin-bottom: 5px;
+    overflow: hidden;
+  }
+  .mid-box {
+    flex: 1;
+    padding: 6px 8px;
+    font-size: 9.5px;
+    line-height: 1.6;
+    border-radius: 4px;
+    overflow: hidden;
+  }
+  .mid-box-title {
+    font-size: 10.5px;
+    font-weight: 900;
+    margin-bottom: 3px;
+  }
+  .box-explain { background: #FFF8E1; border: 1.5px solid #F39C12; }
+  .box-explain .mid-box-title { color: #D35400; }
+  .box-quiz { background: #EBF5FB; border: 1.5px solid #3498DB; }
+  .box-quiz .mid-box-title { color: #1F618D; }
+  .box-quiz .answer {
+    margin-top: 3px;
+    font-weight: 700;
+    color: #1F618D;
+  }
+  .box-try { background: #E8F5E9; border: 1.5px solid #4CAF50; }
+  .box-try .mid-box-title { color: #1B5E20; }
+  .box-try .marker { color: #F39C12; }
+  /* KIDS SECTION */
+  .kids-section {
+    display: flex;
+    gap: 8px;
+  }
+  .kid-card {
+    flex: 1;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1.5px solid;
+    font-size: 10.5px;
+    line-height: 1.6;
+  }
+  .kid-tecchan { background: #FFF8E1; border-color: #FFB300; }
+  .kid-taro { background: #E8F5E9; border-color: #4CAF50; }
+  .kid-ribbon {
+    padding: 3px 10px;
+    font-size: 10.5px;
+    font-weight: 900;
+    color: #fff;
+  }
+  .kid-tecchan .kid-ribbon { background: #FF9800; }
+  .kid-taro .kid-ribbon { background: #4CAF50; }
+  .kid-content { padding: 5px 9px; }
+  /* TRIVIA BAR */
+  .trivia-bar {
+    background: #F5EEF8;
+    color: #6C3483;
+    padding: 4px 20px;
+    font-size: 9.5px;
+    font-weight: 700;
+    text-align: center;
+    border-top: 1px dashed #9B59B6;
+    border-bottom: 1px dashed #9B59B6;
+  }
+  /* FOOTER */
+  .footer {
+    background: #1B2A4A;
+    color: #fff;
+    padding: 4px 20px;
+    font-size: 8.5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .footer .source { opacity: 0.85; }
+  .footer .papa { color: #F4D03F; font-weight: 700; }
+</style>
+</head>
+<body>
+<div class="page">
+  <!-- MASTHEAD -->
+  <header class="masthead">
+    <div class="title-block">
+      <h1>豊田こども新聞</h1>
+      <div class="sub">365日サイエンス</div>
+    </div>
+    <div class="meta">
+      <div class="issue-no">第27号</div>
+      <div>2026年5月2日（土曜日）</div>
+    </div>
+  </header>
+  <div class="color-line"></div>
+
+  <!-- DATE BAR -->
+  <div class="date-bar">
+    <div class="date">📅 <ruby>令和<rt>れいわ</rt></ruby>8<ruby>年<rt>ねん</rt></ruby>5<ruby>月<rt>がつ</rt></ruby>2<ruby>日<rt>か</rt></ruby>（<ruby>土<rt>ど</rt></ruby>）</div>
+    <div class="genre-badge">🌍 <ruby>地球<rt>ちきゅう</rt></ruby>・<ruby>天気<rt>てんき</rt></ruby>・<ruby>自然<rt>しぜん</rt></ruby></div>
+    <div class="author"><ruby>発行<rt>はっこう</rt></ruby>：<ruby>元洋<rt>もとひろ</rt></ruby>パパ</div>
+  </div>
+
+  <!-- CONTENT -->
+  <main class="content">
+    <h2 class="headline">
+      <ruby>地球<rt>ちきゅう</rt></ruby>のおなかは<span class="accent">2000℃<ruby>以上<rt>いじょう</rt></ruby>！</span><br>
+      <ruby>火山<rt>かざん</rt></ruby>が<ruby>噴火<rt>ふんか</rt></ruby>するすごい<ruby>仕組<rt>しく</rt></ruby>み🌋
+    </h2>
+
+    <!-- TOP SECTION -->
+    <section class="top-section">
+      <div class="article-body">
+        <p class="lead">きみの<ruby>足<rt>あし</rt></ruby>のずーっと<ruby>下<rt>した</rt></ruby>に、<ruby>赤<rt>あか</rt></ruby>くドロドロにとけた<ruby>岩<rt>いわ</rt></ruby>の<ruby>海<rt>うみ</rt></ruby>があるって<ruby>知<rt>し</rt></ruby>ってた？</p>
+        <p><ruby>地球<rt>ちきゅう</rt></ruby>のなかは「マントル」とよばれる<ruby>熱<rt>あつ</rt></ruby>い<ruby>層<rt>そう</rt></ruby>でできていて、<ruby>温度<rt>おんど</rt></ruby>はなんと<strong>2000℃<ruby>以上<rt>いじょう</rt></ruby></strong>！おふろのおゆが40℃くらいだから、その50<ruby>倍<rt>ばい</rt></ruby>もアツアツなんだ。</p>
+        <p>そのとけた<ruby>岩<rt>いわ</rt></ruby>（マグマ）が<ruby>地面<rt>じめん</rt></ruby>のすきまから<ruby>飛<rt>と</rt></ruby>びだしてくるのが<strong><ruby>火山<rt>かざん</rt></ruby>の<ruby>噴火<rt>ふんか</rt></ruby></strong>だよ。コーラのびんをふってフタをあけたときみたいに、<ruby>地球<rt>ちきゅう</rt></ruby>のなかのガスといっしょにドカーン！とふきあがるんだって。</p>
+        <p>ハワイのキラウエアという<ruby>火山<rt>かざん</rt></ruby>は、<ruby>毎日<rt>まいにち</rt></ruby>100<ruby>万<rt>まん</rt></ruby>トン（ぞうさん20<ruby>万頭<rt>まんとう</rt></ruby>ぶん！）もの<ruby>溶岩<rt>ようがん</rt></ruby>を<ruby>吐<rt>は</rt></ruby>きだすこともあって、まちひとつぶんを<ruby>飲<rt>の</rt></ruby>みこんだこともあるよ。すごい<ruby>力<rt>ちから</rt></ruby>だね！</p>
+      </div>
+      <div class="photo-side">
+        <div class="photo-frame">
+          <img src="https://kids.gakken.co.jp/wp-content/uploads/2022/10/science0267_2210.jpg.webp" alt="火山のしくみ図解">
+          <div class="photo-caption">かざんはこうやってふんかする</div>
+        </div>
+        <div class="discovery-box">
+          <div class="title">🔥 ココがすごい！</div>
+          <ruby>火山<rt>かざん</rt></ruby>のはいが<ruby>空<rt>そら</rt></ruby>にひろがると、<ruby>太陽<rt>たいよう</rt></ruby>の<ruby>光<rt>ひかり</rt></ruby>をさえぎって、<ruby>世界<rt>せかい</rt></ruby>じゅうの<ruby>気温<rt>きおん</rt></ruby>が<strong>1℃も<ruby>下<rt>さ</rt></ruby>がった</strong>こともあるんだ。<ruby>火山<rt>かざん</rt></ruby>って<ruby>地球<rt>ちきゅう</rt></ruby>のお<ruby>天気<rt>てんき</rt></ruby>もかえちゃう！
+        </div>
+      </div>
+    </section>
+
+    <!-- MID SECTION -->
+    <section class="mid-section">
+      <div class="mid-box box-explain">
+        <div class="mid-box-title">🌋 やさしい<ruby>解説<rt>かいせつ</rt></ruby></div>
+        <ruby>地球<rt>ちきゅう</rt></ruby>を<ruby>大<rt>おお</rt></ruby>きなゆでたまごだとおもってね。<ruby>白身<rt>しろみ</rt></ruby>のところがマントルで、ドロドロ。<ruby>殻<rt>から</rt></ruby>のところが「プレート」というかたい<ruby>岩<rt>いわ</rt></ruby>のお<ruby>皿<rt>さら</rt></ruby>。お<ruby>皿<rt>さら</rt></ruby>のすきまからマグマがピュッと<ruby>飛<rt>と</rt></ruby>びだすと<ruby>噴火<rt>ふんか</rt></ruby>になるんだって！
+      </div>
+      <div class="mid-box box-quiz">
+        <div class="mid-box-title">🧐 きょうのクイズ</div>
+        <ruby>日本<rt>にほん</rt></ruby>には<ruby>活火山<rt>かっかざん</rt></ruby>（うごいてる<ruby>火山<rt>かざん</rt></ruby>）はいくつあるかな？<br>
+        ①10こ ②50こ ③111こ
+        <div class="answer">こたえ：③ 111こ！<ruby>世界<rt>せかい</rt></ruby>の<ruby>火山<rt>かざん</rt></ruby>の<ruby>約<rt>やく</rt></ruby>7%が<ruby>日本<rt>にほん</rt></ruby>にあるんだ🇯🇵</div>
+      </div>
+      <div class="mid-box box-try">
+        <div class="mid-box-title">💡 やってみよう！</div>
+        <span class="marker">▶</span> ペットボトルに<ruby>重曹<rt>じゅうそう</rt></ruby>（じゅうそう）<ruby>大<rt>おお</rt></ruby>さじ1<ruby>杯<rt>ぱい</rt></ruby><br>
+        <span class="marker">▶</span> <ruby>赤<rt>あか</rt></ruby>い<ruby>食紅<rt>しょくべに</rt></ruby>と<ruby>洗剤<rt>せんざい</rt></ruby>を1てき<br>
+        <span class="marker">▶</span> おすを<ruby>注<rt>そそ</rt></ruby>ぐと…ドバーッ🌋<br>
+        おうちで<ruby>火山<rt>かざん</rt></ruby>のふんかが<ruby>見<rt>み</rt></ruby>られるよ！
+      </div>
+    </section>
+
+    <!-- KIDS SECTION -->
+    <section class="kids-section">
+      <div class="kid-card kid-tecchan">
+        <div class="kid-ribbon">🐥 てっちゃん（5さい）</div>
+        <div class="kid-content">
+          ちきゅうのなかはアッツアツのスープみたい！おやまからドロドロがふきだすんだよ🌋ぼうけんみたい！
+        </div>
+      </div>
+      <div class="kid-card kid-taro">
+        <div class="kid-ribbon">🌱 たろう（7さい）</div>
+        <div class="kid-content">
+          <ruby>火<rt>ひ</rt></ruby>の<ruby>山<rt>やま</rt></ruby>は<ruby>地<rt>ち</rt></ruby>きゅうの<ruby>中<rt>なか</rt></ruby>のあつい<ruby>力<rt>ちから</rt></ruby>でばくはつするんだって！<ruby>日本<rt>にほん</rt></ruby>には<ruby>火<rt>ひ</rt></ruby>の<ruby>山<rt>やま</rt></ruby>がいっぱいあるみたいだね🗻
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- TRIVIA BAR -->
+  <div class="trivia-bar">
+    💎 へぇ〜！マントルは<ruby>地下<rt>ちか</rt></ruby>30kmから2900kmまでつづく、<ruby>地球<rt>ちきゅう</rt></ruby>でいちばん<ruby>分厚<rt>ぶあつ</rt></ruby>い<ruby>層<rt>そう</rt></ruby>なんだって！
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="source">📚 <ruby>出典<rt>しゅってん</rt></ruby>：<ruby>気象庁<rt>きしょうちょう</rt></ruby>／<ruby>学研<rt>がっけん</rt></ruby>キッズネット／Perplexity</div>
+    <div class="papa">🌋 <ruby>元洋<rt>もとひろ</rt></ruby>パパより ❤️</div>
+  </footer>
+</div>
+<div id="illust-area" style="display:none;"></div>
+</body>
+</html>
