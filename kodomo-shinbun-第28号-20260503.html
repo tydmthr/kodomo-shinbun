@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>豊田こども新聞 第28号</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;900&family=Noto+Serif+JP:wght@700;900&display=swap" rel="stylesheet">
+<style>
+  @page { size: A4; margin: 0; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body {
+    font-family: 'Noto Sans JP', 'Hiragino Kaku Gothic ProN', 'Yu Gothic', sans-serif;
+    background: #e8e8e8;
+    color: #1a1a2e;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+  ruby { ruby-align: center; }
+  rt { font-size: 0.5em; color: inherit; font-weight: normal; }
+
+  .page {
+    width: 210mm;
+    height: 297mm;
+    max-height: 297mm;
+    margin: 0 auto;
+    background: #ffffff;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+
+  .masthead {
+    background: #1B2A4A;
+    color: #F4D03F;
+    padding: 7px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid #F4D03F;
+  }
+  .masthead-title {
+    font-family: 'Noto Serif JP', serif;
+    font-size: 28px;
+    font-weight: 900;
+    color: #F4D03F;
+    letter-spacing: 2px;
+  }
+  .masthead-meta {
+    color: #ffffff;
+    font-size: 11px;
+    text-align: right;
+    line-height: 1.4;
+  }
+  .masthead-meta strong { font-size: 13px; color: #F4D03F; }
+
+  .color-line {
+    height: 4px;
+    background: linear-gradient(90deg, #E74C3C, #F39C12, #F4D03F, #27AE60, #3498DB, #8E44AD);
+  }
+
+  .date-bar {
+    padding: 4px 20px;
+    background: #FAFBFC;
+    border-bottom: 1px solid #ddd;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 11px;
+    color: #555;
+  }
+  .genre-badge {
+    background: #8E44AD;
+    color: white;
+    padding: 3px 12px;
+    border-radius: 12px;
+    font-size: 11px;
+    font-weight: 700;
+  }
+
+  .content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 6px 14px;
+    overflow: hidden;
+  }
+
+  .headline {
+    font-family: 'Noto Serif JP', serif;
+    font-size: 17px;
+    font-weight: 900;
+    line-height: 1.4;
+    color: #1B2A4A;
+    border-bottom: 3px double #1B2A4A;
+    padding-bottom: 4px;
+    margin-bottom: 5px;
+    text-align: center;
+  }
+  .headline .accent { color: #C0392B; }
+
+  .top-section {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 5px;
+  }
+  .article-body {
+    flex: 3;
+    font-size: 10px;
+    line-height: 1.65;
+  }
+  .article-body p { margin-bottom: 3px; }
+  .article-body .lead {
+    font-weight: 700;
+    color: #1B2A4A;
+    font-size: 10.5px;
+    margin-bottom: 4px;
+  }
+  .article-body .points {
+    background: #FFF8E1;
+    border-left: 3px solid #F39C12;
+    padding: 4px 7px;
+    margin: 4px 0;
+    font-size: 9.5px;
+    line-height: 1.55;
+  }
+  .article-body .points b { color: #C0392B; }
+
+  .photo-block {
+    flex: 2;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .photo-frame {
+    border: 2px solid #1B2A4A;
+    box-shadow: 2px 2px 0 #F4D03F;
+    overflow: hidden;
+    background: #f5f5f5;
+  }
+  .photo-frame img {
+    width: 100%;
+    max-height: 110px;
+    object-fit: cover;
+    display: block;
+  }
+  .photo-cap {
+    font-size: 8.5px;
+    color: #555;
+    text-align: center;
+    padding: 2px 4px;
+    background: #FAFBFC;
+  }
+  .discovery-box {
+    background: #FFF3CD;
+    border: 1.5px dashed #C0392B;
+    padding: 5px 8px;
+    font-size: 9.5px;
+    line-height: 1.6;
+    border-radius: 4px;
+  }
+  .discovery-box .dlabel {
+    font-weight: 900;
+    color: #C0392B;
+    font-size: 10px;
+    margin-bottom: 2px;
+    display: block;
+  }
+
+  .mid-section {
+    flex: 1;
+    min-height: 0;
+    overflow: hidden;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 6px;
+    margin-bottom: 5px;
+  }
+  .mid-box {
+    padding: 6px 8px;
+    font-size: 9.5px;
+    line-height: 1.6;
+    overflow: hidden;
+    border-radius: 4px;
+  }
+  .mid-box-title {
+    font-size: 10.5px;
+    font-weight: 900;
+    margin-bottom: 3px;
+  }
+  .box-explain {
+    background: #FFF8E1;
+    border: 1.5px solid #F39C12;
+  }
+  .box-explain .mid-box-title { color: #D35400; }
+  .box-quiz {
+    background: #EBF5FB;
+    border: 1.5px solid #3498DB;
+  }
+  .box-quiz .mid-box-title { color: #2471A3; }
+  .box-quiz .qa { font-size: 9px; margin-top: 3px; color: #1B4F72; }
+  .box-quiz .qa b { color: #C0392B; }
+  .box-try {
+    background: #E8F5E9;
+    border: 1.5px solid #4CAF50;
+  }
+  .box-try .mid-box-title { color: #2E7D32; }
+  .box-try ul { list-style: none; padding-left: 0; }
+  .box-try li { padding-left: 14px; position: relative; margin-bottom: 2px; }
+  .box-try li:before { content: "💡"; position: absolute; left: 0; font-size: 9px; }
+
+  .kids-section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    margin-bottom: 4px;
+  }
+  .kid-card {
+    border-radius: 6px;
+    overflow: hidden;
+    border: 1.5px solid #999;
+    font-size: 10.5px;
+    line-height: 1.6;
+  }
+  .kid-ribbon {
+    padding: 3px 10px;
+    font-size: 10.5px;
+    font-weight: 900;
+    color: white;
+  }
+  .kid-content {
+    padding: 5px 9px;
+    background: #fff;
+  }
+  .tecchan { border-color: #FF9800; }
+  .tecchan .kid-ribbon { background: #FF9800; }
+  .tecchan .kid-content { background: #FFF8E1; }
+  .taro { border-color: #4CAF50; }
+  .taro .kid-ribbon { background: #4CAF50; }
+  .taro .kid-content { background: #E8F5E9; }
+
+  .trivia-bar {
+    padding: 4px 20px;
+    background: #F5EEF8;
+    border-top: 1px solid #D7BDE2;
+    border-bottom: 1px solid #D7BDE2;
+    font-size: 9.5px;
+    color: #6C3483;
+    text-align: center;
+  }
+  .trivia-bar b { color: #4A235A; }
+
+  .footer {
+    background: #1B2A4A;
+    color: #fff;
+    padding: 4px 20px;
+    font-size: 8.5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .footer .heart { color: #F4D03F; font-weight: 700; }
+
+  @media print {
+    html, body { height: 297mm; overflow: hidden; background: #fff; }
+    .page { max-height: 296mm; box-shadow: none; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- Masthead -->
+  <div class="masthead">
+    <div class="masthead-title">豊田こども新聞</div>
+    <div class="masthead-meta">
+      <strong>第28号</strong><br>
+      365日サイエンス
+    </div>
+  </div>
+
+  <div class="color-line"></div>
+
+  <div class="date-bar">
+    <span>2026年5月3日（日曜日）</span>
+    <span class="genre-badge">🦸 きょうのテーマ：人体のふしぎ</span>
+    <span>はっこう：元洋パパ</span>
+  </div>
+
+  <div class="content">
+
+    <!-- Headline -->
+    <h1 class="headline">
+      <ruby>君<rt>きみ</rt></ruby>の<ruby>体<rt>からだ</rt></ruby>の<ruby>中<rt>なか</rt></ruby>で<span class="accent">１しゅう<ruby>間<rt>かん</rt></ruby>に１<ruby>０<rt>０</rt></ruby><ruby>０<rt>０</rt></ruby><ruby>０<rt>０</rt></ruby><ruby>０<rt>０</rt></ruby><ruby>０<rt>０</rt></ruby><ruby>０<rt>０</rt></ruby><ruby>０<rt>０</rt></ruby>かい！</span><br><ruby>心臓<rt>しんぞう</rt></ruby>はぜったいに<ruby>休<rt>やす</rt></ruby>まないスーパーポンプ
+    </h1>
+
+    <!-- Top section: article + photo -->
+    <div class="top-section">
+      <div class="article-body" id="illust-area">
+        <p class="lead">ねている<ruby>間<rt>あいだ</rt></ruby>も、ごはんを<ruby>食<rt>た</rt></ruby>べている<ruby>間<rt>あいだ</rt></ruby>も、<ruby>君<rt>きみ</rt></ruby>のむねの<ruby>中<rt>なか</rt></ruby>で「ドクン、ドクン」って<ruby>動<rt>うご</rt></ruby>いているもの、<ruby>知<rt>し</rt></ruby>ってる？それが<ruby>心臓<rt>しんぞう</rt></ruby>だよ！</p>
+
+        <p><ruby>心臓<rt>しんぞう</rt></ruby>は<ruby>体<rt>からだ</rt></ruby>のすみずみまで<ruby>血<rt>ち</rt></ruby>をおくる「ポンプ」。<ruby>大<rt>おお</rt></ruby>きさは<ruby>君<rt>きみ</rt></ruby>のにぎりこぶしくらい。<ruby>小<rt>ちい</rt></ruby>さいのに、<ruby>１<rt>いっ</rt></ruby><ruby>分間<rt>ぷんかん</rt></ruby>に<ruby>６<rt>ろく</rt></ruby><ruby>０<rt>じゅっ</rt></ruby>かいくらい<ruby>動<rt>うご</rt></ruby>いて、<ruby>体<rt>からだ</rt></ruby>のすみずみに<ruby>酸素<rt>さんそ</rt></ruby>とごはんのパワーを<ruby>運<rt>はこ</rt></ruby>んでくれる、すごいやつなんだ。</p>
+
+        <div class="points">
+          <b>★ ３つのびっくりポイント</b><br>
+          ① <b>２４<ruby>時間<rt>じかん</rt></ruby>ノンストップ！</b>ねている<ruby>間<rt>あいだ</rt></ruby>もぜったい<ruby>休<rt>やす</rt></ruby>まない。<br>
+          ② <b><ruby>走<rt>はし</rt></ruby>るとはやくなる！</b>うんどう<ruby>中<rt>ちゅう</rt></ruby>は<ruby>１<rt>いっ</rt></ruby><ruby>分<rt>ぷん</rt></ruby>に<ruby>１<rt>ひゃく</rt></ruby><ruby>５<rt>ご</rt></ruby><ruby>０<rt>じゅっ</rt></ruby>かいになることも！<br>
+          ③ <b><ruby>一生<rt>いっしょう</rt></ruby>で３<ruby>０<rt>じゅう</rt></ruby><ruby>億<rt>おく</rt></ruby>かい！</b>これは<ruby>世界一<rt>せかいいち</rt></ruby><ruby>働<rt>はたら</rt></ruby>きものの<ruby>筋肉<rt>きんにく</rt></ruby>だよ。
+        </div>
+
+        <p><ruby>心臓<rt>しんぞう</rt></ruby>は「<ruby>心筋<rt>しんきん</rt></ruby>」っていうとくべつな<ruby>筋肉<rt>きんにく</rt></ruby>でできていて、<ruby>君<rt>きみ</rt></ruby>がねていてもひとりでに<ruby>動<rt>うご</rt></ruby>いてくれる。だから<ruby>君<rt>きみ</rt></ruby>はあんしんしてねむれるんだね。</p>
+      </div>
+
+      <div class="photo-block">
+        <div class="photo-frame">
+          <img src="https://www.jotnw.or.jp/kids/assets/img/sp/organs/heart/illust.png" alt="心臓のイラスト">
+          <div class="photo-cap">これが<ruby>心臓<rt>しんぞう</rt></ruby>のかたち！</div>
+        </div>
+        <div class="discovery-box">
+          <span class="dlabel">💡 だい<ruby>発見<rt>はっけん</rt></ruby>！</span>
+          <ruby>心臓<rt>しんぞう</rt></ruby>がおくる<ruby>血<rt>ち</rt></ruby>のながさは、<ruby>君<rt>きみ</rt></ruby>の<ruby>体<rt>からだ</rt></ruby>のけっかんを<ruby>全部<rt>ぜんぶ</rt></ruby>つなげると<ruby>地球<rt>ちきゅう</rt></ruby>を<ruby>２<rt>に</rt></ruby><ruby>周半<rt>しゅうはん</rt></ruby>もできる<ruby>長<rt>なが</rt></ruby>さ！すごいよね！
+        </div>
+      </div>
+    </div>
+
+    <!-- Mid section: explain + quiz + try -->
+    <div class="mid-section">
+      <div class="mid-box box-explain">
+        <div class="mid-box-title">📖 どうしてうごくの？</div>
+        <ruby>心臓<rt>しんぞう</rt></ruby>には<ruby>電気<rt>でんき</rt></ruby>を<ruby>作<rt>つく</rt></ruby>るとくべつな<ruby>場所<rt>ばしょ</rt></ruby>があって、ピリピリッと<ruby>合図<rt>あいず</rt></ruby>を<ruby>出<rt>だ</rt></ruby>すんだ。その<ruby>合図<rt>あいず</rt></ruby>で<ruby>筋肉<rt>きんにく</rt></ruby>がギュッと<ruby>縮<rt>ちぢ</rt></ruby>んで「ドクン」って<ruby>音<rt>おと</rt></ruby>が<ruby>出<rt>で</rt></ruby>るよ。
+      </div>
+      <div class="mid-box box-quiz">
+        <div class="mid-box-title">❓ クイズ！</div>
+        <ruby>心臓<rt>しんぞう</rt></ruby>は<ruby>１<rt>いち</rt></ruby><ruby>日<rt>にち</rt></ruby>に<ruby>何<rt>なん</rt></ruby>かいうごく？<br>
+        ①<ruby>１<rt>いち</rt></ruby><ruby>０<rt>まん</rt></ruby><ruby>０<rt>かい</rt></ruby> ②<ruby>１<rt>せん</rt></ruby><ruby>０<rt>かい</rt></ruby> ③<ruby>１<rt>ひゃく</rt></ruby><ruby>０<rt>かい</rt></ruby>
+        <div class="qa">こたえ：<b>① やく１０まんかい！</b>ものすごい<ruby>働<rt>はたら</rt></ruby>き<ruby>者<rt>もの</rt></ruby>だね！</div>
+      </div>
+      <div class="mid-box box-try">
+        <div class="mid-box-title">🧪 やってみよう！</div>
+        <ul>
+          <li>てくびに<ruby>指<rt>ゆび</rt></ruby>をあてて、ドクンドクンを<ruby>感<rt>かん</rt></ruby>じてみよう</li>
+          <li>その<ruby>場<rt>ば</rt></ruby>で<ruby>１<rt>いっ</rt></ruby><ruby>０<rt>じゅっ</rt></ruby><ruby>回<rt>かい</rt></ruby>ジャンプ！もういちど<ruby>脈<rt>みゃく</rt></ruby>をはかってみて</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Kids section -->
+    <div class="kids-section">
+      <div class="kid-card tecchan">
+        <div class="kid-ribbon">🐥 てっちゃんへ（５さい）</div>
+        <div class="kid-content">
+          むねにてをあててごらん？「とくとく」ってしてるでしょ？それがしんぞうだよ。ずーっとうごいてくれてるんだ💛
+        </div>
+      </div>
+      <div class="kid-card taro">
+        <div class="kid-ribbon">🌱 たろうへ（７さい）</div>
+        <div class="kid-content">
+          <ruby>心臓<rt>しんぞう</rt></ruby>は<ruby>君<rt>きみ</rt></ruby>がねている<ruby>間<rt>あいだ</rt></ruby>も<ruby>休<rt>やす</rt></ruby>まずに<ruby>動<rt>うご</rt></ruby>いてるんだって。<ruby>体育<rt>たいいく</rt></ruby>で<ruby>走<rt>はし</rt></ruby>るとドクドクするのは<ruby>頑張<rt>がんば</rt></ruby>ってる<ruby>音<rt>おと</rt></ruby>だね！
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="trivia-bar">
+    <b>🌟 きょうのへぇ〜！</b>
+    キリンの<ruby>心臓<rt>しんぞう</rt></ruby>は<ruby>人間<rt>にんげん</rt></ruby>の<ruby>１<rt>いち</rt></ruby><ruby>０<rt>じゅう</rt></ruby>ばい<ruby>大<rt>おお</rt></ruby>きい！<ruby>長<rt>なが</rt></ruby>い<ruby>首<rt>くび</rt></ruby>のてっぺんまで<ruby>血<rt>ち</rt></ruby>をおくるパワーがいるからなんだって。
+  </div>
+
+  <div class="footer">
+    <span>しゅってん：Perplexity（Sonar）／Gakken Kids／日本臓器移植ネットワーク</span>
+    <span class="heart">元洋パパより ❤️</span>
+  </div>
+
+</div>
+</body>
+</html>
