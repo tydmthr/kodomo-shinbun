@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>豊田こども新聞 第29号</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;900&family=Noto+Serif+JP:wght@700;900&display=swap" rel="stylesheet">
+<style>
+  @page { size: A4; margin: 0; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { font-family: 'Noto Sans JP', 'Hiragino Kaku Gothic ProN', sans-serif; color: #1a1a2e; background: #f0f0f0; }
+  ruby { ruby-align: center; }
+  rt { font-size: 0.5em; color: inherit; font-weight: 400; }
+
+  .page {
+    width: 210mm;
+    height: 297mm;
+    max-height: 297mm;
+    margin: 0 auto;
+    background: #fff;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    page-break-inside: avoid;
+    break-inside: avoid;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+  }
+
+  .masthead {
+    background: #1B2A4A;
+    color: #F4D03F;
+    padding: 7px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid #F4D03F;
+  }
+  .masthead-title {
+    font-family: 'Noto Serif JP', serif;
+    font-size: 28px;
+    font-weight: 900;
+    letter-spacing: 2px;
+    color: #F4D03F;
+  }
+  .masthead-meta {
+    text-align: right;
+    color: #fff;
+    font-size: 10.5px;
+    line-height: 1.5;
+  }
+  .masthead-meta b { color: #F4D03F; font-size: 12px; }
+
+  .color-line {
+    height: 4px;
+    background: linear-gradient(90deg, #E74C3C, #F39C12, #F1C40F, #2ECC71, #3498DB, #9B59B6);
+  }
+
+  .date-bar {
+    background: #FAF7F0;
+    padding: 5px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 10.5px;
+    border-bottom: 1px solid #ddd;
+  }
+  .genre-badge {
+    background: #8E44AD;
+    color: #fff;
+    padding: 3px 12px;
+    border-radius: 12px;
+    font-size: 11px;
+    font-weight: 700;
+  }
+
+  .content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 6px 14px;
+    overflow: hidden;
+  }
+
+  .headline {
+    font-family: 'Noto Serif JP', serif;
+    font-size: 17px;
+    font-weight: 900;
+    line-height: 1.4;
+    border-bottom: 3px double #1B2A4A;
+    padding-bottom: 4px;
+    margin-bottom: 5px;
+    color: #1B2A4A;
+    text-align: center;
+  }
+  .headline .accent { color: #C0392B; }
+
+  .top-section {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 6px;
+  }
+  .article-body {
+    flex: 3;
+    font-size: 10px;
+    line-height: 1.65;
+  }
+  .article-body p {
+    margin-bottom: 3px;
+    text-indent: 1em;
+  }
+  .article-body p:first-child {
+    text-indent: 0;
+    background: #FFF8E1;
+    padding: 4px 6px;
+    border-left: 3px solid #F39C12;
+    font-weight: 700;
+    border-radius: 2px;
+  }
+
+  .right-col {
+    flex: 2;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+  .photo-frame {
+    border: 2px solid #1B2A4A;
+    box-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+    background: #fff;
+    padding: 2px;
+    text-align: center;
+  }
+  .photo-frame img {
+    width: 100%;
+    max-height: 110px;
+    object-fit: cover;
+    display: block;
+  }
+  .photo-caption {
+    font-size: 8.5px;
+    color: #555;
+    padding: 2px 4px;
+    line-height: 1.3;
+    background: #FAF7F0;
+  }
+  .discovery-box {
+    background: #FDF2E9;
+    border: 1.5px dashed #E67E22;
+    border-radius: 4px;
+    padding: 5px 8px;
+    font-size: 9.5px;
+    line-height: 1.6;
+  }
+  .discovery-box .title {
+    font-weight: 900;
+    color: #C0392B;
+    font-size: 10.5px;
+    margin-bottom: 2px;
+    display: block;
+  }
+
+  .mid-section {
+    flex: 1;
+    min-height: 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 6px;
+    margin-bottom: 6px;
+    overflow: hidden;
+  }
+  .mid-box {
+    padding: 6px 8px;
+    border-radius: 4px;
+    font-size: 9.5px;
+    line-height: 1.6;
+    overflow: hidden;
+  }
+  .mid-box-title {
+    font-size: 10.5px;
+    font-weight: 900;
+    margin-bottom: 3px;
+    display: flex;
+    align-items: center;
+    gap: 3px;
+  }
+  .box-explain {
+    background: #FFF8E1;
+    border: 1.5px solid #F39C12;
+  }
+  .box-explain .mid-box-title { color: #B9770E; }
+  .box-quiz {
+    background: #EBF5FB;
+    border: 1.5px solid #3498DB;
+  }
+  .box-quiz .mid-box-title { color: #1F618D; }
+  .box-quiz .question { font-weight: 700; margin-bottom: 2px; }
+  .box-quiz .answer {
+    background: #fff;
+    border-left: 2px solid #3498DB;
+    padding: 2px 4px;
+    margin-top: 2px;
+    border-radius: 2px;
+  }
+  .box-try {
+    background: #E8F5E9;
+    border: 1.5px solid #27AE60;
+  }
+  .box-try .mid-box-title { color: #1E8449; }
+  .box-try ul { list-style: none; }
+  .box-try li {
+    padding-left: 14px;
+    position: relative;
+    margin-bottom: 1px;
+  }
+  .box-try li::before {
+    content: "💡";
+    position: absolute;
+    left: 0;
+    font-size: 9px;
+  }
+
+  .kids-section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    margin-bottom: 4px;
+  }
+  .kid-card {
+    border-radius: 6px;
+    overflow: hidden;
+    border: 1.5px solid #ccc;
+    font-size: 10.5px;
+    line-height: 1.6;
+  }
+  .kid-ribbon {
+    padding: 3px 10px;
+    font-size: 10.5px;
+    font-weight: 900;
+    color: #fff;
+  }
+  .kid-tecchan .kid-ribbon { background: #F39C12; }
+  .kid-taro .kid-ribbon { background: #27AE60; }
+  .kid-content {
+    padding: 5px 9px;
+    background: #fff;
+  }
+  .kid-tecchan .kid-content { background: #FFF8E1; }
+  .kid-taro .kid-content { background: #E8F5E9; }
+
+  .trivia-bar {
+    background: #F5EEF8;
+    color: #6C3483;
+    padding: 4px 20px;
+    font-size: 9.5px;
+    line-height: 1.5;
+    border-top: 1px solid #BB8FCE;
+    border-bottom: 1px solid #BB8FCE;
+  }
+  .trivia-bar b { color: #4A235A; }
+
+  .footer {
+    background: #1B2A4A;
+    color: #fff;
+    padding: 4px 20px;
+    font-size: 8.5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .footer .heart { color: #F4D03F; }
+
+  @media print {
+    html, body { height: 297mm; overflow: hidden; background: #fff; }
+    .page { max-height: 296mm; box-shadow: none; }
+    * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <header class="masthead">
+    <div class="masthead-title">豊田こども新聞</div>
+    <div class="masthead-meta">
+      <b>第29号</b> ／ 365日サイエンス<br>
+      <span>2026.5.4 (月)</span>
+    </div>
+  </header>
+
+  <div class="color-line"></div>
+
+  <div class="date-bar">
+    <span>2026<ruby>年<rt>ねん</rt></ruby>5<ruby>月<rt>がつ</rt></ruby>4<ruby>日<rt>にち</rt></ruby>（<ruby>月曜日<rt>げつようび</rt></ruby>）</span>
+    <span class="genre-badge">🦖 きょうりゅう</span>
+    <span><ruby>発行<rt>はっこう</rt></ruby>：<ruby>元洋<rt>もとひろ</rt></ruby>パパ</span>
+  </div>
+
+  <main class="content">
+
+    <h1 class="headline">
+      ティラノサウルスの<span class="accent"><ruby>頭<rt>あたま</rt></ruby>のナゾ</span>！<br>
+      きょうりゅうの<ruby>王<rt>おう</rt></ruby>さま、ホントはどんな<ruby>生<rt>い</rt></ruby>きもの？
+    </h1>
+
+    <section class="top-section">
+      <div class="article-body" id="illust-area">
+        <p>あの<ruby>恐<rt>きょう</rt></ruby><ruby>竜<rt>りゅう</rt></ruby>の<ruby>王様<rt>おうさま</rt></ruby>「ティラノサウルス」。<ruby>体<rt>からだ</rt></ruby>の<ruby>長<rt>なが</rt></ruby>さは<ruby>約<rt>やく</rt></ruby>12.5メートル！スクールバスより<ruby>大<rt>おお</rt></ruby>きいんだ。</p>
+        <p>でも、ふしぎなことが<ruby>一<rt>ひと</rt></ruby>つあるよ。あんなに<ruby>巨大<rt>きょだい</rt></ruby>な<ruby>体<rt>からだ</rt></ruby>なのに、<ruby>脳<rt>のう</rt></ruby>みそが<ruby>入<rt>はい</rt></ruby>るスペースは「<ruby>大人<rt>おとな</rt></ruby>のこぶしくらい」しかなかったんだって！キミのにぎりこぶしと<ruby>同<rt>おな</rt></ruby>じくらいだよ。</p>
+        <p><ruby>最強<rt>さいきょう</rt></ruby>のハンターと<ruby>言<rt>い</rt></ruby>われるけど、<ruby>毎日<rt>まいにち</rt></ruby>のごはん<ruby>探<rt>さが</rt></ruby>しはたいへんだったみたい。<ruby>獲物<rt>えもの</rt></ruby>に<ruby>逃<rt>に</rt></ruby>げられたり、<ruby>大<rt>おお</rt></ruby>きすぎて<ruby>食<rt>た</rt></ruby>べられなかったり…。<ruby>強<rt>つよ</rt></ruby>くてもおなかペコペコの<ruby>日<rt>ひ</rt></ruby>もあったんだ。</p>
+        <p><ruby>歯<rt>は</rt></ruby>はナイフみたいにギザギザで、<ruby>長<rt>なが</rt></ruby>さは20センチもあるものも！この<ruby>歯<rt>は</rt></ruby>で<ruby>骨<rt>ほね</rt></ruby>ごとバリバリかみくだいたんだよ。<ruby>噛<rt>か</rt></ruby>む<ruby>力<rt>ちから</rt></ruby>はライオンの<ruby>10倍<rt>じゅうばい</rt></ruby>もあったって<ruby>知<rt>し</rt></ruby>ってた？</p>
+      </div>
+      <div class="right-col">
+        <div class="photo-frame">
+          <img src="https://kidzaurus.com/c01/wp-content/uploads/di-tyrannosaurus-02.jpg" alt="ティラノサウルス">
+          <div class="photo-caption">きょうりゅうの<ruby>王<rt>おう</rt></ruby>さま！<ruby>頭<rt>あたま</rt></ruby>とアゴがでっかい</div>
+        </div>
+        <div class="discovery-box">
+          <span class="title">🔍 はっけん！</span>
+          ティラノサウルスの<ruby>歯<rt>は</rt></ruby>は<ruby>一生<rt>いっしょう</rt></ruby>のあいだに<ruby>何回<rt>なんかい</rt></ruby>も<ruby>生<rt>は</rt></ruby>えかわるよ。サメと<ruby>同<rt>おな</rt></ruby>じ！おれた<ruby>歯<rt>は</rt></ruby>のすぐ<ruby>下<rt>した</rt></ruby>に<ruby>新<rt>あたら</rt></ruby>しい<ruby>歯<rt>は</rt></ruby>がスタンバイしてたんだ。
+        </div>
+      </div>
+    </section>
+
+    <section class="mid-section">
+      <div class="mid-box box-explain">
+        <div class="mid-box-title">📖 ここがすごい！</div>
+        <div>
+          <ruby>体<rt>からだ</rt></ruby>はバスより<ruby>大<rt>おお</rt></ruby>きいのに、<ruby>頭<rt>あたま</rt></ruby>の<ruby>中<rt>なか</rt></ruby>の<ruby>脳<rt>のう</rt></ruby>みそはこぶし<ruby>大<rt>だい</rt></ruby>。でも<ruby>目<rt>め</rt></ruby>と<ruby>鼻<rt>はな</rt></ruby>はとってもよくて、においで<ruby>獲物<rt>えもの</rt></ruby>を<ruby>見<rt>み</rt></ruby>つけるのが<ruby>得意<rt>とくい</rt></ruby>だったよ。
+        </div>
+      </div>
+      <div class="mid-box box-quiz">
+        <div class="mid-box-title">❓ クイズ！</div>
+        <div class="question">ティラノサウルスの<ruby>前足<rt>まえあし</rt></ruby>のながさは？</div>
+        <div>① キリンのくびくらい<br>② <ruby>大人<rt>おとな</rt></ruby>のうでくらい<br>③ きみの<ruby>足<rt>あし</rt></ruby>くらい</div>
+        <div class="answer">
+          <b>こたえ：②</b> ふしぎだよね、<ruby>体<rt>からだ</rt></ruby>はあんなに<ruby>大<rt>おお</rt></ruby>きいのに<ruby>前足<rt>まえあし</rt></ruby>はびっくりするほど<ruby>短<rt>みじか</rt></ruby>いんだ！
+        </div>
+      </div>
+      <div class="mid-box box-try">
+        <div class="mid-box-title">🎨 やってみよう！</div>
+        <ul>
+          <li><ruby>紙<rt>かみ</rt></ruby>コップにアゴと<ruby>歯<rt>は</rt></ruby>をかいて、ティラノヘッドを<ruby>作<rt>つく</rt></ruby>ろう</li>
+          <li>こぶしを<ruby>見<rt>み</rt></ruby>て「これが<ruby>脳<rt>のう</rt></ruby>みそ！」とおうちで<ruby>発表<rt>はっぴょう</rt></ruby></li>
+          <li>パパとどっちが<ruby>強<rt>つよ</rt></ruby>く<ruby>噛<rt>か</rt></ruby>めるか<ruby>勝負<rt>しょうぶ</rt></ruby>！</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="kids-section">
+      <div class="kid-card kid-tecchan">
+        <div class="kid-ribbon">🐥 てっちゃんへ（5さい）</div>
+        <div class="kid-content">
+          てぃらのさうるすね、おっきいけど のうみそは ぐーのおおきさだって！びっくり🦖✨
+        </div>
+      </div>
+      <div class="kid-card kid-taro">
+        <div class="kid-ribbon">🌱 たろうへ（7さい）</div>
+        <div class="kid-content">
+          ティラノは<ruby>体<rt>からだ</rt></ruby>がバスより<ruby>大<rt>おお</rt></ruby>きいのに、<ruby>脳<rt>のう</rt></ruby>みそはこぶし<ruby>大<rt>だい</rt></ruby>なんだって！<ruby>歯<rt>は</rt></ruby>は<ruby>何回<rt>なんかい</rt></ruby>も<ruby>生<rt>は</rt></ruby>えかわるよ🦖
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <div class="trivia-bar">
+    <b>💡 へぇ〜！</b> ティラノサウルスの<ruby>噛<rt>か</rt></ruby>む<ruby>力<rt>ちから</rt></ruby>は<ruby>地球<rt>ちきゅう</rt></ruby>でいちばん<ruby>強<rt>つよ</rt></ruby>かった！<ruby>骨<rt>ほね</rt></ruby>ごとバリバリ。<ruby>今<rt>いま</rt></ruby>の<ruby>動物<rt>どうぶつ</rt></ruby>でいちばん<ruby>強<rt>つよ</rt></ruby>いワニの<ruby>3倍<rt>さんばい</rt></ruby>くらいなんだって！
+  </div>
+
+  <footer class="footer">
+    <span><ruby>出典<rt>しゅってん</rt></ruby>: Kidzaurus / きょうりゅう<ruby>図鑑<rt>ずかん</rt></ruby>各種</span>
+    <span><ruby>元洋<rt>もとひろ</rt></ruby>パパより <span class="heart">❤</span></span>
+  </footer>
+
+</div>
+</body>
+</html>
