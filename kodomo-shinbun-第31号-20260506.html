@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>豊田こども新聞 第31号</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;900&family=Noto+Serif+JP:wght@700;900&display=swap" rel="stylesheet">
+<style>
+  *{box-sizing:border-box;margin:0;padding:0;}
+  ruby{ruby-align:center;}
+  rt{font-size:0.5em;color:inherit;font-weight:400;}
+  html,body{font-family:'Noto Sans JP','Hiragino Kaku Gothic ProN','Yu Gothic',sans-serif;color:#1a1a2e;background:#e0e0e0;}
+  .page{
+    width:210mm;height:297mm;max-height:297mm;
+    margin:0 auto;background:#fffdf7;
+    display:flex;flex-direction:column;
+    overflow:hidden;page-break-inside:avoid;break-inside:avoid;
+    box-shadow:0 4px 16px rgba(0,0,0,0.15);
+  }
+  .masthead{background:#1B2A4A;color:#F4D03F;padding:7px 20px;display:flex;justify-content:space-between;align-items:center;}
+  .masthead h1{font-family:'Noto Serif JP',serif;font-weight:900;font-size:28px;letter-spacing:2px;}
+  .masthead .right{text-align:right;font-size:10px;line-height:1.4;color:#fff;}
+  .masthead .right .issue{color:#F4D03F;font-weight:900;font-size:13px;}
+  .color-line{height:4px;background:linear-gradient(90deg,#e74c3c,#f39c12,#f1c40f,#2ecc71,#3498db,#9b59b6);}
+  .date-bar{display:flex;justify-content:space-between;align-items:center;padding:4px 20px;background:#FAF6E9;border-bottom:1px solid #d4cca8;font-size:10px;color:#5a4a2c;}
+  .date-bar .badge{background:#3498db;color:#fff;padding:2px 10px;border-radius:10px;font-weight:700;font-size:10.5px;}
+  .content{flex:1;display:flex;flex-direction:column;padding:6px 14px;overflow:hidden;}
+  .headline{
+    font-family:'Noto Serif JP',serif;font-weight:900;font-size:17px;line-height:1.4;
+    color:#1B2A4A;border-bottom:3px double #1B2A4A;
+    padding-bottom:4px;margin-bottom:5px;text-align:center;
+  }
+  .headline .lead{display:block;font-size:11px;color:#7d6608;font-weight:700;margin-bottom:2px;letter-spacing:1px;}
+  .top-section{display:flex;gap:10px;margin-bottom:6px;}
+  .article-body{flex:3;font-size:10px;line-height:1.65;}
+  .article-body p{margin-bottom:3px;text-indent:1em;}
+  .article-body p:first-child::first-letter{font-size:1.8em;font-weight:900;color:#1B2A4A;float:left;line-height:1;padding-right:3px;}
+  .right-col{flex:2;display:flex;flex-direction:column;gap:5px;}
+  .photo-frame{border:2px solid #1B2A4A;padding:2px;background:#fff;box-shadow:2px 2px 4px rgba(0,0,0,0.2);}
+  .photo-frame img{width:100%;max-height:110px;object-fit:cover;display:block;}
+  .photo-frame .caption{font-size:8px;text-align:center;padding:2px;color:#555;background:#FAF6E9;}
+  .discovery-box{background:#FFF3E0;border:1.5px solid #E67E22;border-radius:5px;padding:5px 8px;font-size:9.5px;line-height:1.6;}
+  .discovery-box .title{font-weight:900;color:#E67E22;font-size:10.5px;margin-bottom:2px;}
+  .mid-section{flex:1;min-height:0;display:flex;gap:8px;margin-bottom:6px;overflow:hidden;}
+  .mid-box{flex:1;border-radius:5px;padding:6px 8px;font-size:9.5px;line-height:1.6;overflow:hidden;}
+  .mid-box-title{font-weight:900;font-size:10.5px;margin-bottom:3px;display:flex;align-items:center;gap:3px;}
+  .box-explain{background:#FFF8E1;border:1.5px solid #F39C12;}
+  .box-explain .mid-box-title{color:#B7791F;}
+  .box-quiz{background:#EBF5FB;border:1.5px solid #2980B9;}
+  .box-quiz .mid-box-title{color:#1B4F72;}
+  .box-quiz .answer{margin-top:3px;padding:3px 5px;background:#fff;border-radius:3px;font-weight:700;color:#1B4F72;font-size:9px;}
+  .box-try{background:#E8F5E9;border:1.5px solid #27AE60;}
+  .box-try .mid-box-title{color:#1E6F3D;}
+  .box-try ul{list-style:none;padding-left:0;}
+  .box-try li{padding-left:14px;position:relative;margin-bottom:1px;}
+  .box-try li::before{content:"💡";position:absolute;left:0;font-size:8px;}
+  .kids-section{display:flex;gap:8px;margin-bottom:5px;}
+  .kid-card{flex:1;border-radius:6px;overflow:hidden;border:1.5px solid;}
+  .kid-tecchan{border-color:#FFB74D;background:#FFF8E1;}
+  .kid-taro{border-color:#66BB6A;background:#E8F5E9;}
+  .kid-ribbon{padding:3px 10px;font-size:10.5px;font-weight:900;color:#fff;display:flex;align-items:center;gap:4px;}
+  .kid-tecchan .kid-ribbon{background:#FFB74D;}
+  .kid-taro .kid-ribbon{background:#66BB6A;}
+  .kid-content{padding:5px 9px;font-size:10.5px;line-height:1.6;}
+  .trivia-bar{background:#F5EEF8;color:#6C3483;padding:4px 20px;font-size:9.5px;border-top:1px dashed #9b59b6;border-bottom:1px dashed #9b59b6;}
+  .trivia-bar b{color:#4A235A;}
+  .footer{background:#1B2A4A;color:#fff;padding:4px 20px;font-size:8.5px;display:flex;justify-content:space-between;align-items:center;}
+  .footer .papa{color:#F4D03F;font-weight:700;}
+  @page{size:A4;margin:0;}
+  @media print{
+    html,body{height:297mm;overflow:hidden;background:#fff;}
+    body{margin:0;padding:0;}
+    .page{max-height:296mm;width:210mm;box-shadow:none;}
+    *{-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <header class="masthead">
+    <h1>豊田こども新聞</h1>
+    <div class="right">
+      <div class="issue">第31号</div>
+      <div>365日サイエンス</div>
+    </div>
+  </header>
+
+  <div class="color-line"></div>
+
+  <div class="date-bar">
+    <div>2026<ruby>年<rt></rt></ruby>5<ruby>月<rt>がつ</rt></ruby>6<ruby>日<rt>にち</rt></ruby>(<ruby>水<rt>すい</rt></ruby>)</div>
+    <div class="badge">🤖 ロボット・テクノロジー</div>
+    <div><ruby>発行<rt>はっこう</rt></ruby>：<ruby>元洋<rt>もとひろ</rt></ruby>パパ</div>
+  </div>
+
+  <div class="content">
+
+    <div class="headline">
+      <span class="lead">★ きょうのトップニュース ★</span>
+      <ruby>本物<rt>ほんもの</rt></ruby>の<ruby>犬<rt>いぬ</rt></ruby>みたい！<ruby>階段<rt>かいだん</rt></ruby>もスイスイのぼる「ロボット<ruby>犬<rt>けん</rt></ruby>スポット」とうじょう
+    </div>
+
+    <div class="top-section">
+      <div class="article-body">
+        <p>アメリカのボストン・ダイナミクスという<ruby>会社<rt>かいしゃ</rt></ruby>が、<ruby>本物<rt>ほんもの</rt></ruby>の<ruby>犬<rt>いぬ</rt></ruby>みたいに<ruby>歩<rt>ある</rt></ruby>けるすごいロボットを<ruby>作<rt>つく</rt></ruby>ったよ。<ruby>名前<rt>なまえ</rt></ruby>は「Spot（スポット）」。４<ruby>本足<rt>ほんあし</rt></ruby>でガタガタ<ruby>道<rt>みち</rt></ruby>もスイスイ、<ruby>階段<rt>かいだん</rt></ruby>だってのぼっちゃう！</p>
+        <p>スポットのスゴイのは、カメラで<ruby>周<rt>まわ</rt></ruby>りを<ruby>見<rt>み</rt></ruby>て、ぶつかりそうなものを<ruby>自分<rt>じぶん</rt></ruby>でよけるところ。<ruby>遠<rt>とお</rt></ruby>くからスマホで「<ruby>前<rt>まえ</rt></ruby>へ！」って<ruby>命令<rt>めいれい</rt></ruby>すると、ちゃんと<ruby>動<rt>うご</rt></ruby>くんだ。</p>
+        <p><ruby>体<rt>からだ</rt></ruby>の<ruby>大<rt>おお</rt></ruby>きさは<ruby>大型犬<rt>おおがたけん</rt></ruby>くらい、<ruby>重<rt>おも</rt></ruby>さは32キロ。<ruby>電池<rt>でんち</rt></ruby>１つで90<ruby>分<rt>ぷん</rt></ruby>もはたらける！</p>
+        <p><ruby>日本<rt>にほん</rt></ruby>でも<ruby>工場<rt>こうじょう</rt></ruby>や<ruby>建設<rt>けんせつ</rt></ruby>げんばで<ruby>活躍中<rt>かつやくちゅう</rt></ruby>。<ruby>人間<rt>にんげん</rt></ruby>が<ruby>入<rt>はい</rt></ruby>れない<ruby>危<rt>あぶ</rt></ruby>ない<ruby>場所<rt>ばしょ</rt></ruby>のチェックを、スポットがかわりにやってくれるよ！</p>
+      </div>
+      <div class="right-col">
+        <div class="photo-frame" id="illust-area">
+          <img src="https://bostondynamics.com/wp-content/uploads/2023/12/spot-with-lidar-payload-mining.jpg" alt="ロボット犬Spot" onerror="this.parentElement.innerHTML='<div style=&quot;font-size:48px;text-align:center;padding:20px;&quot;>🤖🐕</div><div class=&quot;caption&quot;>スポットのイメージ</div>'">
+          <div class="caption">▲ ロボット<ruby>犬<rt>けん</rt></ruby>スポット（Boston Dynamics）</div>
+        </div>
+        <div class="discovery-box">
+          <div class="title">⚡ ココがびっくり！</div>
+          <ruby>電池<rt>でんち</rt></ruby>がへってきたら、<ruby>自分<rt>じぶん</rt></ruby>でじゅうでんステーションに<ruby>戻<rt>もど</rt></ruby>って<ruby>充電<rt>じゅうでん</rt></ruby>するんだって！おうちのおそうじロボットといっしょだね。
+        </div>
+      </div>
+    </div>
+
+    <div class="mid-section">
+      <div class="mid-box box-explain">
+        <div class="mid-box-title">📖 やさしくかいせつ</div>
+        スポットは「<ruby>四足<rt>よんそく</rt></ruby>ロボット」というなかま。<ruby>足<rt>あし</rt></ruby>が４<ruby>本<rt>ほん</rt></ruby>あるから、タイヤより<ruby>強<rt>つよ</rt></ruby>くてどんな<ruby>地面<rt>じめん</rt></ruby>でも<ruby>進<rt>すす</rt></ruby>めるんだ。アームをつけたらドアも<ruby>開<rt>あ</rt></ruby>けられるよ。
+      </div>
+      <div class="mid-box box-quiz">
+        <div class="mid-box-title">❓ クイズタイム</div>
+        スポットは <ruby>何本足<rt>なんぼんあし</rt></ruby>かな？<br>
+        Ⓐ ２<ruby>本<rt>ほん</rt></ruby>　Ⓑ ４<ruby>本<rt>ほん</rt></ruby>　Ⓒ ６<ruby>本<rt>ほん</rt></ruby>
+        <div class="answer">こたえ：Ⓑ ４<ruby>本<rt>ほん</rt></ruby>！<ruby>犬<rt>いぬ</rt></ruby>とおなじ。</div>
+      </div>
+      <div class="mid-box box-try">
+        <div class="mid-box-title">🎯 やってみよう</div>
+        <ul>
+          <li>クッションや<ruby>本<rt>ほん</rt></ruby>でしょうがいぶつコースをつくる</li>
+          <li>ぬいぐるみをスポットだとおもって、よけながらゴール！</li>
+          <li>「<ruby>前<rt>まえ</rt></ruby>！<ruby>右<rt>みぎ</rt></ruby>！」と<ruby>声<rt>こえ</rt></ruby>でしじしてみよう</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="kids-section">
+      <div class="kid-card kid-tecchan">
+        <div class="kid-ribbon">🐥 てっちゃんへ（5さい）</div>
+        <div class="kid-content">
+          ロボットの いぬが いるんだって！ かいだんも スイスイ のぼれちゃう。すごいね！🤖🐕
+        </div>
+      </div>
+      <div class="kid-card kid-taro">
+        <div class="kid-ribbon">🌱 たろうへ（小2）</div>
+        <div class="kid-content">
+          <ruby>本物<rt>ほんもの</rt></ruby>の<ruby>犬<rt>いぬ</rt></ruby>みたいに<ruby>動<rt>うご</rt></ruby>くロボットだよ。<ruby>名前<rt>なまえ</rt></ruby>はスポット！<ruby>工場<rt>こうじょう</rt></ruby>や<ruby>危<rt>あぶ</rt></ruby>ない<ruby>場所<rt>ばしょ</rt></ruby>で<ruby>人<rt>ひと</rt></ruby>のかわりにはたらいてるんだって。⚡
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="trivia-bar">
+    <b>🌟 きょうの<ruby>豆<rt>まめ</rt></ruby>ちしき：</b> ロボット<ruby>犬<rt>けん</rt></ruby>スポットは1<ruby>台<rt>だい</rt></ruby>のおねだんが<ruby>約<rt>やく</rt></ruby>1000<ruby>万円<rt>まんえん</rt></ruby>！<ruby>車<rt>くるま</rt></ruby>よりずっと<ruby>高<rt>たか</rt></ruby>いんだよ。
+  </div>
+
+  <footer class="footer">
+    <div><ruby>出典<rt>しゅってん</rt></ruby>：Boston Dynamics<ruby>公式<rt>こうしき</rt></ruby><ruby>情報<rt>じょうほう</rt></ruby> / Perplexity AI <ruby>調<rt>しら</rt></ruby>べ</div>
+    <div class="papa">元洋パパより ❤️</div>
+  </footer>
+
+</div>
+</body>
+</html>
